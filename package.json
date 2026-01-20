@@ -13,6 +13,7 @@
     "upload:users": "tsx scripts/upload-users-complete.ts",
     "upload:issues": "tsx scripts/upload-issues-complete.ts",
     "upload:sprints": "tsx scripts/upload-sprints-complete.ts",
+    "upload:issue-status-events": "tsx scripts/upload-issue-status-events-complete.ts",
     "generate:migration": "tsx scripts/generate-migration.ts"
   },
   "dependencies": {
