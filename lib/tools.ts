@@ -167,9 +167,10 @@ function getHardcodedSchema(): SchemaInfo {
         name: 'teams',
         columns: [
           { name: 'id', type: 'bigint', nullable: false },
-          { name: 'team_id', type: 'uuid', nullable: false },
-          { name: 'name', type: 'text', nullable: true },
-          { name: 'description', type: 'text', nullable: true }
+          { name: 'team_id', type: 'uuid', nullable: true },
+          { name: 'team_key', type: 'text', nullable: true },
+          { name: 'team_name', type: 'text', nullable: true },
+          { name: 'created_at', type: 'timestamptz', nullable: true }
         ]
       },
       {
@@ -211,10 +212,11 @@ function getHardcodedSchema(): SchemaInfo {
           { name: 'id', type: 'bigint', nullable: false },
           { name: 'sprint_id', type: 'uuid', nullable: false },
           { name: 'team_id', type: 'uuid', nullable: true },
-          { name: 'name', type: 'text', nullable: true },
+          { name: 'sprint_name', type: 'text', nullable: false },
           { name: 'start_date', type: 'date', nullable: true },
           { name: 'end_date', type: 'date', nullable: true },
-          { name: 'status', type: 'text', nullable: true }
+          { name: 'goal', type: 'text', nullable: true },
+          { name: 'created_at', type: 'timestamptz', nullable: true }
         ]
       },
       {
@@ -320,8 +322,9 @@ function buildSchemaDescription(schema: SchemaInfo): string {
   
   description += `JOIN PATTERNS:\n`;
   description += `- To get user name from issue: JOIN users ON issues.assignee_id = users.user_id, then SELECT users.full_name\n`;
-  description += `- To get team name from issue: JOIN teams ON issues.team_id = teams.team_id, then SELECT teams.name\n`;
+  description += `- To get team info from issue: JOIN teams ON issues.team_id = teams.team_id, then SELECT teams.team_key, teams.team_name\n`;
   description += `- To get user's team: JOIN teams ON users.team_id = teams.team_id\n`;
+  description += `- Teams can be referenced by team_key (similar to how issues are referenced by issue_key)\n`;
   description += `- To get all issues for a user: JOIN issues ON users.user_id = issues.assignee_id\n`;
   description += `- To get comments for an issue: JOIN issue_comments ON issues.issue_id = issue_comments.issue_id\n`;
   description += `- To get comment author name: JOIN users ON issue_comments.author_id = users.user_id, then SELECT users.full_name\n`;
@@ -369,7 +372,7 @@ INSTRUCTIONS:
    - The sprints table has: sprint_id, team_id, sprint_name (NOT name), start_date, end_date, goal, created_at
    - The issues table has: issue_id, issue_key, team_id, assignee_id, reporter_id, title, description, issue_type, status, priority, story_points, sprint_id, created_at, updated_at
    - The users table has: user_id, team_id, full_name (NOT name), email, created_at
-   - The teams table has: team_id, name, created_at
+   - The teams table has: team_id, team_key (key identifier for team, like issue_key), team_name, created_at
    - ALWAYS check the schema JSON above to verify column names before using them
 3. Generate a valid SQL SELECT query that answers the user's question
 4. Always include a LIMIT clause (default 50, max 500)
@@ -397,10 +400,11 @@ INSTRUCTIONS:
    - Always use the correct foreign key relationships:
      * issues.assignee_id = users.user_id (to get assignee name)
      * issues.reporter_id = users.user_id (to get reporter name)
-     * issues.team_id = teams.team_id (to get team name)
+     * issues.team_id = teams.team_id (to get team_key and team_name)
      * users.team_id = teams.team_id (to get user's team)
      * issue_comments.author_id = users.user_id (to get comment author name)
-   - Example: If querying issues with team info: JOIN teams ON issues.team_id = teams.team_id
+   - Example: If querying issues with team info: JOIN teams ON issues.team_id = teams.team_id, then SELECT teams.team_key, teams.team_name
+   - **CRITICAL: Teams can be referenced by team_key (similar to issue_key for issues) - use teams.team_key when filtering or displaying team identifiers**
    - Example: If querying issues with assignee info: JOIN users ON issues.assignee_id = users.user_id
 8. Use explicit table aliases for clarity (e.g., i for issues, t for teams, u for users, s for sprints, u2 for second user join)
 9. When displaying user names, use aliases like "assignee_name", "reporter_name", "author_name" for clarity
@@ -422,9 +426,10 @@ CRITICAL RULES:
 - If multiple interpretations are possible, mark as ambiguous
 
 JOIN EXAMPLES:
-- Issues with team: SELECT i.*, t.name AS team_name FROM issues i JOIN teams t ON i.team_id = t.team_id
+- Issues with team: SELECT i.*, t.team_key, t.team_name FROM issues i JOIN teams t ON i.team_id = t.team_id
 - Issues with assignee (SHOW FULL NAME): SELECT i.*, u.full_name AS assignee_name FROM issues i JOIN users u ON i.assignee_id = u.user_id
-- Sprints with team: SELECT s.sprint_name, s.start_date, s.end_date, t.name AS team_name FROM sprints s JOIN teams t ON s.team_id = t.team_id
+- Sprints with team: SELECT s.sprint_name, s.start_date, s.end_date, t.team_key, t.team_name FROM sprints s JOIN teams t ON s.team_id = t.team_id
+- Filter by team_key: SELECT * FROM issues i JOIN teams t ON i.team_id = t.team_id WHERE t.team_key = 'TEAM-001'
 - **CRITICAL: Sprints table column is sprint_name (NOT name): SELECT s.sprint_name, s.start_date, s.end_date FROM sprints s**
 - Break down bugs by assignee (WITH NAME AND CASE-INSENSITIVE):
   SELECT 
