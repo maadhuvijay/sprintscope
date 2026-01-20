@@ -85,7 +85,7 @@ export function ChatConsole({ messages, onSuggestionClick, isLoading }: ChatCons
                       "Show all issues assigned to Team ACCEL",
                       "Which users have the most open issues?",
                       "What issues are in QA status for Team ACCEL?",
-                      "Show issues completed in the last sprint"
+                      "Show issues completed in the last two weeks?"
                     ]
                   : message.suggestions && message.suggestions.length > 0
                     ? message.suggestions
