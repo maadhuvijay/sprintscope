@@ -19,7 +19,6 @@ interface ChatConsoleProps {
 }
 
 export function ChatConsole({ messages, onSuggestionClick, isLoading }: ChatConsoleProps) {
-  const isInitialState = messages.length === 1 && messages[0].role === "assistant" && messages[0].isInitial;
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   // Auto-scroll to bottom when messages change
@@ -77,10 +76,10 @@ export function ChatConsole({ messages, onSuggestionClick, isLoading }: ChatCons
           {message.role === "assistant" && (
             <div className="mt-6 pt-6 border-t border-white/5">
               <p className="text-xs font-semibold text-white/50 uppercase tracking-wider mb-3">
-                {isInitialState ? "Try asking something like:" : "If you'd like, I can:"}
+                {message.isInitial ? "Try asking something like:" : "If you'd like, I can:"}
               </p>
               <ul className="space-y-2">
-                {((isInitialState 
+                {((message.isInitial
                   ? [
                       "What issues are blocked in the current sprint?",
                       "How many stories were completed last sprint?",
