@@ -1405,3 +1405,172 @@ You can now test the interface by typing a question and clicking "Run Query". Le
 
 ---
 
+_**User (2026-01-20 02:41Z)**_
+
+On first load, the assistant should: Show 3 example questions the user can immediately try like
+• What issues are blocked in the current sprint?
+• How many stories were completed last sprint?
+• Which assignees have the most open issues?
+• Show bugs created in the last two weeks
+• What work is still in progress for Team ACCEL?
+
+once the first message is sent, sprintscope can ask questions based on the query like
+• Break this down by team
+• Compare with previous sprint
+• Export this view
+
+---
+
+_**Agent (model gemini-3-flash-preview, mode Agent)**_
+
+<tool-use data-tool-type="write" data-tool-name="search_replace">
+
+<details><summary>Tool use: **search_replace** • Edit file: components/ChatConsole.tsx</summary>
+
+**Chunk 1**
+Lines added: 4, lines removed: 1
+
+```diff
+@@ -11,7 +11,10 @@
+  interface ChatConsoleProps {
+    messages: Message[];
++   onSuggestionClick?: (suggestion: string) =&gt; void;
+  }
+  
+- export function ChatConsole({ messages }: ChatConsoleProps) {
++ export function ChatConsole({ messages, onSuggestionClick }: ChatConsoleProps) {
++   const isInitialState = messages.length === 1 &amp;&amp; messages[0].role === "assistant" &amp;&amp; messages[0].isInitial;
++ 
+    return (
+      &lt;div className="flex-1 overflow-y-auto p-6 space-y-6 no-scrollbar"&gt;
+```
+
+**Chunk 2**
+Lines added: 20, lines removed: 3
+
+```diff
+@@ -49,9 +52,26 @@
+              &lt;div className="mt-6 pt-6 border-t border-white/5"&gt;
+                &lt;p className="text-xs font-semibold text-white/50 uppercase tracking-wider mb-3"&gt;
+-                 If you'd like, I can:
++                 {isInitialState ? "Try asking something like:" : "If you'd like, I can:"}
+                &lt;/p&gt;
+                &lt;ul className="space-y-2"&gt;
+-                 {["Break this down by team", "Compare with previous sprint", "Export this view"].map((suggestion, i) =&gt; (
+-                   &lt;li key={i} className="flex items-center gap-3 group cursor-pointer"&gt;
++                 {(isInitialState 
++                   ? [
++                       "What issues are blocked in the current sprint?",
++                       "How many stories were completed last sprint?",
++                       "Which assignees have the most open issues?",
++                       "Show bugs created in the last two weeks",
++                       "What work is still in progress for Team ACCEL?"
++                     ]
++                   : [
++                       "Break this down by team",
++                       "Compare with previous sprint",
++                       "Export this view"
++                     ]
++                 ).map((suggestion, i) =&gt; (
++                   &lt;li 
++                     key={i} 
++                     className="flex items-center gap-3 group cursor-pointer"
++                     onClick={() =&gt; onSuggestionClick?.(suggestion)}
++                   &gt;
+                      &lt;div className="w-1.5 h-1.5 rounded-full bg-neon-cyan shadow-[0_0_8px_rgba(34,211,238,0.8)]" /&gt;
+                      &lt;span className="text-sm text-gray-400 group-hover:text-neon-cyan transition-colors"&gt;
+```
+
+</details>
+
+</tool-use>
+
+---
+
+<tool-use data-tool-type="write" data-tool-name="search_replace">
+
+<details><summary>Tool use: **search_replace** • Edit file: app/page.tsx</summary>
+
+**Chunk 1**
+Lines added: 1, lines removed: undefined
+
+```diff
+@@ -10,4 +10,5 @@
+    role: "user" | "assistant";
+    content: string;
++   isInitial?: boolean;
+  }
+  
+```
+
+**Chunk 2**
+Lines added: 2, lines removed: 1
+
+```diff
+@@ -16,5 +17,6 @@
+      {
+        role: "assistant",
+-       content: "Welcome to **SprintScope**. I'm ready to help you analyze your sprint data. What would you like to know?"
++       content: "Welcome to **SprintScope**. I'm ready to help you analyze your sprint data. What would you like to know?",
++       isInitial: true
+      }
+    ]);
+```
+
+**Chunk 3**
+Lines added: 2, lines removed: 1
+
+```diff
+@@ -43,5 +45,6 @@
+        {
+          role: "assistant",
+-         content: "Session reset. How can I help you today?"
++         content: "Session reset. How can I help you today?",
++         isInitial: true
+        }
+      ]);
+```
+
+**Chunk 4**
+Lines added: 4, lines removed: 1
+
+```diff
+@@ -58,5 +61,8 @@
+            {/* Left Column: Chat Console */}
+            &lt;div className="w-[62%] border-r border-white/5 flex flex-col bg-white/[0.01]"&gt;
+-             &lt;ChatConsole messages={messages} /&gt;
++             &lt;ChatConsole 
++               messages={messages} 
++               onSuggestionClick={handleRunQuery}
++             /&gt;
+            &lt;/div&gt;
+  
+```
+
+</details>
+
+</tool-use>
+
+---
+
+I've updated the **Chat Console** to handle the dynamic suggestions as requested:
+
+1.  **First Load / Initial State**:
+    *   The assistant now displays the specific set of starter questions:
+        *   *What issues are blocked in the current sprint?*
+        *   *How many stories were completed last sprint?*
+        *   *Which assignees have the most open issues?*
+        *   *Show bugs created in the last two weeks*
+        *   *What work is still in progress for Team ACCEL?*
+2.  **Post-Query State**:
+    *   Once you send a message or click a suggestion, the assistant switches its follow-up suggestions to:
+        *   *Break this down by team*
+        *   *Compare with previous sprint*
+        *   *Export this view*
+3.  **Interactive Suggestions**: 
+    *   I've made the suggestions clickable. Clicking any suggestion will automatically "Run Query" with that text, making it easy to explore the interface.
+
+The "Reset Session" button also correctly restores the initial starter questions. Ready to proceed with your next instructions!
+
+---
+
