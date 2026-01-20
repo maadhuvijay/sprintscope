@@ -119,6 +119,7 @@ export default function SprintScopePage() {
             <ChatConsole 
               messages={messages} 
               onSuggestionClick={handleRunQuery}
+              isLoading={isLoading}
             />
           </div>
 

@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { Loader2, Hourglass } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface Message {
@@ -14,9 +15,10 @@ interface Message {
 interface ChatConsoleProps {
   messages: Message[];
   onSuggestionClick?: (suggestion: string) => void;
+  isLoading?: boolean;
 }
 
-export function ChatConsole({ messages, onSuggestionClick }: ChatConsoleProps) {
+export function ChatConsole({ messages, onSuggestionClick, isLoading }: ChatConsoleProps) {
   const isInitialState = messages.length === 1 && messages[0].role === "assistant" && messages[0].isInitial;
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
@@ -110,6 +112,33 @@ export function ChatConsole({ messages, onSuggestionClick }: ChatConsoleProps) {
           )}
         </motion.div>
       ))}
+      
+      {/* Loading indicator */}
+      <AnimatePresence>
+        {isLoading && (
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.3 }}
+            className="glass-card neon-border-purple mr-auto max-w-[95%] rounded-xl p-5"
+          >
+            <div className="flex items-center gap-4">
+              <div className="relative flex items-center justify-center">
+                <Loader2 className="w-6 h-6 text-neon-purple animate-spin" />
+                <div className="absolute inset-0 bg-neon-purple/30 rounded-full blur-lg animate-pulse" />
+              </div>
+              <div className="flex flex-col gap-1">
+                <div className="flex items-center gap-2">
+                  <p className="text-sm font-medium text-gray-200">Working on it...</p>
+                  <Hourglass className="w-4 h-4 text-neon-cyan animate-pulse" />
+                </div>
+                <p className="text-xs text-gray-400">Analyzing your data and generating response</p>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
