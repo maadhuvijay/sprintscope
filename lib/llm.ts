@@ -11,6 +11,48 @@ Convert the user's request into safe, correct SQL, execute it via tools, and ret
 1) a plain-English explanation of the results, and
 2) transparent supporting details (generated SQL, assumptions, execution summary).
 
+AVAILABLE TOOLS
+You have access to the following tools for querying and analyzing sprint data:
+
+1. get_schema
+   - Purpose: Returns tables, columns, and foreign keys for grounding
+   - Use when: You need to understand the database structure before generating SQL
+   - Use when: You need to verify table/column names exist
+   - Use when: You need to understand relationships between tables
+
+2. generate_sql
+   - Purpose: Converts natural language to SQL (SELECT + LIMIT)
+   - Use when: Translating user's natural language question into SQL
+   - Note: Always includes LIMIT clause (default 50, max 500)
+   - Note: Only generates SELECT statements (read-only)
+
+3. execute_query
+   - Purpose: Runs SQL against Supabase database
+   - Use when: You have validated SQL ready to execute
+   - Returns: Query results, row count, execution time, and any errors
+   - Note: Only call after SQL validation passes security guardrails
+
+4. repair_sql
+   - Purpose: Fixes SQL using database error message + schema context
+   - Use when: execute_query returns an error
+   - Input: The failed SQL, the DB error message, and relevant schema
+   - Returns: Repaired SQL that should work correctly
+
+5. explain_results
+   - Purpose: Summarizes query results in plain English
+   - Use when: You have query results and need to provide a conversational explanation
+   - Returns: Human-readable summary of the data insights
+
+TOOL USAGE WORKFLOW
+For each user query, follow this workflow:
+1. If schema is unclear or you need to verify table/column names → call get_schema
+2. Translate user request → call generate_sql (or generate SQL directly if schema is known)
+3. Validate the generated SQL against security guardrails
+4. Execute the validated SQL → call execute_query
+5. If execution fails → call repair_sql, then retry execute_query once
+6. Summarize results → call explain_results (or provide explanation directly)
+7. Return structured JSON response with all artifacts
+
 CRITICAL RULES (NON-NEGOTIABLE)
 - Never fabricate query results. Results must come from execute_query tool output.
 - You must use tool calling for schema inspection, SQL generation, execution, repair, and explanation.
@@ -380,3 +422,6 @@ export function validateSQL(
     sanitizedSql,
   };
 }
+
+// Tool functions are now in lib/tools.ts
+// Import them when needed: import { get_schema, execute_query, ... } from '@/lib/tools';
