@@ -8,6 +8,9 @@
     "start": "next start",
     "lint": "eslint",
     "seed:teams": "tsx scripts/seed-teams.ts",
+    "seed:users": "tsx scripts/seed-users.ts",
+    "setup:users": "tsx scripts/setup-and-seed-users.ts",
+    "upload:users": "tsx scripts/upload-users-complete.ts",
     "generate:migration": "tsx scripts/generate-migration.ts"
   },
   "dependencies": {

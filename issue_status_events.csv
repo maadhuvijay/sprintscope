@@ -1,0 +1,501 @@
+event_id,issue_id,from_status,to_status,changed_by,changed_at,note
+baa22bcd-380b-46bd-b462-98fb3e36415d,24369fe6-11ca-4091-a540-87e451aaafe2,todo,in_progress,083c2a2d-d56d-44d6-843c-e6db92ae1415,2025-10-22T11:38:32.357847,Blocked due to dependency; reassigned and resumed.
+cd9aeea7-ce4d-4e0a-bd6b-c0a411c8e093,24369fe6-11ca-4091-a540-87e451aaafe2,in_progress,blocked,083c2a2d-d56d-44d6-843c-e6db92ae1415,2025-11-10T17:38:32.357847,Reopened after validation found an edge case.
+8c799bcb-0b74-4d0a-b1f4-3ac3fc7daf12,24369fe6-11ca-4091-a540-87e451aaafe2,blocked,in_progress,083c2a2d-d56d-44d6-843c-e6db92ae1415,2025-11-08T19:38:32.357847,
+0f6b63a5-1b55-4ea9-8627-1d3790142bb0,24369fe6-11ca-4091-a540-87e451aaafe2,in_progress,blocked,083c2a2d-d56d-44d6-843c-e6db92ae1415,2025-11-04T07:38:32.357847,
+ad9688ad-f078-446a-802d-b80f45650862,24369fe6-11ca-4091-a540-87e451aaafe2,blocked,in_progress,083c2a2d-d56d-44d6-843c-e6db92ae1415,2025-11-11T20:38:32.357847,Reopened after validation found an edge case.
+c128c446-71b8-482e-8d9b-42364d8516d8,14b64a5b-7094-4b7a-93d3-06bd7101cb41,todo,in_progress,f13f1641-5e2a-4fb3-b921-c51475cdb5f4,2025-08-24T04:31:32.357847,Reopened after validation found an edge case.
+179cd3c3-68f6-41ed-9841-f1872dfb99c0,14b64a5b-7094-4b7a-93d3-06bd7101cb41,in_progress,in_review,f13f1641-5e2a-4fb3-b921-c51475cdb5f4,2025-08-24T03:31:32.357847,Moved to QA after code review completion.
+b02f142f-e7a3-4e1d-b32e-100796609048,14b64a5b-7094-4b7a-93d3-06bd7101cb41,in_review,in_progress,f13f1641-5e2a-4fb3-b921-c51475cdb5f4,2025-08-15T18:31:32.357847,Blocked due to dependency; reassigned and resumed.
+0ad3fea6-0ce6-409f-9bcc-2269c6027717,14b64a5b-7094-4b7a-93d3-06bd7101cb41,in_progress,in_review,f13f1641-5e2a-4fb3-b921-c51475cdb5f4,2025-08-20T13:31:32.357847,
+8819e5e6-1b23-4cae-a971-e9cef5251bd5,14b64a5b-7094-4b7a-93d3-06bd7101cb41,in_review,qa,f13f1641-5e2a-4fb3-b921-c51475cdb5f4,2025-08-16T12:31:32.357847,Reopened after validation found an edge case.
+3e032725-0acf-45fe-aa8c-fba6fcbf97bb,68446eaf-012d-4eb5-b3bd-27ab40e74627,todo,in_progress,1cd11c26-83d5-494e-a897-8e8aef31e696,2025-05-07T08:23:32.357847,Moved to QA after code review completion.
+f992102e-72fe-4677-ac70-992350328f4c,68446eaf-012d-4eb5-b3bd-27ab40e74627,in_progress,qa,1cd11c26-83d5-494e-a897-8e8aef31e696,2025-05-08T18:23:32.357847,Blocked due to dependency; reassigned and resumed.
+1f4cb1d7-ab39-41ff-819e-c742b15182ac,68446eaf-012d-4eb5-b3bd-27ab40e74627,qa,in_progress,1cd11c26-83d5-494e-a897-8e8aef31e696,2025-04-26T19:23:32.357847,Status updated during daily standup.
+9af0e5ab-f326-4fa3-a9bd-109ef761eabb,68446eaf-012d-4eb5-b3bd-27ab40e74627,in_progress,in_review,1cd11c26-83d5-494e-a897-8e8aef31e696,2025-05-07T15:23:32.357847,Reopened after validation found an edge case.
+ea6c38de-be7d-4bee-92b8-a6f2c8bbbcfe,68446eaf-012d-4eb5-b3bd-27ab40e74627,in_review,in_progress,1cd11c26-83d5-494e-a897-8e8aef31e696,2025-04-20T06:23:32.357847,Status updated during daily standup.
+4273849d-6d4e-410f-abb0-cbebfed3a0fc,d80d13c6-2ea3-4590-b401-1d006d066019,todo,in_progress,adebe119-6836-4cbc-a557-6fa617bf6052,2025-07-11T14:08:32.357847,Status updated during daily standup.
+74fe4250-a42e-4fa3-bca5-34417da3e51d,d80d13c6-2ea3-4590-b401-1d006d066019,in_progress,in_review,adebe119-6836-4cbc-a557-6fa617bf6052,2025-07-09T16:08:32.357847,Blocked due to dependency; reassigned and resumed.
+e078e546-c2f7-44d6-a07b-dcf8618a50ef,d80d13c6-2ea3-4590-b401-1d006d066019,in_review,qa,adebe119-6836-4cbc-a557-6fa617bf6052,2025-07-04T20:08:32.357847,Moved to QA after code review completion.
+665f7945-cdab-4560-979b-de19368c3337,d80d13c6-2ea3-4590-b401-1d006d066019,qa,in_progress,adebe119-6836-4cbc-a557-6fa617bf6052,2025-06-24T16:08:32.357847,
+4b413263-047b-43f6-9e04-b9ad5dbbd386,d80d13c6-2ea3-4590-b401-1d006d066019,in_progress,in_review,adebe119-6836-4cbc-a557-6fa617bf6052,2025-07-07T16:08:32.357847,Blocked due to dependency; reassigned and resumed.
+91cce8b5-6453-444f-9a82-635149d017bf,9902653e-c6f7-466b-88f7-f8e4465a7564,todo,in_progress,32b296b6-58a6-4b35-afb9-2ca1f23c53e5,2025-07-03T22:41:32.357847,
+4eeda4e9-2117-4d29-8361-750f6d846f29,9902653e-c6f7-466b-88f7-f8e4465a7564,in_progress,qa,32b296b6-58a6-4b35-afb9-2ca1f23c53e5,2025-06-28T23:41:32.357847,Blocked due to dependency; reassigned and resumed.
+24cc81b3-0300-4d25-ad9f-a2eb08a79a14,9902653e-c6f7-466b-88f7-f8e4465a7564,qa,in_progress,32b296b6-58a6-4b35-afb9-2ca1f23c53e5,2025-06-24T06:41:32.357847,
+953b56b7-0087-4236-80ac-9288f755e264,9902653e-c6f7-466b-88f7-f8e4465a7564,in_progress,in_review,32b296b6-58a6-4b35-afb9-2ca1f23c53e5,2025-06-20T08:41:32.357847,Status updated during daily standup.
+e0c379c3-7366-4646-9bae-a6744fd458f1,9902653e-c6f7-466b-88f7-f8e4465a7564,in_review,in_progress,32b296b6-58a6-4b35-afb9-2ca1f23c53e5,2025-07-07T16:41:32.357847,Status updated during daily standup.
+ba6cbde1-6278-4a8c-84be-97d97ee533e1,3d993520-8a2a-4f0c-8e6a-6a57ff986998,backlog,todo,b9587822-329a-4b88-92a3-4456c8cf7184,2025-09-12T22:37:32.357847,Blocked due to dependency; reassigned and resumed.
+bc6736f9-f511-46f2-849e-16c3a9bcdfb0,3d993520-8a2a-4f0c-8e6a-6a57ff986998,todo,in_progress,b9587822-329a-4b88-92a3-4456c8cf7184,2025-09-26T04:37:32.357847,Blocked due to dependency; reassigned and resumed.
+e757d45e-2f3c-4818-ba2d-612bab86fda2,3d993520-8a2a-4f0c-8e6a-6a57ff986998,in_progress,blocked,b9587822-329a-4b88-92a3-4456c8cf7184,2025-09-27T14:37:32.357847,Status updated during daily standup.
+e0e3d29b-61fb-4ec5-b1f3-33b1c0c83b7a,3d993520-8a2a-4f0c-8e6a-6a57ff986998,blocked,in_progress,b9587822-329a-4b88-92a3-4456c8cf7184,2025-09-09T02:37:32.357847,Reopened after validation found an edge case.
+d6e7e944-33f9-4dae-ad82-745f20531b73,3d993520-8a2a-4f0c-8e6a-6a57ff986998,in_progress,qa,b9587822-329a-4b88-92a3-4456c8cf7184,2025-09-19T12:37:32.357847,Reopened after validation found an edge case.
+372e9ef5-ce8d-4dba-aa74-584d76aba629,7b409170-993b-417a-b678-b68a7b4cab21,todo,in_progress,cbe27adb-75c9-4865-b348-9dcd44a3bd66,2025-11-11T04:10:32.357847,Blocked due to dependency; reassigned and resumed.
+b1fe31aa-59a5-4fdb-881b-038957e39bd1,7b409170-993b-417a-b678-b68a7b4cab21,in_progress,blocked,cbe27adb-75c9-4865-b348-9dcd44a3bd66,2025-11-16T05:10:32.357847,Blocked due to dependency; reassigned and resumed.
+26a1f219-27a1-4ad1-979b-412b7565d6e2,7b409170-993b-417a-b678-b68a7b4cab21,blocked,in_progress,cbe27adb-75c9-4865-b348-9dcd44a3bd66,2025-11-15T09:10:32.357847,Status updated during daily standup.
+3c161196-2f08-47fc-bbee-1544eeab3702,7b409170-993b-417a-b678-b68a7b4cab21,in_progress,blocked,cbe27adb-75c9-4865-b348-9dcd44a3bd66,2025-11-15T06:10:32.357847,Blocked due to dependency; reassigned and resumed.
+5e0c0342-388d-4b36-b308-5078ce28d89a,7b409170-993b-417a-b678-b68a7b4cab21,blocked,in_progress,cbe27adb-75c9-4865-b348-9dcd44a3bd66,2025-11-18T14:10:32.357847,Status updated during daily standup.
+d23ef8f8-0055-4201-b233-b97956a65767,3da5cebb-4d31-4f11-8868-f1cb3ac276fe,todo,in_progress,b072f140-8958-47b5-9ebe-f2b87000ca07,2025-07-04T04:54:32.357847,Moved to QA after code review completion.
+10c72998-16ec-4eac-b55f-b834ef917faa,3da5cebb-4d31-4f11-8868-f1cb3ac276fe,in_progress,blocked,b072f140-8958-47b5-9ebe-f2b87000ca07,2025-07-19T13:54:32.357847,
+81c5036e-3eb2-4833-879c-7f5f93b469cc,3da5cebb-4d31-4f11-8868-f1cb3ac276fe,blocked,in_progress,b072f140-8958-47b5-9ebe-f2b87000ca07,2025-07-11T15:54:32.357847,Blocked due to dependency; reassigned and resumed.
+b5776cd0-99da-4a2f-b291-54a31b543d0e,3da5cebb-4d31-4f11-8868-f1cb3ac276fe,in_progress,blocked,b072f140-8958-47b5-9ebe-f2b87000ca07,2025-07-16T12:54:32.357847,Status updated during daily standup.
+d6eedbe1-1728-432e-9712-8a380febab60,3da5cebb-4d31-4f11-8868-f1cb3ac276fe,blocked,in_progress,b072f140-8958-47b5-9ebe-f2b87000ca07,2025-07-12T21:54:32.357847,Status updated during daily standup.
+5db7e6c3-3a7c-465b-b299-4de46b02ac0f,9be9c8c8-e478-4aac-8cc0-7849597ae09e,todo,in_progress,19e506dd-6df1-4535-aeb0-02d6d4192440,2025-09-01T13:52:32.357847,Blocked due to dependency; reassigned and resumed.
+47a816ab-4192-4957-9c45-371b601b18d6,9be9c8c8-e478-4aac-8cc0-7849597ae09e,in_progress,qa,19e506dd-6df1-4535-aeb0-02d6d4192440,2025-09-18T23:52:32.357847,Blocked due to dependency; reassigned and resumed.
+130b2644-76c8-42b5-a9c9-6ec7a09d5d66,9be9c8c8-e478-4aac-8cc0-7849597ae09e,qa,done,19e506dd-6df1-4535-aeb0-02d6d4192440,2025-09-10T11:52:32.357847,Blocked due to dependency; reassigned and resumed.
+084510d2-7dbb-4a4d-a2b2-f9f4e0b88ad5,9be9c8c8-e478-4aac-8cc0-7849597ae09e,done,in_progress,19e506dd-6df1-4535-aeb0-02d6d4192440,2025-09-17T13:52:32.357847,Reopened after validation found an edge case.
+87c9ab48-5b55-4de4-afeb-408889cf9f2a,9be9c8c8-e478-4aac-8cc0-7849597ae09e,in_progress,qa,19e506dd-6df1-4535-aeb0-02d6d4192440,2025-09-05T00:52:32.357847,Blocked due to dependency; reassigned and resumed.
+71ce8e26-2fb4-4c02-950e-09ca64f8c58b,c5ff3d59-0bde-4cd6-9cee-01d314ba3ba9,todo,in_progress,ab6f87f7-6f9b-4a9d-b66a-cb77d1759a32,2026-01-01T19:38:32.357847,
+84b4ccab-729b-4113-8ecc-8e1730463600,c5ff3d59-0bde-4cd6-9cee-01d314ba3ba9,in_progress,blocked,ab6f87f7-6f9b-4a9d-b66a-cb77d1759a32,2025-12-23T03:38:32.357847,Status updated during daily standup.
+098ea304-f0ce-4f70-a072-21eace4e9a7d,c5ff3d59-0bde-4cd6-9cee-01d314ba3ba9,blocked,in_progress,ab6f87f7-6f9b-4a9d-b66a-cb77d1759a32,2025-12-19T12:38:32.357847,
+81155d77-4ba0-4d43-9c10-2a0d949b1b59,c5ff3d59-0bde-4cd6-9cee-01d314ba3ba9,in_progress,blocked,ab6f87f7-6f9b-4a9d-b66a-cb77d1759a32,2025-12-17T09:38:32.357847,Blocked due to dependency; reassigned and resumed.
+0c5e5874-33cd-4a44-8fd8-2b92eafccaec,c5ff3d59-0bde-4cd6-9cee-01d314ba3ba9,blocked,in_progress,ab6f87f7-6f9b-4a9d-b66a-cb77d1759a32,2026-01-02T04:38:32.357847,Reopened after validation found an edge case.
+c0c739bf-4d03-4028-acaf-80cbc53988e1,4254d609-08ac-4484-809f-25bc0c77ca5b,todo,in_progress,cd65fd7a-f9b2-4f10-af07-202376ca434f,2025-04-12T18:58:32.357847,
+0c0410ab-af72-404c-8ab4-3291742c200c,4254d609-08ac-4484-809f-25bc0c77ca5b,in_progress,blocked,cd65fd7a-f9b2-4f10-af07-202376ca434f,2025-04-08T22:58:32.357847,Moved to QA after code review completion.
+362c2cbf-1514-407f-9050-67752c7a4097,4254d609-08ac-4484-809f-25bc0c77ca5b,blocked,in_progress,cd65fd7a-f9b2-4f10-af07-202376ca434f,2025-04-06T06:58:32.357847,Blocked due to dependency; reassigned and resumed.
+5db11336-a308-4115-8512-e69f23f7f329,4254d609-08ac-4484-809f-25bc0c77ca5b,in_progress,in_review,cd65fd7a-f9b2-4f10-af07-202376ca434f,2025-03-31T02:58:32.357847,Status updated during daily standup.
+f48d7b66-fb19-4392-adb7-e13f2ac54356,4254d609-08ac-4484-809f-25bc0c77ca5b,in_review,in_progress,cd65fd7a-f9b2-4f10-af07-202376ca434f,2025-04-16T18:58:32.357847,
+ccfb70db-80f3-4259-9a57-cf0a1230466b,dcd4794c-ebfc-4a06-838f-9236d8447515,todo,in_progress,b6dff830-5f0d-4b95-aa7d-09106f638ec1,2025-08-21T10:34:32.357847,
+579f61cb-2a01-4b59-8d42-ad5c39f1ebda,dcd4794c-ebfc-4a06-838f-9236d8447515,in_progress,qa,b6dff830-5f0d-4b95-aa7d-09106f638ec1,2025-08-22T08:34:32.357847,Reopened after validation found an edge case.
+075a74f2-573c-4188-88c8-697f66d6e190,dcd4794c-ebfc-4a06-838f-9236d8447515,qa,done,b6dff830-5f0d-4b95-aa7d-09106f638ec1,2025-08-14T02:34:32.357847,Blocked due to dependency; reassigned and resumed.
+62e09eb1-c502-470d-9bb2-ed0df348471c,dcd4794c-ebfc-4a06-838f-9236d8447515,done,in_progress,b6dff830-5f0d-4b95-aa7d-09106f638ec1,2025-08-11T01:34:32.357847,Reopened after validation found an edge case.
+66081b3d-6ae8-4f05-be58-0a342d2facdf,dcd4794c-ebfc-4a06-838f-9236d8447515,in_progress,in_review,b6dff830-5f0d-4b95-aa7d-09106f638ec1,2025-08-18T04:34:32.357847,Status updated during daily standup.
+c2d11821-c688-4aca-8a25-0bc3bf7ba0f3,d47b1de6-5c9e-49c4-9225-9da306ee1820,todo,in_progress,e904c27b-8448-4fb6-b01c-11ab1c5996b9,2025-10-21T19:09:32.357847,Moved to QA after code review completion.
+cc6d3647-8fda-423d-bfbc-4f2756bd23e7,d47b1de6-5c9e-49c4-9225-9da306ee1820,in_progress,qa,e904c27b-8448-4fb6-b01c-11ab1c5996b9,2025-10-22T11:09:32.357847,Reopened after validation found an edge case.
+125d7037-3a8b-4f3a-952d-1a0b57232115,d47b1de6-5c9e-49c4-9225-9da306ee1820,qa,in_progress,e904c27b-8448-4fb6-b01c-11ab1c5996b9,2025-10-22T01:09:32.357847,Status updated during daily standup.
+060c83ac-2808-42e6-bc42-f95e86a82e69,d47b1de6-5c9e-49c4-9225-9da306ee1820,in_progress,qa,e904c27b-8448-4fb6-b01c-11ab1c5996b9,2025-10-07T22:09:32.357847,Status updated during daily standup.
+2e5fb90a-07da-402d-a552-1bdc42cf426d,d47b1de6-5c9e-49c4-9225-9da306ee1820,qa,in_progress,e904c27b-8448-4fb6-b01c-11ab1c5996b9,2025-10-25T15:09:32.357847,
+7429960f-6f44-4daa-a702-3363450dc0f3,fbfb72cf-e9b7-4a5d-9f97-ff9a139c226f,todo,in_progress,b047a288-93fe-48f1-80ed-bb442a77d9b6,2026-01-22T21:58:32.357847,Status updated during daily standup.
+722366c0-3cb0-46e0-9fbe-39920a11c2fa,fbfb72cf-e9b7-4a5d-9f97-ff9a139c226f,in_progress,qa,b047a288-93fe-48f1-80ed-bb442a77d9b6,2026-01-02T12:58:32.357847,Moved to QA after code review completion.
+fb150ffc-8691-4235-9148-0f0c9adb4a1e,fbfb72cf-e9b7-4a5d-9f97-ff9a139c226f,qa,in_progress,b047a288-93fe-48f1-80ed-bb442a77d9b6,2026-01-08T22:58:32.357847,
+e337cbbf-e647-4243-b15b-bcbc785b099d,fbfb72cf-e9b7-4a5d-9f97-ff9a139c226f,in_progress,blocked,b047a288-93fe-48f1-80ed-bb442a77d9b6,2026-01-16T10:58:32.357847,
+f97cc26a-7ee7-4a20-9f5e-aa24cfcdb296,fbfb72cf-e9b7-4a5d-9f97-ff9a139c226f,blocked,in_progress,b047a288-93fe-48f1-80ed-bb442a77d9b6,2026-01-18T22:58:32.357847,Status updated during daily standup.
+2e26e0e3-4671-4bc4-949d-0521f19da184,a43120e5-306c-40e7-865e-73cb1b8c639f,todo,in_progress,dd0ee5c0-2c57-42aa-8085-4dd47b71b925,2025-10-03T09:21:32.357847,Blocked due to dependency; reassigned and resumed.
+b265f8be-95df-4e2c-be48-7407170a4063,a43120e5-306c-40e7-865e-73cb1b8c639f,in_progress,qa,dd0ee5c0-2c57-42aa-8085-4dd47b71b925,2025-09-29T06:21:32.357847,Blocked due to dependency; reassigned and resumed.
+93f7ed27-193b-419c-838f-ad65f4ee1561,a43120e5-306c-40e7-865e-73cb1b8c639f,qa,in_progress,dd0ee5c0-2c57-42aa-8085-4dd47b71b925,2025-09-25T22:21:32.357847,
+9eced9ae-a395-4f9a-a33d-e6d9e68129b7,a43120e5-306c-40e7-865e-73cb1b8c639f,in_progress,blocked,dd0ee5c0-2c57-42aa-8085-4dd47b71b925,2025-09-20T16:21:32.357847,Blocked due to dependency; reassigned and resumed.
+fd1f138f-2e5b-4848-aaa6-b507259a2db3,a43120e5-306c-40e7-865e-73cb1b8c639f,blocked,in_progress,dd0ee5c0-2c57-42aa-8085-4dd47b71b925,2025-09-28T04:21:32.357847,Blocked due to dependency; reassigned and resumed.
+cd409876-a6be-49d3-b3a6-2a25fffdf7a8,17f3c903-c092-4bf3-8a24-afb515139a31,todo,in_progress,fa3cba1e-b92d-413b-b384-9ee6a042b923,2025-05-20T12:11:32.357847,Blocked due to dependency; reassigned and resumed.
+d39e84b1-c812-4cc1-9e3a-185ce5581c6f,17f3c903-c092-4bf3-8a24-afb515139a31,in_progress,in_review,fa3cba1e-b92d-413b-b384-9ee6a042b923,2025-05-27T01:11:32.357847,Blocked due to dependency; reassigned and resumed.
+2ca56967-0b60-4683-874d-ff14782e355a,17f3c903-c092-4bf3-8a24-afb515139a31,in_review,qa,fa3cba1e-b92d-413b-b384-9ee6a042b923,2025-06-03T07:11:32.357847,
+e861d38d-255f-4a8b-b78c-b5b93ad651d5,17f3c903-c092-4bf3-8a24-afb515139a31,qa,in_progress,fa3cba1e-b92d-413b-b384-9ee6a042b923,2025-05-28T21:11:32.357847,
+fe58ffc8-dfe3-4f49-a0c4-16a79bf60927,17f3c903-c092-4bf3-8a24-afb515139a31,in_progress,qa,fa3cba1e-b92d-413b-b384-9ee6a042b923,2025-06-04T09:11:32.357847,Blocked due to dependency; reassigned and resumed.
+3684b0d2-e077-490e-82fe-09d4be610cf5,576fdd13-4c14-4ad0-bc91-6dc55b9ad932,todo,in_progress,e48495a0-72d0-49e9-a491-30c536ee62a1,2025-09-26T08:57:32.357847,Status updated during daily standup.
+9f8f6194-df68-4e67-97cc-0eb34028e895,576fdd13-4c14-4ad0-bc91-6dc55b9ad932,in_progress,in_review,e48495a0-72d0-49e9-a491-30c536ee62a1,2025-09-25T22:57:32.357847,Moved to QA after code review completion.
+c4db96e7-37ff-457b-a4d7-eabefe70d7f3,576fdd13-4c14-4ad0-bc91-6dc55b9ad932,in_review,qa,e48495a0-72d0-49e9-a491-30c536ee62a1,2025-09-27T18:57:32.357847,
+f6ae41e2-6c21-4cb1-aeb9-73e60e84571e,576fdd13-4c14-4ad0-bc91-6dc55b9ad932,qa,done,e48495a0-72d0-49e9-a491-30c536ee62a1,2025-10-03T08:57:32.357847,Reopened after validation found an edge case.
+facd2eea-b487-4a63-8245-3748a7be94d3,576fdd13-4c14-4ad0-bc91-6dc55b9ad932,done,in_progress,e48495a0-72d0-49e9-a491-30c536ee62a1,2025-09-26T14:57:32.357847,Blocked due to dependency; reassigned and resumed.
+b055d0fd-f5b7-4eeb-8608-8ded3b82ae2b,9a4ec3d6-7c78-4bef-821b-79a38a218d18,todo,in_progress,07b1e93f-1717-499c-b985-ff0c1289846a,2025-08-24T05:11:32.357847,Reopened after validation found an edge case.
+1648a367-e39d-44a2-88fd-07d5af870407,9a4ec3d6-7c78-4bef-821b-79a38a218d18,in_progress,blocked,07b1e93f-1717-499c-b985-ff0c1289846a,2025-08-26T17:11:32.357847,Moved to QA after code review completion.
+2f22b57c-2428-4e5d-ab3b-e73187e5924f,9a4ec3d6-7c78-4bef-821b-79a38a218d18,blocked,in_progress,07b1e93f-1717-499c-b985-ff0c1289846a,2025-08-29T21:11:32.357847,Reopened after validation found an edge case.
+ef6125ee-78fa-4b27-a52c-0e377cfd5491,9a4ec3d6-7c78-4bef-821b-79a38a218d18,in_progress,in_review,07b1e93f-1717-499c-b985-ff0c1289846a,2025-09-07T09:11:32.357847,Moved to QA after code review completion.
+0a7d6327-2017-47e9-b02d-2f1002343ec5,9a4ec3d6-7c78-4bef-821b-79a38a218d18,in_review,in_progress,07b1e93f-1717-499c-b985-ff0c1289846a,2025-08-24T03:11:32.357847,Reopened after validation found an edge case.
+0c0660f4-a999-4933-b353-e6b360d2b380,1495da03-e01f-42cb-8b99-5665821a8cf0,backlog,todo,59e6c8e1-9739-4f6c-8d3a-dc1877c356c5,2025-06-09T05:45:32.357847,Blocked due to dependency; reassigned and resumed.
+60893f7b-cb6d-400c-bbc7-be9955044dfc,1495da03-e01f-42cb-8b99-5665821a8cf0,todo,in_progress,59e6c8e1-9739-4f6c-8d3a-dc1877c356c5,2025-06-07T15:45:32.357847,Reopened after validation found an edge case.
+a1bf722a-2472-4415-b817-788d090d94ef,1495da03-e01f-42cb-8b99-5665821a8cf0,in_progress,in_review,59e6c8e1-9739-4f6c-8d3a-dc1877c356c5,2025-05-25T17:45:32.357847,Blocked due to dependency; reassigned and resumed.
+28de6052-90b8-495a-8799-d8a118ea7fcc,1495da03-e01f-42cb-8b99-5665821a8cf0,in_review,qa,59e6c8e1-9739-4f6c-8d3a-dc1877c356c5,2025-06-03T19:45:32.357847,Status updated during daily standup.
+05bb129e-040e-4b22-a245-76a49544d854,1495da03-e01f-42cb-8b99-5665821a8cf0,qa,done,59e6c8e1-9739-4f6c-8d3a-dc1877c356c5,2025-05-30T03:45:32.357847,
+386e2775-8097-411c-a190-4851d7959a81,2bea6f03-b30e-4263-b937-6ad72857e4cc,todo,in_progress,0be7f779-2e0f-4e50-b701-485a87247e17,2025-12-11T05:00:32.357847,
+78c15a00-6846-481d-b7fd-03ffbfb8ea8c,2bea6f03-b30e-4263-b937-6ad72857e4cc,in_progress,blocked,0be7f779-2e0f-4e50-b701-485a87247e17,2025-12-22T21:00:32.357847,Blocked due to dependency; reassigned and resumed.
+027bc771-dc27-4b74-95a2-ed3a4565f052,2bea6f03-b30e-4263-b937-6ad72857e4cc,blocked,in_progress,0be7f779-2e0f-4e50-b701-485a87247e17,2025-12-08T09:00:32.357847,Status updated during daily standup.
+f30c61ce-da92-421c-b762-2cb40cf7ad85,2bea6f03-b30e-4263-b937-6ad72857e4cc,in_progress,blocked,0be7f779-2e0f-4e50-b701-485a87247e17,2025-12-16T23:00:32.357847,Blocked due to dependency; reassigned and resumed.
+af7d1bd8-edb3-4bb3-8e15-5ea0a64073c6,2bea6f03-b30e-4263-b937-6ad72857e4cc,blocked,in_progress,0be7f779-2e0f-4e50-b701-485a87247e17,2025-12-20T21:00:32.357847,Status updated during daily standup.
+6de463ea-a9de-4a52-a290-ccd7b2502d42,c84cfcbe-98f8-41da-a705-cc89b84afd33,todo,in_progress,32b296b6-58a6-4b35-afb9-2ca1f23c53e5,2025-06-04T00:21:32.357847,
+602ea7c0-9743-4404-80e2-f43070615cbe,c84cfcbe-98f8-41da-a705-cc89b84afd33,in_progress,blocked,32b296b6-58a6-4b35-afb9-2ca1f23c53e5,2025-06-06T20:21:32.357847,Blocked due to dependency; reassigned and resumed.
+2af5199b-4563-487c-ad91-8d876104c29a,c84cfcbe-98f8-41da-a705-cc89b84afd33,blocked,in_progress,32b296b6-58a6-4b35-afb9-2ca1f23c53e5,2025-06-13T15:21:32.357847,Reopened after validation found an edge case.
+186074e9-2e0b-41e5-b5d1-fbcd36ce7e00,c84cfcbe-98f8-41da-a705-cc89b84afd33,in_progress,blocked,32b296b6-58a6-4b35-afb9-2ca1f23c53e5,2025-06-07T10:21:32.357847,
+f10b5625-857f-47a7-9097-f6ccbd2d54db,c84cfcbe-98f8-41da-a705-cc89b84afd33,blocked,in_progress,32b296b6-58a6-4b35-afb9-2ca1f23c53e5,2025-06-16T20:21:32.357847,Blocked due to dependency; reassigned and resumed.
+75be9130-92f1-40f8-8766-24c9bac43749,fdf0e578-9221-498f-8d1f-a780ee583299,todo,in_progress,74cc4857-5494-4613-8e19-865b201e72d9,2025-07-17T14:30:32.357847,Status updated during daily standup.
+11c38ead-fdd2-488a-93e1-fcb740dcca53,fdf0e578-9221-498f-8d1f-a780ee583299,in_progress,in_review,74cc4857-5494-4613-8e19-865b201e72d9,2025-08-02T04:30:32.357847,Status updated during daily standup.
+40a075a3-f9fa-4e7e-8de1-a9fd6d0d9a2f,fdf0e578-9221-498f-8d1f-a780ee583299,in_review,qa,74cc4857-5494-4613-8e19-865b201e72d9,2025-07-26T22:30:32.357847,Status updated during daily standup.
+2a60dde9-adde-4f83-8b04-f1f908f6692f,fdf0e578-9221-498f-8d1f-a780ee583299,qa,done,74cc4857-5494-4613-8e19-865b201e72d9,2025-07-20T08:30:32.357847,Blocked due to dependency; reassigned and resumed.
+37302259-6cc8-4025-9a28-3dfc526a17b0,fdf0e578-9221-498f-8d1f-a780ee583299,done,in_progress,74cc4857-5494-4613-8e19-865b201e72d9,2025-07-28T11:30:32.357847,
+a8da7d94-e70d-40ac-9115-854798b0fa78,e3fea5de-0d8a-470e-b940-864d66ffbd1b,backlog,todo,e238e391-5624-4fb1-851f-4830a7dd0a7b,2025-05-06T14:19:32.357847,Blocked due to dependency; reassigned and resumed.
+3fbe2ac2-bc36-414e-808e-1ece90c3a562,e3fea5de-0d8a-470e-b940-864d66ffbd1b,todo,in_progress,e238e391-5624-4fb1-851f-4830a7dd0a7b,2025-05-07T04:19:32.357847,Status updated during daily standup.
+b3e59718-3d42-46d2-b77f-cf9a5ca533f6,e3fea5de-0d8a-470e-b940-864d66ffbd1b,in_progress,blocked,e238e391-5624-4fb1-851f-4830a7dd0a7b,2025-05-09T02:19:32.357847,
+3e1540b8-fae6-410a-b74b-4c8049c0af8b,e3fea5de-0d8a-470e-b940-864d66ffbd1b,blocked,in_progress,e238e391-5624-4fb1-851f-4830a7dd0a7b,2025-04-28T08:19:32.357847,
+82c16929-9da0-49d1-8b23-b06eeb9b1bff,e3fea5de-0d8a-470e-b940-864d66ffbd1b,in_progress,in_review,e238e391-5624-4fb1-851f-4830a7dd0a7b,2025-05-03T10:19:32.357847,Blocked due to dependency; reassigned and resumed.
+076667c7-14b7-4806-a6da-97b227ce2b0c,ed82cd46-2144-42a9-8c85-e2750ab0b3f7,todo,in_progress,dff7d2cf-f745-4ab3-9088-c20eb2c33379,2025-06-20T12:17:32.357847,Reopened after validation found an edge case.
+1357b65f-2489-407f-842b-cd46e368b380,ed82cd46-2144-42a9-8c85-e2750ab0b3f7,in_progress,in_review,dff7d2cf-f745-4ab3-9088-c20eb2c33379,2025-06-13T06:17:32.357847,
+21a2153f-56c1-4b3a-b637-23c9d5c71ac1,ed82cd46-2144-42a9-8c85-e2750ab0b3f7,in_review,in_progress,dff7d2cf-f745-4ab3-9088-c20eb2c33379,2025-06-15T20:17:32.357847,Moved to QA after code review completion.
+7e15a8ac-2fe8-485b-808c-93d4170831bf,ed82cd46-2144-42a9-8c85-e2750ab0b3f7,in_progress,qa,dff7d2cf-f745-4ab3-9088-c20eb2c33379,2025-06-14T04:17:32.357847,Moved to QA after code review completion.
+ef594577-b727-4a25-ac7a-68d44c9b2a21,ed82cd46-2144-42a9-8c85-e2750ab0b3f7,qa,done,dff7d2cf-f745-4ab3-9088-c20eb2c33379,2025-06-20T15:17:32.357847,Status updated during daily standup.
+7743522e-f540-428c-9b33-384b4ea2a01f,f0e6c7af-718e-43ae-99b0-6feb99efe369,backlog,todo,806bcb12-33a4-4bcf-8554-acd357f5aabd,2025-08-28T11:51:32.357847,Reopened after validation found an edge case.
+36da3092-baec-4fda-8cda-6ea3b956b9c5,f0e6c7af-718e-43ae-99b0-6feb99efe369,todo,in_progress,806bcb12-33a4-4bcf-8554-acd357f5aabd,2025-09-10T17:51:32.357847,Reopened after validation found an edge case.
+3e1e5654-f81b-4946-b672-cee2f93834b8,f0e6c7af-718e-43ae-99b0-6feb99efe369,in_progress,blocked,806bcb12-33a4-4bcf-8554-acd357f5aabd,2025-09-13T21:51:32.357847,Blocked due to dependency; reassigned and resumed.
+2ff7e307-7120-421a-9148-5b48671dfdd4,f0e6c7af-718e-43ae-99b0-6feb99efe369,blocked,in_progress,806bcb12-33a4-4bcf-8554-acd357f5aabd,2025-09-06T23:51:32.357847,Reopened after validation found an edge case.
+98b3ae89-2433-4f86-9847-ebe313127a74,f0e6c7af-718e-43ae-99b0-6feb99efe369,in_progress,qa,806bcb12-33a4-4bcf-8554-acd357f5aabd,2025-09-08T00:51:32.357847,Reopened after validation found an edge case.
+1da59c53-16ce-4d7c-85a6-1a9abbf95713,3a8e2016-bb9c-4223-a181-60849224f28a,todo,in_progress,2e51a994-98ba-4f3a-8e6a-00ef5a647be4,2025-10-26T14:25:32.357847,Reopened after validation found an edge case.
+8b1def7f-eb86-48fe-a8df-23e95ab47fb0,3a8e2016-bb9c-4223-a181-60849224f28a,in_progress,blocked,2e51a994-98ba-4f3a-8e6a-00ef5a647be4,2025-11-01T10:25:32.357847,Blocked due to dependency; reassigned and resumed.
+8714a6f5-657a-46c7-95ff-0acb1e29ecfb,3a8e2016-bb9c-4223-a181-60849224f28a,blocked,in_progress,2e51a994-98ba-4f3a-8e6a-00ef5a647be4,2025-10-22T22:25:32.357847,Blocked due to dependency; reassigned and resumed.
+60cf9615-3c62-4e96-91ce-7d11c29e0918,3a8e2016-bb9c-4223-a181-60849224f28a,in_progress,qa,2e51a994-98ba-4f3a-8e6a-00ef5a647be4,2025-11-04T15:25:32.357847,Reopened after validation found an edge case.
+f2d85474-4d23-465b-b0f4-970c09b7fd43,3a8e2016-bb9c-4223-a181-60849224f28a,qa,in_progress,2e51a994-98ba-4f3a-8e6a-00ef5a647be4,2025-10-28T00:25:32.357847,Moved to QA after code review completion.
+88e71d47-3856-46a9-b2ba-70e22b025252,5f861f0f-9eaa-413f-950e-ee550d014be7,todo,in_progress,3a5bfe08-cb96-423f-b39e-ae5aaad6eda8,2025-08-02T19:28:32.357847,Status updated during daily standup.
+c794e7df-dc1a-4e53-9410-26a8f9ec9d80,5f861f0f-9eaa-413f-950e-ee550d014be7,in_progress,qa,3a5bfe08-cb96-423f-b39e-ae5aaad6eda8,2025-08-18T18:28:32.357847,Moved to QA after code review completion.
+a5c8ae70-3480-4815-b6de-45e89633e71b,5f861f0f-9eaa-413f-950e-ee550d014be7,qa,in_progress,3a5bfe08-cb96-423f-b39e-ae5aaad6eda8,2025-07-30T10:28:32.357847,Blocked due to dependency; reassigned and resumed.
+b9bcecfd-58f4-4f82-8811-f186d495a2ae,5f861f0f-9eaa-413f-950e-ee550d014be7,in_progress,in_review,3a5bfe08-cb96-423f-b39e-ae5aaad6eda8,2025-08-15T09:28:32.357847,Reopened after validation found an edge case.
+dfdaeb8a-69ff-4677-9fb4-e9b588edbd19,5f861f0f-9eaa-413f-950e-ee550d014be7,in_review,in_progress,3a5bfe08-cb96-423f-b39e-ae5aaad6eda8,2025-08-03T18:28:32.357847,Status updated during daily standup.
+25f889e0-73a4-432e-adf1-51f91bdbe5c0,d3d6bbc5-981c-456d-92f9-9e9f29dce048,todo,in_progress,0efbfa09-5531-4ed1-8eac-3a19b948fa94,2025-07-10T08:30:32.357847,Blocked due to dependency; reassigned and resumed.
+99ab3fbe-954b-4d99-a5e7-a9e32e498f07,d3d6bbc5-981c-456d-92f9-9e9f29dce048,in_progress,in_review,0efbfa09-5531-4ed1-8eac-3a19b948fa94,2025-07-09T15:30:32.357847,Reopened after validation found an edge case.
+86eab51a-1ca0-4449-a13b-e998b5994c53,d3d6bbc5-981c-456d-92f9-9e9f29dce048,in_review,qa,0efbfa09-5531-4ed1-8eac-3a19b948fa94,2025-06-26T00:30:32.357847,Moved to QA after code review completion.
+be276772-7a57-4736-8bb2-d424ba7f812d,d3d6bbc5-981c-456d-92f9-9e9f29dce048,qa,in_progress,0efbfa09-5531-4ed1-8eac-3a19b948fa94,2025-06-29T10:30:32.357847,Blocked due to dependency; reassigned and resumed.
+d5948e2d-bb35-41c3-b26e-172edfbf8eaa,d3d6bbc5-981c-456d-92f9-9e9f29dce048,in_progress,in_review,0efbfa09-5531-4ed1-8eac-3a19b948fa94,2025-07-02T06:30:32.357847,
+d9de9ba3-8393-4701-9114-114f8be213f4,cb2a4db0-d23a-47b4-bbaf-325337ae6218,backlog,todo,322e0b90-47ee-465f-b8bf-29c7a98b7ed6,2025-06-03T21:23:32.357847,Status updated during daily standup.
+cf118e02-5f99-464a-82bb-be5b6c446291,cb2a4db0-d23a-47b4-bbaf-325337ae6218,todo,in_progress,322e0b90-47ee-465f-b8bf-29c7a98b7ed6,2025-06-03T05:23:32.357847,Status updated during daily standup.
+3040830b-7b7f-4ade-836e-719b22698105,cb2a4db0-d23a-47b4-bbaf-325337ae6218,in_progress,in_review,322e0b90-47ee-465f-b8bf-29c7a98b7ed6,2025-06-13T01:23:32.357847,Blocked due to dependency; reassigned and resumed.
+090f88e9-4ab0-4853-a0f2-734d0291a602,cb2a4db0-d23a-47b4-bbaf-325337ae6218,in_review,qa,322e0b90-47ee-465f-b8bf-29c7a98b7ed6,2025-06-10T21:23:32.357847,Moved to QA after code review completion.
+59b98026-9887-4925-851d-04271cd36b60,cb2a4db0-d23a-47b4-bbaf-325337ae6218,qa,in_progress,322e0b90-47ee-465f-b8bf-29c7a98b7ed6,2025-06-20T09:23:32.357847,Reopened after validation found an edge case.
+6af8169e-ae50-407f-bfd1-3414404223cf,61be95a6-f542-476c-9632-55e882bd601e,todo,in_progress,929c7a47-643b-4f65-8c68-191312f1e225,2025-09-19T09:59:32.357847,Status updated during daily standup.
+18d2c7f1-b8eb-4899-8f92-3524eaceafe5,61be95a6-f542-476c-9632-55e882bd601e,in_progress,qa,929c7a47-643b-4f65-8c68-191312f1e225,2025-09-15T04:59:32.357847,Blocked due to dependency; reassigned and resumed.
+ce94500e-0e04-4f7c-ae74-086e4e41dda8,61be95a6-f542-476c-9632-55e882bd601e,qa,in_progress,929c7a47-643b-4f65-8c68-191312f1e225,2025-09-13T17:59:32.357847,
+5fc5496c-6c76-48b5-90d8-1a58c64ad370,61be95a6-f542-476c-9632-55e882bd601e,in_progress,in_review,929c7a47-643b-4f65-8c68-191312f1e225,2025-09-15T17:59:32.357847,
+9a77c536-5949-41ae-910d-a5a9f41380b2,61be95a6-f542-476c-9632-55e882bd601e,in_review,in_progress,929c7a47-643b-4f65-8c68-191312f1e225,2025-09-18T22:59:32.357847,Blocked due to dependency; reassigned and resumed.
+e0552eba-a683-4dd6-b3d7-3f94f05e636e,3fb8734b-a5f0-4659-b56d-2bf7e6be821e,todo,in_progress,e3884ab5-5167-4166-b2e8-6c5e759023d8,2025-05-17T03:39:32.357847,Status updated during daily standup.
+af0a2fc2-95b5-4906-b48b-8f5716cfa4c5,3fb8734b-a5f0-4659-b56d-2bf7e6be821e,in_progress,blocked,e3884ab5-5167-4166-b2e8-6c5e759023d8,2025-05-15T15:39:32.357847,Reopened after validation found an edge case.
+cefeb909-cf6e-41f0-90a7-8d9f2653a869,3fb8734b-a5f0-4659-b56d-2bf7e6be821e,blocked,in_progress,e3884ab5-5167-4166-b2e8-6c5e759023d8,2025-05-08T00:39:32.357847,
+5ab0e42c-ec20-45fd-ade1-c73b4095bd58,3fb8734b-a5f0-4659-b56d-2bf7e6be821e,in_progress,qa,e3884ab5-5167-4166-b2e8-6c5e759023d8,2025-05-14T14:39:32.357847,
+ba0db631-cd6e-4555-9ea8-e1c54735ee16,3fb8734b-a5f0-4659-b56d-2bf7e6be821e,qa,done,e3884ab5-5167-4166-b2e8-6c5e759023d8,2025-05-17T00:39:32.357847,Reopened after validation found an edge case.
+df09fea1-a065-434c-b800-1acbc69096c3,ac712ca9-7000-460e-a194-f628b9973eb0,todo,in_progress,c906b035-5653-437d-bdc0-dd604cb61d49,2025-10-11T00:22:32.357847,Status updated during daily standup.
+9a4f0cc2-3f06-4384-9ab3-28fd2ceb3ee0,ac712ca9-7000-460e-a194-f628b9973eb0,in_progress,blocked,c906b035-5653-437d-bdc0-dd604cb61d49,2025-10-13T08:22:32.357847,Moved to QA after code review completion.
+c1fb589b-d583-4462-ba5a-8ea6980eedad,ac712ca9-7000-460e-a194-f628b9973eb0,blocked,in_progress,c906b035-5653-437d-bdc0-dd604cb61d49,2025-10-12T16:22:32.357847,Blocked due to dependency; reassigned and resumed.
+6a35a668-a75d-49e7-b5fc-f9748170094c,ac712ca9-7000-460e-a194-f628b9973eb0,in_progress,qa,c906b035-5653-437d-bdc0-dd604cb61d49,2025-10-18T22:22:32.357847,Status updated during daily standup.
+51f7ae10-7330-448c-a014-4ddefd5f5fc4,ac712ca9-7000-460e-a194-f628b9973eb0,qa,in_progress,c906b035-5653-437d-bdc0-dd604cb61d49,2025-10-28T04:22:32.357847,Status updated during daily standup.
+3c26a3c9-e809-4def-a606-d633b609b65d,39e10420-451f-4a27-a10c-60f7503c6429,todo,in_progress,bdfaa3fe-2a05-4eec-852c-e04bfa5c1f57,2025-12-19T14:18:32.357847,Blocked due to dependency; reassigned and resumed.
+1f3b5069-f6f4-437f-9aab-41be78e6c8ff,39e10420-451f-4a27-a10c-60f7503c6429,in_progress,qa,bdfaa3fe-2a05-4eec-852c-e04bfa5c1f57,2025-12-16T22:18:32.357847,Status updated during daily standup.
+4782ea75-44f6-48d1-94c2-fafb25d84e35,39e10420-451f-4a27-a10c-60f7503c6429,qa,in_progress,bdfaa3fe-2a05-4eec-852c-e04bfa5c1f57,2025-12-18T11:18:32.357847,Status updated during daily standup.
+64b0fcd6-b54f-4593-b1ea-82ab4e761f95,39e10420-451f-4a27-a10c-60f7503c6429,in_progress,qa,bdfaa3fe-2a05-4eec-852c-e04bfa5c1f57,2025-12-16T04:18:32.357847,Moved to QA after code review completion.
+df255bea-21f3-492b-a6d4-c7a0e66fbf26,39e10420-451f-4a27-a10c-60f7503c6429,qa,in_progress,bdfaa3fe-2a05-4eec-852c-e04bfa5c1f57,2025-12-22T19:18:32.357847,Moved to QA after code review completion.
+ca7ddbe3-d88c-422f-a5fa-008a0c6cbdc0,40c3c7f6-43f0-4798-af45-d8ea53abfcaf,todo,in_progress,1ad0605a-e2be-4f94-88bd-57c55e6e3bbc,2025-09-21T19:19:32.357847,Status updated during daily standup.
+06760eee-4398-4d02-b51d-5ae5eac905b1,40c3c7f6-43f0-4798-af45-d8ea53abfcaf,in_progress,in_review,1ad0605a-e2be-4f94-88bd-57c55e6e3bbc,2025-09-23T23:19:32.357847,Blocked due to dependency; reassigned and resumed.
+e6079a27-6ae5-4dd2-a7a2-10aad58497aa,40c3c7f6-43f0-4798-af45-d8ea53abfcaf,in_review,qa,1ad0605a-e2be-4f94-88bd-57c55e6e3bbc,2025-09-24T22:19:32.357847,Moved to QA after code review completion.
+182dfbb3-f142-4856-b441-3d0ac0dfe2ff,40c3c7f6-43f0-4798-af45-d8ea53abfcaf,qa,in_progress,1ad0605a-e2be-4f94-88bd-57c55e6e3bbc,2025-09-13T13:19:32.357847,Reopened after validation found an edge case.
+1dd9c3d0-875f-41c9-a8cb-7bcd8431fdb1,40c3c7f6-43f0-4798-af45-d8ea53abfcaf,in_progress,in_review,1ad0605a-e2be-4f94-88bd-57c55e6e3bbc,2025-09-08T20:19:32.357847,Moved to QA after code review completion.
+4f96da5d-33db-4516-975c-94813897fbd2,eb6d82bb-5305-4907-97be-c3b8762f0c51,todo,in_progress,2fcaa960-60c8-4a24-b187-102f9fbe2943,2025-07-28T22:55:32.357847,Reopened after validation found an edge case.
+9ea80211-607b-4ccb-908b-0f5992a9a875,eb6d82bb-5305-4907-97be-c3b8762f0c51,in_progress,in_review,2fcaa960-60c8-4a24-b187-102f9fbe2943,2025-07-27T10:55:32.357847,Moved to QA after code review completion.
+4df0dc56-d2aa-404e-b494-55b2eb665cb5,eb6d82bb-5305-4907-97be-c3b8762f0c51,in_review,in_progress,2fcaa960-60c8-4a24-b187-102f9fbe2943,2025-08-03T12:55:32.357847,Reopened after validation found an edge case.
+83e4c18c-4b01-40cc-880e-40cfddece752,eb6d82bb-5305-4907-97be-c3b8762f0c51,in_progress,in_review,2fcaa960-60c8-4a24-b187-102f9fbe2943,2025-07-25T08:55:32.357847,Reopened after validation found an edge case.
+2359b1af-816f-48b4-b4d1-c1e99301056f,eb6d82bb-5305-4907-97be-c3b8762f0c51,in_review,qa,2fcaa960-60c8-4a24-b187-102f9fbe2943,2025-07-27T22:55:32.357847,Status updated during daily standup.
+4c1a6f17-9d64-4c0a-ac29-58285f19a8a0,fccc9c33-c4fd-48d6-b8b2-bfa455e21478,todo,in_progress,9fd97a54-530c-4101-b96e-85cd7db0ce9a,2025-10-28T19:39:32.357847,Status updated during daily standup.
+65ca30f6-2464-46e4-9ccb-633a4de6f418,fccc9c33-c4fd-48d6-b8b2-bfa455e21478,in_progress,blocked,9fd97a54-530c-4101-b96e-85cd7db0ce9a,2025-11-05T14:39:32.357847,Blocked due to dependency; reassigned and resumed.
+8d350b76-5f24-411a-8eb0-713f501a6660,fccc9c33-c4fd-48d6-b8b2-bfa455e21478,blocked,in_progress,9fd97a54-530c-4101-b96e-85cd7db0ce9a,2025-10-27T14:39:32.357847,Status updated during daily standup.
+c512c039-b438-427e-a658-6a5735d8c947,fccc9c33-c4fd-48d6-b8b2-bfa455e21478,in_progress,qa,9fd97a54-530c-4101-b96e-85cd7db0ce9a,2025-10-26T11:39:32.357847,Moved to QA after code review completion.
+93d90cda-7879-43d7-aa48-5d4494dbfa20,fccc9c33-c4fd-48d6-b8b2-bfa455e21478,qa,done,9fd97a54-530c-4101-b96e-85cd7db0ce9a,2025-10-30T06:39:32.357847,Reopened after validation found an edge case.
+3e231c65-046d-453a-8777-ea7c8da0cc0d,13e5c189-2708-4078-a326-2c684a22c675,todo,in_progress,b547b5db-adb1-42d5-8992-532498f4cbaa,2026-02-03T13:41:32.357847,Status updated during daily standup.
+90db7891-c147-455a-a55e-c9e21a6bc82d,13e5c189-2708-4078-a326-2c684a22c675,in_progress,qa,b547b5db-adb1-42d5-8992-532498f4cbaa,2026-01-19T16:41:32.357847,Status updated during daily standup.
+0b7e2bd5-bfc1-46f5-b6db-3281ffc2d8f9,13e5c189-2708-4078-a326-2c684a22c675,qa,done,b547b5db-adb1-42d5-8992-532498f4cbaa,2026-01-18T08:41:32.357847,Status updated during daily standup.
+a2a154dd-8261-4061-bed1-db09f6f0b536,13e5c189-2708-4078-a326-2c684a22c675,done,in_progress,b547b5db-adb1-42d5-8992-532498f4cbaa,2026-01-29T07:41:32.357847,Blocked due to dependency; reassigned and resumed.
+ef4b8a3d-30ff-4135-b635-711241b49e94,13e5c189-2708-4078-a326-2c684a22c675,in_progress,blocked,b547b5db-adb1-42d5-8992-532498f4cbaa,2026-01-17T08:41:32.357847,Status updated during daily standup.
+66d74b7d-cbd0-40e2-ab5d-acf4812c1f8b,141f69ae-661f-424b-aeaa-c4512e26e42e,todo,in_progress,9ba2392b-6cb0-4504-93db-73fb58437933,2025-07-09T22:23:32.357847,Blocked due to dependency; reassigned and resumed.
+9480c728-5d7b-4804-b677-dc8a77d8998a,141f69ae-661f-424b-aeaa-c4512e26e42e,in_progress,in_review,9ba2392b-6cb0-4504-93db-73fb58437933,2025-06-26T04:23:32.357847,Reopened after validation found an edge case.
+407895e2-3bde-4f95-bc1b-9899fc600384,141f69ae-661f-424b-aeaa-c4512e26e42e,in_review,qa,9ba2392b-6cb0-4504-93db-73fb58437933,2025-07-04T15:23:32.357847,
+13d9a679-c45d-4def-899e-0db367172ab1,141f69ae-661f-424b-aeaa-c4512e26e42e,qa,done,9ba2392b-6cb0-4504-93db-73fb58437933,2025-07-03T11:23:32.357847,
+3f4eec62-917a-4331-a34d-435e9923f80c,141f69ae-661f-424b-aeaa-c4512e26e42e,done,in_progress,9ba2392b-6cb0-4504-93db-73fb58437933,2025-06-21T11:23:32.357847,Blocked due to dependency; reassigned and resumed.
+924c17da-5ea4-4af5-86c0-81445fc4754b,45898dab-4b6f-433a-8fd9-780dd6706bff,todo,in_progress,d5c9a0a6-e2b6-4e3a-a859-cdd1730165c2,2025-08-17T05:10:32.357847,Blocked due to dependency; reassigned and resumed.
+07c0714f-96ff-4804-a9c2-c6ddb7509c76,45898dab-4b6f-433a-8fd9-780dd6706bff,in_progress,qa,d5c9a0a6-e2b6-4e3a-a859-cdd1730165c2,2025-08-03T09:10:32.357847,Status updated during daily standup.
+775bbca6-2e81-4294-8483-7bf816dc1f7d,45898dab-4b6f-433a-8fd9-780dd6706bff,qa,done,d5c9a0a6-e2b6-4e3a-a859-cdd1730165c2,2025-08-04T21:10:32.357847,Blocked due to dependency; reassigned and resumed.
+1959dfcf-8f91-4d07-a2a6-9007bd52f866,45898dab-4b6f-433a-8fd9-780dd6706bff,done,in_progress,d5c9a0a6-e2b6-4e3a-a859-cdd1730165c2,2025-08-12T07:10:32.357847,
+30d1aee6-d40d-4b7a-8d93-0c41e81dd040,45898dab-4b6f-433a-8fd9-780dd6706bff,in_progress,in_review,d5c9a0a6-e2b6-4e3a-a859-cdd1730165c2,2025-08-19T00:10:32.357847,
+80917889-e7d8-43da-8e65-1a691a9512cd,215bac84-2584-4e03-a186-9aa6455c8b70,todo,in_progress,e7235c2d-9408-44f6-8e66-dd5de0a30f4b,2025-11-08T04:39:32.357847,Moved to QA after code review completion.
+70e7279e-a278-4dba-b44c-951d417d94e6,215bac84-2584-4e03-a186-9aa6455c8b70,in_progress,qa,e7235c2d-9408-44f6-8e66-dd5de0a30f4b,2025-11-02T12:39:32.357847,Status updated during daily standup.
+2558d2c7-83b4-4c5b-8709-f21aed169f6c,215bac84-2584-4e03-a186-9aa6455c8b70,qa,in_progress,e7235c2d-9408-44f6-8e66-dd5de0a30f4b,2025-11-04T01:39:32.357847,Status updated during daily standup.
+0fbbbbfe-eddc-465c-a137-7957ac7b94f8,215bac84-2584-4e03-a186-9aa6455c8b70,in_progress,blocked,e7235c2d-9408-44f6-8e66-dd5de0a30f4b,2025-10-28T11:39:32.357847,Moved to QA after code review completion.
+01c39460-f749-4022-b833-70e5f46eff57,215bac84-2584-4e03-a186-9aa6455c8b70,blocked,in_progress,e7235c2d-9408-44f6-8e66-dd5de0a30f4b,2025-11-14T09:39:32.357847,Status updated during daily standup.
+74663a4f-3c13-467b-b38b-56c2b321d40c,b391a8eb-0722-4db8-939e-ed90aef09a5e,todo,in_progress,cd65fd7a-f9b2-4f10-af07-202376ca434f,2025-06-05T14:53:32.357847,Status updated during daily standup.
+50c6c5d4-3bdf-41b8-9f1c-de3f113fe896,b391a8eb-0722-4db8-939e-ed90aef09a5e,in_progress,in_review,cd65fd7a-f9b2-4f10-af07-202376ca434f,2025-06-23T02:53:32.357847,
+b4521df1-9c11-4f28-8ee8-4bf1d547cfb0,b391a8eb-0722-4db8-939e-ed90aef09a5e,in_review,qa,cd65fd7a-f9b2-4f10-af07-202376ca434f,2025-06-22T23:53:32.357847,Moved to QA after code review completion.
+44d3bd22-1547-4aaf-9952-64be519d5b14,b391a8eb-0722-4db8-939e-ed90aef09a5e,qa,in_progress,cd65fd7a-f9b2-4f10-af07-202376ca434f,2025-06-16T14:53:32.357847,Reopened after validation found an edge case.
+49a9be52-d079-4cda-9345-a0fe34d16145,b391a8eb-0722-4db8-939e-ed90aef09a5e,in_progress,in_review,cd65fd7a-f9b2-4f10-af07-202376ca434f,2025-06-20T00:53:32.357847,Reopened after validation found an edge case.
+8e10d5e1-1bfd-4329-bc15-8e300dfd878b,3bb2321e-62fd-4c9f-8250-29a854339d9d,todo,in_progress,01c3b90b-db7c-4004-982d-1cc36919c6c1,2025-09-09T04:34:32.357847,Blocked due to dependency; reassigned and resumed.
+e47d6724-bdf0-497e-bed3-bd8c697dedfa,3bb2321e-62fd-4c9f-8250-29a854339d9d,in_progress,blocked,01c3b90b-db7c-4004-982d-1cc36919c6c1,2025-09-12T23:34:32.357847,Reopened after validation found an edge case.
+8a66f3ef-20ce-45a3-8c7d-f6e0f3977215,3bb2321e-62fd-4c9f-8250-29a854339d9d,blocked,in_progress,01c3b90b-db7c-4004-982d-1cc36919c6c1,2025-09-11T22:34:32.357847,Reopened after validation found an edge case.
+d9cc64b3-6990-4045-84c9-d36c42f9a0ad,3bb2321e-62fd-4c9f-8250-29a854339d9d,in_progress,in_review,01c3b90b-db7c-4004-982d-1cc36919c6c1,2025-09-15T14:34:32.357847,Blocked due to dependency; reassigned and resumed.
+947e4986-e03c-4fcc-b72c-dfe094d9d9a0,3bb2321e-62fd-4c9f-8250-29a854339d9d,in_review,in_progress,01c3b90b-db7c-4004-982d-1cc36919c6c1,2025-09-14T10:34:32.357847,Blocked due to dependency; reassigned and resumed.
+6dbed1e2-5ed6-461a-b279-fb75b54103ee,df64f3b1-b3d3-476c-9f2c-3711c535cb35,todo,in_progress,f94bf28d-8a4e-4eac-8771-d98810a771e9,2025-09-08T18:30:32.357847,Reopened after validation found an edge case.
+c10d83f9-6de0-4f07-a92a-97e2aa65dced,df64f3b1-b3d3-476c-9f2c-3711c535cb35,in_progress,in_review,f94bf28d-8a4e-4eac-8771-d98810a771e9,2025-08-20T03:30:32.357847,Blocked due to dependency; reassigned and resumed.
+1c51a074-1d36-4266-b833-697331191e32,df64f3b1-b3d3-476c-9f2c-3711c535cb35,in_review,qa,f94bf28d-8a4e-4eac-8771-d98810a771e9,2025-09-06T19:30:32.357847,Blocked due to dependency; reassigned and resumed.
+6c23d05c-f38d-4615-9996-8a8ae134a57e,df64f3b1-b3d3-476c-9f2c-3711c535cb35,qa,done,f94bf28d-8a4e-4eac-8771-d98810a771e9,2025-08-20T02:30:32.357847,Reopened after validation found an edge case.
+320f629b-c77e-4605-b8bc-2ca532291f58,df64f3b1-b3d3-476c-9f2c-3711c535cb35,done,in_progress,f94bf28d-8a4e-4eac-8771-d98810a771e9,2025-08-28T00:30:32.357847,Blocked due to dependency; reassigned and resumed.
+320f7b51-111b-463b-93b2-3b82fa145dbe,732d9d78-e0e0-497b-ae0c-28d64663a0d0,todo,in_progress,86b00237-9512-4eff-97ad-6deeb30e6647,2025-05-08T14:59:32.357847,Moved to QA after code review completion.
+53e4a385-3258-4a97-adb0-c9159ed8dd0c,732d9d78-e0e0-497b-ae0c-28d64663a0d0,in_progress,qa,86b00237-9512-4eff-97ad-6deeb30e6647,2025-05-04T16:59:32.357847,Blocked due to dependency; reassigned and resumed.
+4a8fe028-c6a3-4231-ac36-96bb7eecf99c,732d9d78-e0e0-497b-ae0c-28d64663a0d0,qa,in_progress,86b00237-9512-4eff-97ad-6deeb30e6647,2025-05-16T08:59:32.357847,Reopened after validation found an edge case.
+c2dba3f6-3fbf-4372-b328-ec953409a4c7,732d9d78-e0e0-497b-ae0c-28d64663a0d0,in_progress,in_review,86b00237-9512-4eff-97ad-6deeb30e6647,2025-05-09T14:59:32.357847,Reopened after validation found an edge case.
+40332264-0b9d-49e8-b972-ff636a9b53af,732d9d78-e0e0-497b-ae0c-28d64663a0d0,in_review,qa,86b00237-9512-4eff-97ad-6deeb30e6647,2025-05-07T12:59:32.357847,Status updated during daily standup.
+39905565-fb3f-4880-8201-bba5a62621c6,6c74ef6a-e4e9-46f4-92cd-9ae5cb18927f,backlog,todo,27444ab6-5af9-4cc4-865f-35101ec16ffd,2025-08-21T01:32:32.357847,Blocked due to dependency; reassigned and resumed.
+fc51fea4-0587-4646-b97b-4c48043bdfa9,6c74ef6a-e4e9-46f4-92cd-9ae5cb18927f,todo,in_progress,27444ab6-5af9-4cc4-865f-35101ec16ffd,2025-08-18T07:32:32.357847,Blocked due to dependency; reassigned and resumed.
+f40e7cc2-f04b-4382-8a0c-b9a9d5083036,6c74ef6a-e4e9-46f4-92cd-9ae5cb18927f,in_progress,in_review,27444ab6-5af9-4cc4-865f-35101ec16ffd,2025-08-16T16:32:32.357847,Moved to QA after code review completion.
+2fe67ac0-bf1c-4e76-906a-901f030d03ce,6c74ef6a-e4e9-46f4-92cd-9ae5cb18927f,in_review,qa,27444ab6-5af9-4cc4-865f-35101ec16ffd,2025-08-12T12:32:32.357847,Moved to QA after code review completion.
+ec4d3a42-bb49-44e1-9880-b332dba75f38,6c74ef6a-e4e9-46f4-92cd-9ae5cb18927f,qa,in_progress,27444ab6-5af9-4cc4-865f-35101ec16ffd,2025-08-20T19:32:32.357847,
+a06b784a-284b-410c-b25e-030a5e9999a8,5673dae2-9ca9-4b34-b8a3-0158947f7bb2,todo,in_progress,f821bc02-6dca-41b1-9a68-f8edcc4053aa,2025-09-05T00:10:32.357847,Moved to QA after code review completion.
+e20aff91-85ed-4aef-8776-974b2eba1527,5673dae2-9ca9-4b34-b8a3-0158947f7bb2,in_progress,qa,f821bc02-6dca-41b1-9a68-f8edcc4053aa,2025-08-29T12:10:32.357847,
+b2f1e56f-d296-42a3-9d4e-8a08b4907c84,5673dae2-9ca9-4b34-b8a3-0158947f7bb2,qa,in_progress,f821bc02-6dca-41b1-9a68-f8edcc4053aa,2025-08-27T01:10:32.357847,Reopened after validation found an edge case.
+872438f4-b728-44fb-9c5f-265054b998df,5673dae2-9ca9-4b34-b8a3-0158947f7bb2,in_progress,in_review,f821bc02-6dca-41b1-9a68-f8edcc4053aa,2025-09-07T08:10:32.357847,Blocked due to dependency; reassigned and resumed.
+45e92067-15be-4f6d-b7d4-4114f294cc8a,5673dae2-9ca9-4b34-b8a3-0158947f7bb2,in_review,in_progress,f821bc02-6dca-41b1-9a68-f8edcc4053aa,2025-09-01T11:10:32.357847,Reopened after validation found an edge case.
+5dd669d4-a32f-4eb5-b968-d6c66d4306b5,01d36e51-4441-4e33-8491-22d754305d21,todo,in_progress,ef904503-e8ad-423b-93a9-9832411a8278,2025-04-14T16:36:32.357847,Blocked due to dependency; reassigned and resumed.
+fadbffaa-ee20-4cb8-9078-d8164ee5a4ac,01d36e51-4441-4e33-8491-22d754305d21,in_progress,blocked,ef904503-e8ad-423b-93a9-9832411a8278,2025-04-07T02:36:32.357847,
+8f543138-92d3-4cac-9277-dcff5716bad9,01d36e51-4441-4e33-8491-22d754305d21,blocked,in_progress,ef904503-e8ad-423b-93a9-9832411a8278,2025-04-15T01:36:32.357847,Blocked due to dependency; reassigned and resumed.
+5fd24136-4588-4150-8b59-9adb5ca6de2d,01d36e51-4441-4e33-8491-22d754305d21,in_progress,blocked,ef904503-e8ad-423b-93a9-9832411a8278,2025-04-12T00:36:32.357847,Reopened after validation found an edge case.
+b0ef0871-a69b-4b81-891a-4d6247321117,01d36e51-4441-4e33-8491-22d754305d21,blocked,in_progress,ef904503-e8ad-423b-93a9-9832411a8278,2025-04-06T22:36:32.357847,Status updated during daily standup.
+1e911178-6430-4f77-bd07-6b43b07fdd1b,bb98cc8d-53db-4b18-bd5c-b12df5305c3f,todo,in_progress,26f1b1f3-6437-47c2-9d8a-0f8176c5c1c4,2025-04-16T17:36:32.357847,Status updated during daily standup.
+5375121f-60fc-4eb4-a73d-e9567cf326b8,bb98cc8d-53db-4b18-bd5c-b12df5305c3f,in_progress,qa,26f1b1f3-6437-47c2-9d8a-0f8176c5c1c4,2025-04-12T21:36:32.357847,
+974848fa-0618-4e29-8e91-93102b264a28,bb98cc8d-53db-4b18-bd5c-b12df5305c3f,qa,in_progress,26f1b1f3-6437-47c2-9d8a-0f8176c5c1c4,2025-03-30T21:36:32.357847,Reopened after validation found an edge case.
+1e02007e-201d-4475-94c1-f2f2d0978881,bb98cc8d-53db-4b18-bd5c-b12df5305c3f,in_progress,blocked,26f1b1f3-6437-47c2-9d8a-0f8176c5c1c4,2025-04-06T05:36:32.357847,Blocked due to dependency; reassigned and resumed.
+2f8dac08-7e26-4d81-a477-934d6dc75874,bb98cc8d-53db-4b18-bd5c-b12df5305c3f,blocked,in_progress,26f1b1f3-6437-47c2-9d8a-0f8176c5c1c4,2025-03-29T22:36:32.357847,Blocked due to dependency; reassigned and resumed.
+b3ffcb54-9037-493c-bb57-d5d62039f96e,30e6801e-68fe-47a2-852e-27fe1298bc39,backlog,todo,5c7f18c4-8814-4ff4-a0de-2ed38a095b9b,2025-07-15T19:49:32.357847,
+d291c28d-ed00-4a5c-a03a-dca968a3fc13,30e6801e-68fe-47a2-852e-27fe1298bc39,todo,in_progress,5c7f18c4-8814-4ff4-a0de-2ed38a095b9b,2025-07-22T12:49:32.357847,Moved to QA after code review completion.
+7cd23422-967f-4386-a697-b1f59d85768f,30e6801e-68fe-47a2-852e-27fe1298bc39,in_progress,in_review,5c7f18c4-8814-4ff4-a0de-2ed38a095b9b,2025-07-20T18:49:32.357847,
+681d5099-645a-4ec6-8ff8-805a58446603,30e6801e-68fe-47a2-852e-27fe1298bc39,in_review,qa,5c7f18c4-8814-4ff4-a0de-2ed38a095b9b,2025-07-25T14:49:32.357847,
+029d006a-8542-4b9e-b224-be3900f1337a,30e6801e-68fe-47a2-852e-27fe1298bc39,qa,done,5c7f18c4-8814-4ff4-a0de-2ed38a095b9b,2025-07-15T07:49:32.357847,Status updated during daily standup.
+8f322b4a-1939-4e0c-ad6b-f2ea0d0aba9d,a9fd7f5f-73b1-42e3-98ad-adf4ca86f9ea,todo,in_progress,ed6c7c60-b79a-442c-a5ba-390fc9e28c71,2025-11-09T15:34:32.357847,Reopened after validation found an edge case.
+911aa3b9-c18e-4422-8504-e10efdae0c1b,a9fd7f5f-73b1-42e3-98ad-adf4ca86f9ea,in_progress,qa,ed6c7c60-b79a-442c-a5ba-390fc9e28c71,2025-11-02T12:34:32.357847,Moved to QA after code review completion.
+4be6491d-91f2-412d-82fa-6a6ce2363869,a9fd7f5f-73b1-42e3-98ad-adf4ca86f9ea,qa,done,ed6c7c60-b79a-442c-a5ba-390fc9e28c71,2025-11-06T12:34:32.357847,Status updated during daily standup.
+a7766736-6778-423d-87f6-bd5c121707c0,a9fd7f5f-73b1-42e3-98ad-adf4ca86f9ea,done,in_progress,ed6c7c60-b79a-442c-a5ba-390fc9e28c71,2025-11-22T23:34:32.357847,Reopened after validation found an edge case.
+23e6be03-9a1c-4d56-a7c5-b97f533e4752,a9fd7f5f-73b1-42e3-98ad-adf4ca86f9ea,in_progress,blocked,ed6c7c60-b79a-442c-a5ba-390fc9e28c71,2025-11-13T17:34:32.357847,Blocked due to dependency; reassigned and resumed.
+a050b3a1-ea94-4ca0-8565-2352342171ae,fd746d7f-f3de-420a-b35e-315cc12cf3f3,todo,in_progress,c389f4b4-2fdb-437b-9ef6-41e7851e3299,2026-01-06T08:06:32.357847,
+e0b68042-0805-4bd5-afc7-7cdc3067e6e0,fd746d7f-f3de-420a-b35e-315cc12cf3f3,in_progress,in_review,c389f4b4-2fdb-437b-9ef6-41e7851e3299,2025-12-30T06:06:32.357847,Moved to QA after code review completion.
+dc768ac6-78d6-42c5-8b13-4804bc127335,fd746d7f-f3de-420a-b35e-315cc12cf3f3,in_review,in_progress,c389f4b4-2fdb-437b-9ef6-41e7851e3299,2025-12-28T09:06:32.357847,
+505bb9a0-6b10-455e-9ebb-d31c3d07a5f4,fd746d7f-f3de-420a-b35e-315cc12cf3f3,in_progress,in_review,c389f4b4-2fdb-437b-9ef6-41e7851e3299,2025-12-29T08:06:32.357847,
+85289e8b-566a-48cd-a8ed-845f990225d4,fd746d7f-f3de-420a-b35e-315cc12cf3f3,in_review,qa,c389f4b4-2fdb-437b-9ef6-41e7851e3299,2025-12-30T03:06:32.357847,Status updated during daily standup.
+ceb41f6b-1cb8-4649-8573-0e7d54afd298,7bb67a69-43b1-4165-b17f-471a3e39831d,backlog,todo,86b00237-9512-4eff-97ad-6deeb30e6647,2025-05-20T18:39:32.357847,Moved to QA after code review completion.
+5d311747-57fc-4d0d-9525-5d54f1ce8332,7bb67a69-43b1-4165-b17f-471a3e39831d,todo,in_progress,86b00237-9512-4eff-97ad-6deeb30e6647,2025-05-14T02:39:32.357847,Reopened after validation found an edge case.
+b6c3f98b-e12f-4b52-983d-c0da65a56515,7bb67a69-43b1-4165-b17f-471a3e39831d,in_progress,qa,86b00237-9512-4eff-97ad-6deeb30e6647,2025-05-03T23:39:32.357847,Reopened after validation found an edge case.
+83ff018d-2c67-4788-895f-5637688ad2fe,7bb67a69-43b1-4165-b17f-471a3e39831d,qa,in_progress,86b00237-9512-4eff-97ad-6deeb30e6647,2025-05-15T08:39:32.357847,Moved to QA after code review completion.
+9bfe287c-a2bf-4db1-8452-38add2d740db,7bb67a69-43b1-4165-b17f-471a3e39831d,in_progress,qa,86b00237-9512-4eff-97ad-6deeb30e6647,2025-05-04T23:39:32.357847,Moved to QA after code review completion.
+869b582d-4618-478b-9c48-86934112df99,e49d3212-b9df-4a67-83db-c88d9b85a79d,todo,in_progress,206f0478-218f-423c-8a39-d95490510da3,2025-11-11T17:12:32.357847,Blocked due to dependency; reassigned and resumed.
+935e1722-cc77-41d4-9cc3-73502e2b83af,e49d3212-b9df-4a67-83db-c88d9b85a79d,in_progress,in_review,206f0478-218f-423c-8a39-d95490510da3,2025-10-28T18:12:32.357847,Blocked due to dependency; reassigned and resumed.
+d485cc49-e4f9-4361-ac30-700647e4301f,e49d3212-b9df-4a67-83db-c88d9b85a79d,in_review,qa,206f0478-218f-423c-8a39-d95490510da3,2025-10-30T08:12:32.357847,Blocked due to dependency; reassigned and resumed.
+a8abaa65-85bf-477f-aa29-c260c751e386,e49d3212-b9df-4a67-83db-c88d9b85a79d,qa,done,206f0478-218f-423c-8a39-d95490510da3,2025-10-29T03:12:32.357847,Moved to QA after code review completion.
+3c0c8e81-5e25-41fe-a41f-bad678f7252f,e49d3212-b9df-4a67-83db-c88d9b85a79d,done,in_progress,206f0478-218f-423c-8a39-d95490510da3,2025-10-29T05:12:32.357847,Moved to QA after code review completion.
+718c97f6-31f6-4ff2-9c4a-497399c1f186,a98eae2a-6063-4867-9183-efc81fba88b4,todo,in_progress,395b5268-03e3-400d-8706-bdcbd852517d,2025-07-22T07:37:32.357847,Status updated during daily standup.
+19af90dc-0371-4afc-8ef3-dad915466572,a98eae2a-6063-4867-9183-efc81fba88b4,in_progress,qa,395b5268-03e3-400d-8706-bdcbd852517d,2025-07-23T10:37:32.357847,Reopened after validation found an edge case.
+c3a37178-30a9-42d4-930a-9afa51df7d4f,a98eae2a-6063-4867-9183-efc81fba88b4,qa,done,395b5268-03e3-400d-8706-bdcbd852517d,2025-07-26T16:37:32.357847,Blocked due to dependency; reassigned and resumed.
+f1aecd60-cca6-49b7-a44f-98df084e63c5,a98eae2a-6063-4867-9183-efc81fba88b4,done,in_progress,395b5268-03e3-400d-8706-bdcbd852517d,2025-07-14T17:37:32.357847,Moved to QA after code review completion.
+4318219d-e1ec-4815-ab0e-d330332fd073,a98eae2a-6063-4867-9183-efc81fba88b4,in_progress,blocked,395b5268-03e3-400d-8706-bdcbd852517d,2025-07-16T15:37:32.357847,
+7dcaf001-ad49-452f-be8c-736c744f6ff9,60d8c0ba-aa19-43bf-a917-9d1761e3d358,backlog,todo,963c85a2-1941-4e36-9659-b5e70396a11d,2025-06-02T17:18:32.357847,Blocked due to dependency; reassigned and resumed.
+d2913176-fddc-42ea-ad6c-3a025b71f2f0,60d8c0ba-aa19-43bf-a917-9d1761e3d358,todo,in_progress,963c85a2-1941-4e36-9659-b5e70396a11d,2025-05-13T20:18:32.357847,Blocked due to dependency; reassigned and resumed.
+e3af2225-874d-455c-a088-8226a6dbcfef,60d8c0ba-aa19-43bf-a917-9d1761e3d358,in_progress,blocked,963c85a2-1941-4e36-9659-b5e70396a11d,2025-05-16T23:18:32.357847,
+5221de81-3e78-4117-891e-5dc2e6fe52c4,60d8c0ba-aa19-43bf-a917-9d1761e3d358,blocked,in_progress,963c85a2-1941-4e36-9659-b5e70396a11d,2025-05-23T07:18:32.357847,Reopened after validation found an edge case.
+4de27ef6-63f1-4a0d-a690-d0ba36ae1f38,60d8c0ba-aa19-43bf-a917-9d1761e3d358,in_progress,blocked,963c85a2-1941-4e36-9659-b5e70396a11d,2025-05-29T04:18:32.357847,Reopened after validation found an edge case.
+d46851cf-440c-4f3e-9502-2e0b6b30fa58,0fc31a75-93e9-4d5d-933f-2981f736d872,todo,in_progress,81c5f477-9554-4aa2-9025-00efc7bee7a1,2025-08-13T08:43:32.357847,Status updated during daily standup.
+10b7f3f5-a3e9-4bf2-98e7-a131f6b1a7ce,0fc31a75-93e9-4d5d-933f-2981f736d872,in_progress,blocked,81c5f477-9554-4aa2-9025-00efc7bee7a1,2025-08-14T07:43:32.357847,Blocked due to dependency; reassigned and resumed.
+d051dcae-5bd1-448f-96be-5a6fe9139ab3,0fc31a75-93e9-4d5d-933f-2981f736d872,blocked,in_progress,81c5f477-9554-4aa2-9025-00efc7bee7a1,2025-08-14T21:43:32.357847,Status updated during daily standup.
+282dcbba-6900-4e50-8a44-1eefeb60ebb1,0fc31a75-93e9-4d5d-933f-2981f736d872,in_progress,in_review,81c5f477-9554-4aa2-9025-00efc7bee7a1,2025-07-30T00:43:32.357847,Moved to QA after code review completion.
+187d1586-311e-4cb4-bfaa-feb7da6c60de,0fc31a75-93e9-4d5d-933f-2981f736d872,in_review,qa,81c5f477-9554-4aa2-9025-00efc7bee7a1,2025-08-08T12:43:32.357847,Blocked due to dependency; reassigned and resumed.
+fefa2327-041c-44ff-a66e-fce960c15e38,0bd72aaf-0a0f-4ecf-bb18-bc4a6a1c9379,todo,in_progress,0e65d08e-97aa-4635-b221-7c975b7a5673,2025-06-13T09:26:32.357847,
+2de9c07f-78ba-418e-9c4d-e55151f49c5a,0bd72aaf-0a0f-4ecf-bb18-bc4a6a1c9379,in_progress,in_review,0e65d08e-97aa-4635-b221-7c975b7a5673,2025-06-01T03:26:32.357847,Moved to QA after code review completion.
+29609d5a-d5c6-4473-abb6-4738cfde1eee,0bd72aaf-0a0f-4ecf-bb18-bc4a6a1c9379,in_review,in_progress,0e65d08e-97aa-4635-b221-7c975b7a5673,2025-05-28T16:26:32.357847,
+09811117-876e-4ff2-b8ad-7e44f4dcd79b,0bd72aaf-0a0f-4ecf-bb18-bc4a6a1c9379,in_progress,in_review,0e65d08e-97aa-4635-b221-7c975b7a5673,2025-06-02T16:26:32.357847,Moved to QA after code review completion.
+0a10454f-3e8e-4e25-ad71-051b64d60f7a,0bd72aaf-0a0f-4ecf-bb18-bc4a6a1c9379,in_review,in_progress,0e65d08e-97aa-4635-b221-7c975b7a5673,2025-06-04T13:26:32.357847,Moved to QA after code review completion.
+3c00ee10-025b-4985-98c5-a628916729a3,509db66b-e66b-4f6a-940d-0d93ebd8f79a,todo,in_progress,33bc961f-43d9-4ce4-a0b8-ee8776a69d1e,2025-10-03T15:10:32.357847,
+3c42017b-19ee-4d14-b667-d54a6709f002,509db66b-e66b-4f6a-940d-0d93ebd8f79a,in_progress,in_review,33bc961f-43d9-4ce4-a0b8-ee8776a69d1e,2025-09-25T01:10:32.357847,Status updated during daily standup.
+f15c8458-022e-49ca-be88-6e98cce203c6,509db66b-e66b-4f6a-940d-0d93ebd8f79a,in_review,qa,33bc961f-43d9-4ce4-a0b8-ee8776a69d1e,2025-09-30T23:10:32.357847,Blocked due to dependency; reassigned and resumed.
+d869691f-7f31-4f0a-8d18-1f3406539967,509db66b-e66b-4f6a-940d-0d93ebd8f79a,qa,done,33bc961f-43d9-4ce4-a0b8-ee8776a69d1e,2025-10-07T19:10:32.357847,Moved to QA after code review completion.
+ed3c9279-855e-4011-9221-17468743be02,509db66b-e66b-4f6a-940d-0d93ebd8f79a,done,in_progress,33bc961f-43d9-4ce4-a0b8-ee8776a69d1e,2025-10-07T05:10:32.357847,Moved to QA after code review completion.
+23f9aa35-2ec2-436c-b2d2-8076b3e0981c,cca30e6e-8fb1-48fa-929f-674ec0aaf793,todo,in_progress,3da7a350-3c23-4279-a9d9-a12ad9a94ea8,2025-08-08T03:14:32.357847,Blocked due to dependency; reassigned and resumed.
+69076764-3796-4882-8ffc-c922758297d7,cca30e6e-8fb1-48fa-929f-674ec0aaf793,in_progress,qa,3da7a350-3c23-4279-a9d9-a12ad9a94ea8,2025-07-26T13:14:32.357847,
+43285d86-75b6-4679-b9a8-f1bbc9f8c12e,cca30e6e-8fb1-48fa-929f-674ec0aaf793,qa,done,3da7a350-3c23-4279-a9d9-a12ad9a94ea8,2025-07-27T07:14:32.357847,Blocked due to dependency; reassigned and resumed.
+8ed4d8ad-2ee8-458f-ad12-58704f6a8182,cca30e6e-8fb1-48fa-929f-674ec0aaf793,done,in_progress,3da7a350-3c23-4279-a9d9-a12ad9a94ea8,2025-07-28T13:14:32.357847,Reopened after validation found an edge case.
+de2f49b9-1eb6-4051-88e2-4af829afa6d7,cca30e6e-8fb1-48fa-929f-674ec0aaf793,in_progress,qa,3da7a350-3c23-4279-a9d9-a12ad9a94ea8,2025-07-31T06:14:32.357847,Moved to QA after code review completion.
+e711b60f-4791-4f20-8727-ba5afd553c0e,baae77ad-469a-4e44-ad14-5e4eb8a1715e,backlog,todo,ddb8b866-f9af-4242-8577-23f536e33739,2025-05-08T21:26:32.357847,Reopened after validation found an edge case.
+c4ac6c31-84da-48f2-98ec-c96f7bd04a2d,baae77ad-469a-4e44-ad14-5e4eb8a1715e,todo,in_progress,ddb8b866-f9af-4242-8577-23f536e33739,2025-05-07T11:26:32.357847,Moved to QA after code review completion.
+c2047a2f-ba20-4e05-a7fd-103a3d8eee49,baae77ad-469a-4e44-ad14-5e4eb8a1715e,in_progress,qa,ddb8b866-f9af-4242-8577-23f536e33739,2025-04-26T18:26:32.357847,
+85d9216e-a974-4d1e-a374-20d91cca10ef,baae77ad-469a-4e44-ad14-5e4eb8a1715e,qa,done,ddb8b866-f9af-4242-8577-23f536e33739,2025-04-19T16:26:32.357847,
+db9162b1-e144-4c56-82f7-d352f0bafce5,baae77ad-469a-4e44-ad14-5e4eb8a1715e,done,in_progress,ddb8b866-f9af-4242-8577-23f536e33739,2025-04-20T00:26:32.357847,Status updated during daily standup.
+ab9edf39-c691-4c9e-857a-257b6da8e927,b2618a33-6482-4fb2-9a46-3d4b727741ac,todo,in_progress,a7656b43-a37b-430d-ade0-5419d4ae3da1,2025-07-09T21:38:32.357847,
+83219df4-dd58-45ab-8ad8-427487cc52f3,b2618a33-6482-4fb2-9a46-3d4b727741ac,in_progress,blocked,a7656b43-a37b-430d-ade0-5419d4ae3da1,2025-06-29T23:38:32.357847,Moved to QA after code review completion.
+7acf666d-f9ae-49fa-876d-38b62f728b6b,b2618a33-6482-4fb2-9a46-3d4b727741ac,blocked,in_progress,a7656b43-a37b-430d-ade0-5419d4ae3da1,2025-07-17T04:38:32.357847,Reopened after validation found an edge case.
+0d074460-5666-45b3-9f7a-9b2320fc6756,b2618a33-6482-4fb2-9a46-3d4b727741ac,in_progress,qa,a7656b43-a37b-430d-ade0-5419d4ae3da1,2025-07-08T00:38:32.357847,Moved to QA after code review completion.
+e39c9a21-7f59-41c6-b625-e9d212705af0,b2618a33-6482-4fb2-9a46-3d4b727741ac,qa,in_progress,a7656b43-a37b-430d-ade0-5419d4ae3da1,2025-07-16T22:38:32.357847,Moved to QA after code review completion.
+0e79523b-9348-4cab-9f63-4d2880515f59,1dc4a206-221b-4d15-9716-8b218c24c7b2,todo,in_progress,bd85745d-5e5d-4c94-ace9-b04d99284925,2025-08-24T08:44:32.357847,Moved to QA after code review completion.
+80fa45c3-ce76-425f-8d09-079a8128b9d8,1dc4a206-221b-4d15-9716-8b218c24c7b2,in_progress,in_review,bd85745d-5e5d-4c94-ace9-b04d99284925,2025-08-21T07:44:32.357847,Status updated during daily standup.
+a53a6401-bdff-46b8-a3f4-e20b502e254d,1dc4a206-221b-4d15-9716-8b218c24c7b2,in_review,in_progress,bd85745d-5e5d-4c94-ace9-b04d99284925,2025-08-20T04:44:32.357847,Status updated during daily standup.
+68e7ee56-bd42-49fd-a96f-1864cd88bf45,1dc4a206-221b-4d15-9716-8b218c24c7b2,in_progress,blocked,bd85745d-5e5d-4c94-ace9-b04d99284925,2025-08-22T18:44:32.357847,
+f152ec01-0760-4c98-98bf-25ed7bffff45,1dc4a206-221b-4d15-9716-8b218c24c7b2,blocked,in_progress,bd85745d-5e5d-4c94-ace9-b04d99284925,2025-08-23T04:44:32.357847,
+3507fa8b-d373-4832-b4e2-3e1ac2718ba3,7dc1296e-0b2a-437c-95f6-394357226a37,todo,in_progress,f17bed13-b724-48a5-ab38-df59e258cd65,2025-04-18T21:45:32.357847,Status updated during daily standup.
+9afa17c4-d978-45b4-90c0-57a9365c8e40,7dc1296e-0b2a-437c-95f6-394357226a37,in_progress,in_review,f17bed13-b724-48a5-ab38-df59e258cd65,2025-04-26T15:45:32.357847,Status updated during daily standup.
+07aca9ce-913f-4eb0-9fce-d9313b8a4811,7dc1296e-0b2a-437c-95f6-394357226a37,in_review,in_progress,f17bed13-b724-48a5-ab38-df59e258cd65,2025-04-28T05:45:32.357847,Reopened after validation found an edge case.
+c4b23c0e-0c39-4210-acb8-c733fd029966,7dc1296e-0b2a-437c-95f6-394357226a37,in_progress,blocked,f17bed13-b724-48a5-ab38-df59e258cd65,2025-04-15T09:45:32.357847,Status updated during daily standup.
+75a9c6f6-5dbb-4ed3-aeb2-b503c1a3d105,7dc1296e-0b2a-437c-95f6-394357226a37,blocked,in_progress,f17bed13-b724-48a5-ab38-df59e258cd65,2025-04-23T13:45:32.357847,Moved to QA after code review completion.
+42ea0798-1df0-4ba6-9dff-78723ad01ffc,34f35b39-017f-433d-8a36-74f5702f89c1,todo,in_progress,93f3ad5a-c127-4748-9fe0-4c8f82acf46c,2025-05-22T11:31:32.357847,Status updated during daily standup.
+283e729d-d1b0-4a0e-b6f6-22569fef914d,34f35b39-017f-433d-8a36-74f5702f89c1,in_progress,qa,93f3ad5a-c127-4748-9fe0-4c8f82acf46c,2025-05-24T09:31:32.357847,Blocked due to dependency; reassigned and resumed.
+3ba0be71-8cf6-48ef-b5e6-26c20100c246,34f35b39-017f-433d-8a36-74f5702f89c1,qa,in_progress,93f3ad5a-c127-4748-9fe0-4c8f82acf46c,2025-05-16T23:31:32.357847,Status updated during daily standup.
+ff7b18f8-5f07-474f-8928-7d4afcae6c77,34f35b39-017f-433d-8a36-74f5702f89c1,in_progress,qa,93f3ad5a-c127-4748-9fe0-4c8f82acf46c,2025-05-29T20:31:32.357847,Reopened after validation found an edge case.
+a53b01b5-36b3-41ae-8b79-1a1aab6ab326,34f35b39-017f-433d-8a36-74f5702f89c1,qa,done,93f3ad5a-c127-4748-9fe0-4c8f82acf46c,2025-05-17T12:31:32.357847,Moved to QA after code review completion.
+28ee80d0-6242-4ba6-9746-97a531604bc2,a4128c11-25c3-47a7-b1e2-897ba1aa937b,todo,in_progress,998a827b-d53c-469d-9e4a-9596521e9943,2025-08-15T23:56:32.357847,
+36957e07-cb07-4b99-98e7-29d97ddb0a00,a4128c11-25c3-47a7-b1e2-897ba1aa937b,in_progress,blocked,998a827b-d53c-469d-9e4a-9596521e9943,2025-08-13T05:56:32.357847,Moved to QA after code review completion.
+cbe02cac-04e5-4423-adc5-bad9f92af36a,a4128c11-25c3-47a7-b1e2-897ba1aa937b,blocked,in_progress,998a827b-d53c-469d-9e4a-9596521e9943,2025-08-12T07:56:32.357847,Moved to QA after code review completion.
+e80331aa-dbba-4585-90fb-b1bbf0dd1812,a4128c11-25c3-47a7-b1e2-897ba1aa937b,in_progress,in_review,998a827b-d53c-469d-9e4a-9596521e9943,2025-08-07T02:56:32.357847,Reopened after validation found an edge case.
+90d66209-b78b-431d-b7ea-128e4383e1f4,a4128c11-25c3-47a7-b1e2-897ba1aa937b,in_review,in_progress,998a827b-d53c-469d-9e4a-9596521e9943,2025-08-15T19:56:32.357847,Moved to QA after code review completion.
+3c7b7b9e-8fcc-49a0-8799-c220b5320d3e,909802d7-c135-44cf-aaa9-5b0359b0830a,todo,in_progress,69441462-ca99-4443-a49a-bdcb8d7e7787,2025-05-04T20:13:32.357847,Moved to QA after code review completion.
+fb32858f-30da-45ac-8620-e85dbf6e7154,909802d7-c135-44cf-aaa9-5b0359b0830a,in_progress,in_review,69441462-ca99-4443-a49a-bdcb8d7e7787,2025-04-20T02:13:32.357847,Moved to QA after code review completion.
+15bc24be-daf9-4fc5-84e1-3daf4218fa55,909802d7-c135-44cf-aaa9-5b0359b0830a,in_review,qa,69441462-ca99-4443-a49a-bdcb8d7e7787,2025-04-27T18:13:32.357847,Reopened after validation found an edge case.
+e2b75c3c-49d1-4459-9058-9bf664804861,909802d7-c135-44cf-aaa9-5b0359b0830a,qa,in_progress,69441462-ca99-4443-a49a-bdcb8d7e7787,2025-05-05T04:13:32.357847,Blocked due to dependency; reassigned and resumed.
+17820835-251b-46a6-bfa4-77bbfeacff10,909802d7-c135-44cf-aaa9-5b0359b0830a,in_progress,blocked,69441462-ca99-4443-a49a-bdcb8d7e7787,2025-04-27T23:13:32.357847,Blocked due to dependency; reassigned and resumed.
+282851cb-4847-46f6-8c56-3f9a57c7c5e2,8f120f36-a39c-4add-9372-a9151869117d,todo,in_progress,b0bdc5e3-966a-4e5c-8bfb-768d4cc2bdb6,2026-01-15T12:00:32.357847,Blocked due to dependency; reassigned and resumed.
+3be6c722-5310-40ca-bb05-b29f23fcdb80,8f120f36-a39c-4add-9372-a9151869117d,in_progress,qa,b0bdc5e3-966a-4e5c-8bfb-768d4cc2bdb6,2026-01-09T10:00:32.357847,Reopened after validation found an edge case.
+75baa2a6-e958-40b5-8e4b-0a805bc4557d,8f120f36-a39c-4add-9372-a9151869117d,qa,done,b0bdc5e3-966a-4e5c-8bfb-768d4cc2bdb6,2026-01-14T01:00:32.357847,Status updated during daily standup.
+1ef39ca1-ddfa-413e-bbed-f19cfb20f393,8f120f36-a39c-4add-9372-a9151869117d,done,in_progress,b0bdc5e3-966a-4e5c-8bfb-768d4cc2bdb6,2026-01-15T08:00:32.357847,Moved to QA after code review completion.
+d8a464de-0354-4119-835e-2b831a3fbc47,8f120f36-a39c-4add-9372-a9151869117d,in_progress,qa,b0bdc5e3-966a-4e5c-8bfb-768d4cc2bdb6,2026-01-03T07:00:32.357847,Blocked due to dependency; reassigned and resumed.
+9f71e650-bf38-4162-a241-531add5924ee,de60d292-c848-465d-be2f-6f77bde16145,backlog,todo,6f4b4c95-5f0f-439f-bb66-6e5aecb854b0,2025-04-01T01:47:32.357847,Moved to QA after code review completion.
+3be5cbdd-532f-4dfb-bfc2-26c236f04035,de60d292-c848-465d-be2f-6f77bde16145,todo,in_progress,6f4b4c95-5f0f-439f-bb66-6e5aecb854b0,2025-04-14T12:47:32.357847,Reopened after validation found an edge case.
+6f206f36-74bf-4ba7-b9f9-019adfedb772,de60d292-c848-465d-be2f-6f77bde16145,in_progress,blocked,6f4b4c95-5f0f-439f-bb66-6e5aecb854b0,2025-04-16T02:47:32.357847,Reopened after validation found an edge case.
+71c29f51-cbbc-44fa-a72c-6c6a1922df68,de60d292-c848-465d-be2f-6f77bde16145,blocked,in_progress,6f4b4c95-5f0f-439f-bb66-6e5aecb854b0,2025-04-05T11:47:32.357847,Reopened after validation found an edge case.
+bad27618-b550-4756-a54e-020747150bf4,de60d292-c848-465d-be2f-6f77bde16145,in_progress,blocked,6f4b4c95-5f0f-439f-bb66-6e5aecb854b0,2025-04-04T13:47:32.357847,Status updated during daily standup.
+d92f3453-3a98-49d9-98ed-9de2a5777e87,22893535-7fbd-48d8-a640-5d436253894d,todo,in_progress,7e346db1-dff0-4136-b551-b2a8b1962bcb,2025-08-23T01:55:32.357847,Status updated during daily standup.
+2cf9e605-2113-4549-9889-94ea1108d90f,22893535-7fbd-48d8-a640-5d436253894d,in_progress,qa,7e346db1-dff0-4136-b551-b2a8b1962bcb,2025-08-17T04:55:32.357847,Reopened after validation found an edge case.
+f039eac1-3e7a-44c7-b9dc-7aef80dfa422,22893535-7fbd-48d8-a640-5d436253894d,qa,in_progress,7e346db1-dff0-4136-b551-b2a8b1962bcb,2025-08-14T14:55:32.357847,Status updated during daily standup.
+17b706b2-46d0-43aa-80f5-440f781832e2,22893535-7fbd-48d8-a640-5d436253894d,in_progress,blocked,7e346db1-dff0-4136-b551-b2a8b1962bcb,2025-08-07T21:55:32.357847,Status updated during daily standup.
+1b06e407-8ee6-4565-bc1c-cd98b2bd5cba,22893535-7fbd-48d8-a640-5d436253894d,blocked,in_progress,7e346db1-dff0-4136-b551-b2a8b1962bcb,2025-08-11T03:55:32.357847,Blocked due to dependency; reassigned and resumed.
+a6b85ab3-7d2b-42d3-956f-4e1fd51cf4d7,a9525116-283a-4ed6-8d19-bf4807a9f69b,todo,in_progress,cd65fd7a-f9b2-4f10-af07-202376ca434f,2025-12-28T00:38:32.357847,Reopened after validation found an edge case.
+74e56d98-f8d4-4a2f-a90a-9ccf0f04aeeb,a9525116-283a-4ed6-8d19-bf4807a9f69b,in_progress,blocked,cd65fd7a-f9b2-4f10-af07-202376ca434f,2026-01-08T03:38:32.357847,Reopened after validation found an edge case.
+ab6b04d6-2dc2-44b4-be66-31934afee619,a9525116-283a-4ed6-8d19-bf4807a9f69b,blocked,in_progress,cd65fd7a-f9b2-4f10-af07-202376ca434f,2026-01-14T01:38:32.357847,Moved to QA after code review completion.
+c8fe90c7-05e6-44d6-8082-3791fbf38697,a9525116-283a-4ed6-8d19-bf4807a9f69b,in_progress,in_review,cd65fd7a-f9b2-4f10-af07-202376ca434f,2026-01-05T22:38:32.357847,Moved to QA after code review completion.
+f3b769c9-6730-4c2b-af19-2778ac5701ed,a9525116-283a-4ed6-8d19-bf4807a9f69b,in_review,in_progress,cd65fd7a-f9b2-4f10-af07-202376ca434f,2026-01-14T10:38:32.357847,Reopened after validation found an edge case.
+67486315-b40b-45a6-bf16-e1bc531a5642,56e4a32d-5c41-455a-a747-29563046b2c9,todo,in_progress,d24d6ce7-33c9-4073-8caa-cced70c06e6f,2025-07-27T15:18:32.357847,Moved to QA after code review completion.
+de5c057f-1fa4-4804-a1fe-3ebceafbc122,56e4a32d-5c41-455a-a747-29563046b2c9,in_progress,in_review,d24d6ce7-33c9-4073-8caa-cced70c06e6f,2025-07-26T08:18:32.357847,Reopened after validation found an edge case.
+6e6e807f-f427-4c85-80c6-79769b2031be,56e4a32d-5c41-455a-a747-29563046b2c9,in_review,in_progress,d24d6ce7-33c9-4073-8caa-cced70c06e6f,2025-08-12T03:18:32.357847,Reopened after validation found an edge case.
+5ba33f02-de97-4ec1-9eea-335066251fea,56e4a32d-5c41-455a-a747-29563046b2c9,in_progress,qa,d24d6ce7-33c9-4073-8caa-cced70c06e6f,2025-08-13T19:18:32.357847,Moved to QA after code review completion.
+8a31e7f8-b848-4253-b7a6-5773c08a789e,56e4a32d-5c41-455a-a747-29563046b2c9,qa,in_progress,d24d6ce7-33c9-4073-8caa-cced70c06e6f,2025-07-26T12:18:32.357847,Status updated during daily standup.
+85cab364-6a56-4c5a-bb36-ceb8d610bcd6,ec856587-d1a3-4297-9340-27988f392bb3,todo,in_progress,672f7dc9-b560-4aee-93d7-8257544d7164,2025-09-30T05:44:32.357847,
+f5c30f20-f7a3-40a8-b1a4-46c1ebf1972a,ec856587-d1a3-4297-9340-27988f392bb3,in_progress,blocked,672f7dc9-b560-4aee-93d7-8257544d7164,2025-09-17T04:44:32.357847,Status updated during daily standup.
+5e75dead-d845-4f82-806a-a79bc278a935,ec856587-d1a3-4297-9340-27988f392bb3,blocked,in_progress,672f7dc9-b560-4aee-93d7-8257544d7164,2025-09-27T20:44:32.357847,Moved to QA after code review completion.
+9fa048d8-e2e5-47d0-ac2a-c43af4beaf5b,ec856587-d1a3-4297-9340-27988f392bb3,in_progress,blocked,672f7dc9-b560-4aee-93d7-8257544d7164,2025-10-04T12:44:32.357847,Status updated during daily standup.
+31af38a1-a77e-4f0d-970d-439bb33c12fa,ec856587-d1a3-4297-9340-27988f392bb3,blocked,in_progress,672f7dc9-b560-4aee-93d7-8257544d7164,2025-09-24T14:44:32.357847,Reopened after validation found an edge case.
+32b8de83-2288-4c24-b505-363ede81bcf3,55ab51a1-0f7d-48a2-b0be-79b3decb55a1,todo,in_progress,0f88bc6c-c0d3-4df1-8c57-5444442a4fd8,2025-07-24T17:58:32.357847,Blocked due to dependency; reassigned and resumed.
+858a12fc-4574-4291-bc48-ecf0edaba660,55ab51a1-0f7d-48a2-b0be-79b3decb55a1,in_progress,qa,0f88bc6c-c0d3-4df1-8c57-5444442a4fd8,2025-07-22T09:58:32.357847,Reopened after validation found an edge case.
+31176b3a-9fe1-4e98-9fbf-6cd6628bbe5f,55ab51a1-0f7d-48a2-b0be-79b3decb55a1,qa,done,0f88bc6c-c0d3-4df1-8c57-5444442a4fd8,2025-08-06T22:58:32.357847,Reopened after validation found an edge case.
+1dbcafd4-8d71-4468-9fe4-d1fafc4159ff,55ab51a1-0f7d-48a2-b0be-79b3decb55a1,done,in_progress,0f88bc6c-c0d3-4df1-8c57-5444442a4fd8,2025-08-09T05:58:32.357847,
+090f296b-f74c-4abb-ba61-334288fc2bf2,55ab51a1-0f7d-48a2-b0be-79b3decb55a1,in_progress,qa,0f88bc6c-c0d3-4df1-8c57-5444442a4fd8,2025-07-23T01:58:32.357847,
+acca5e3a-85ca-4566-9bca-435aaf5468c8,46416e1e-fbac-49ff-b0ca-44f57f69790e,todo,in_progress,0bae582e-1e13-43bb-bbd2-ddf4687ea657,2025-11-02T15:12:32.357847,Moved to QA after code review completion.
+347a8910-24cb-4d5e-996f-7e33369b8b98,46416e1e-fbac-49ff-b0ca-44f57f69790e,in_progress,blocked,0bae582e-1e13-43bb-bbd2-ddf4687ea657,2025-10-29T10:12:32.357847,
+8daeaa5b-4613-48af-8953-545777199428,46416e1e-fbac-49ff-b0ca-44f57f69790e,blocked,in_progress,0bae582e-1e13-43bb-bbd2-ddf4687ea657,2025-11-10T04:12:32.357847,Blocked due to dependency; reassigned and resumed.
+38e1943d-7f72-4607-9e85-a993fc62792c,46416e1e-fbac-49ff-b0ca-44f57f69790e,in_progress,blocked,0bae582e-1e13-43bb-bbd2-ddf4687ea657,2025-11-03T16:12:32.357847,Reopened after validation found an edge case.
+0d66992d-7a18-4c88-a8c8-9e22eb40bfa3,46416e1e-fbac-49ff-b0ca-44f57f69790e,blocked,in_progress,0bae582e-1e13-43bb-bbd2-ddf4687ea657,2025-10-28T13:12:32.357847,Blocked due to dependency; reassigned and resumed.
+91bacd92-5416-4e60-a21f-811687ec1fa4,dd34e661-b9c8-44df-955c-e009db25b6f0,todo,in_progress,9f3357d0-dd0d-4ee5-9de0-92b821044b24,2025-10-28T22:16:32.357847,Blocked due to dependency; reassigned and resumed.
+829186ee-36fa-4e05-a404-fc403c85f519,dd34e661-b9c8-44df-955c-e009db25b6f0,in_progress,in_review,9f3357d0-dd0d-4ee5-9de0-92b821044b24,2025-11-07T08:16:32.357847,Blocked due to dependency; reassigned and resumed.
+cd6a3a64-3960-4431-9e55-07ce5425a6b9,dd34e661-b9c8-44df-955c-e009db25b6f0,in_review,in_progress,9f3357d0-dd0d-4ee5-9de0-92b821044b24,2025-10-22T20:16:32.357847,Blocked due to dependency; reassigned and resumed.
+a9b5603b-7b54-41c2-a7f8-df91c5c4af7a,dd34e661-b9c8-44df-955c-e009db25b6f0,in_progress,blocked,9f3357d0-dd0d-4ee5-9de0-92b821044b24,2025-10-24T16:16:32.357847,
+2b65c8e9-1d8c-4ab4-ba5e-4889425996de,dd34e661-b9c8-44df-955c-e009db25b6f0,blocked,in_progress,9f3357d0-dd0d-4ee5-9de0-92b821044b24,2025-11-03T08:16:32.357847,Moved to QA after code review completion.
+96689c80-40e4-4477-abe2-5bbe0777439b,09791de7-6741-430c-bd50-48f6f97f3ed8,todo,in_progress,afae5bd7-0fd2-4384-95fb-90cfac292f6a,2025-11-20T06:16:32.357847,Moved to QA after code review completion.
+6ed10011-6448-47bd-acb8-e7f07c56cc0d,09791de7-6741-430c-bd50-48f6f97f3ed8,in_progress,qa,afae5bd7-0fd2-4384-95fb-90cfac292f6a,2025-11-20T11:16:32.357847,Reopened after validation found an edge case.
+185ee6e1-1f8c-4a47-8a37-4f100abb67cf,09791de7-6741-430c-bd50-48f6f97f3ed8,qa,in_progress,afae5bd7-0fd2-4384-95fb-90cfac292f6a,2025-11-04T16:16:32.357847,Reopened after validation found an edge case.
+2a22de7b-cea8-442c-b45b-784004ec0f0b,09791de7-6741-430c-bd50-48f6f97f3ed8,in_progress,qa,afae5bd7-0fd2-4384-95fb-90cfac292f6a,2025-11-16T10:16:32.357847,Status updated during daily standup.
+6869305d-c326-4eb4-861d-be1bf300a016,09791de7-6741-430c-bd50-48f6f97f3ed8,qa,done,afae5bd7-0fd2-4384-95fb-90cfac292f6a,2025-11-12T05:16:32.357847,Moved to QA after code review completion.
+f8971a6a-b215-495f-93ad-11fc956b9295,9b501bb6-9771-408d-930a-57cfc99184e1,todo,in_progress,5010e2e4-3ac3-45ae-8c09-6c814114b627,2025-05-27T04:05:32.357847,Blocked due to dependency; reassigned and resumed.
+b882aeb1-39a4-4377-8267-26295d855901,9b501bb6-9771-408d-930a-57cfc99184e1,in_progress,blocked,5010e2e4-3ac3-45ae-8c09-6c814114b627,2025-05-11T02:05:32.357847,Status updated during daily standup.
+7ec75e92-cc16-4669-bb69-d66a4771cf4b,9b501bb6-9771-408d-930a-57cfc99184e1,blocked,in_progress,5010e2e4-3ac3-45ae-8c09-6c814114b627,2025-05-17T11:05:32.357847,
+7c2698f6-a990-41c8-bc10-cb5d4cb2b6c0,9b501bb6-9771-408d-930a-57cfc99184e1,in_progress,in_review,5010e2e4-3ac3-45ae-8c09-6c814114b627,2025-05-28T05:05:32.357847,Reopened after validation found an edge case.
+4eb598b2-1b52-45f2-9dc9-3b358cbf2a2b,9b501bb6-9771-408d-930a-57cfc99184e1,in_review,qa,5010e2e4-3ac3-45ae-8c09-6c814114b627,2025-05-16T15:05:32.357847,Reopened after validation found an edge case.
+948ebbe1-2453-40ae-9846-c8d388beb916,498110cc-4f50-4789-bf7a-ba2f7149dd66,todo,in_progress,39c0c7d1-037b-4dc6-a478-5c22dedd0bf6,2025-11-19T05:49:32.357847,Blocked due to dependency; reassigned and resumed.
+24d8ea47-c9fc-4f8f-8bb5-91f5160474c8,498110cc-4f50-4789-bf7a-ba2f7149dd66,in_progress,in_review,39c0c7d1-037b-4dc6-a478-5c22dedd0bf6,2025-11-16T22:49:32.357847,Reopened after validation found an edge case.
+79e1d525-e651-4e30-940a-1f10fadbd8d3,498110cc-4f50-4789-bf7a-ba2f7149dd66,in_review,qa,39c0c7d1-037b-4dc6-a478-5c22dedd0bf6,2025-11-23T00:49:32.357847,
+1cd0825d-9e9c-4156-929f-11ec4c7c648b,498110cc-4f50-4789-bf7a-ba2f7149dd66,qa,done,39c0c7d1-037b-4dc6-a478-5c22dedd0bf6,2025-11-15T15:49:32.357847,Moved to QA after code review completion.
+76f441b6-cc54-49f0-9122-201d26e391b2,498110cc-4f50-4789-bf7a-ba2f7149dd66,done,in_progress,39c0c7d1-037b-4dc6-a478-5c22dedd0bf6,2025-11-21T03:49:32.357847,Moved to QA after code review completion.
+1f8de4cd-b765-4ea0-8484-4ec9f319cfa7,b924ecf2-b193-4cb3-8237-f6b998953e05,todo,in_progress,5c7f18c4-8814-4ff4-a0de-2ed38a095b9b,2025-05-12T14:52:32.357847,Reopened after validation found an edge case.
+c87f50a0-184e-4989-8915-6da71e44f06c,b924ecf2-b193-4cb3-8237-f6b998953e05,in_progress,in_review,5c7f18c4-8814-4ff4-a0de-2ed38a095b9b,2025-05-21T14:52:32.357847,Status updated during daily standup.
+1dfade70-6f12-4de4-8049-43afae7faceb,b924ecf2-b193-4cb3-8237-f6b998953e05,in_review,qa,5c7f18c4-8814-4ff4-a0de-2ed38a095b9b,2025-05-19T01:52:32.357847,
+511d5764-5586-48a1-81c7-13e2fbf7ea60,b924ecf2-b193-4cb3-8237-f6b998953e05,qa,done,5c7f18c4-8814-4ff4-a0de-2ed38a095b9b,2025-05-11T05:52:32.357847,Blocked due to dependency; reassigned and resumed.
+07982ed3-975c-4e62-aab2-1b3265040a95,b924ecf2-b193-4cb3-8237-f6b998953e05,done,in_progress,5c7f18c4-8814-4ff4-a0de-2ed38a095b9b,2025-05-08T23:52:32.357847,
+51d8e69e-d62d-4a1d-aeea-543160c18dbd,4ab89965-7b62-4f21-aec6-2854240388cd,todo,in_progress,08a53ea2-63e8-4ca8-9451-c16e9e8984b8,2025-07-18T15:05:32.357847,Reopened after validation found an edge case.
+ce97e1ea-5323-4e9d-9165-2b2d78fcd982,4ab89965-7b62-4f21-aec6-2854240388cd,in_progress,qa,08a53ea2-63e8-4ca8-9451-c16e9e8984b8,2025-07-22T02:05:32.357847,Moved to QA after code review completion.
+ea7bc0cb-cb50-4356-b7c0-012b0d27c695,4ab89965-7b62-4f21-aec6-2854240388cd,qa,in_progress,08a53ea2-63e8-4ca8-9451-c16e9e8984b8,2025-07-12T08:05:32.357847,Status updated during daily standup.
+14179e9f-0779-43e3-b9dc-31c92acfaa38,4ab89965-7b62-4f21-aec6-2854240388cd,in_progress,in_review,08a53ea2-63e8-4ca8-9451-c16e9e8984b8,2025-07-22T19:05:32.357847,Blocked due to dependency; reassigned and resumed.
+2cd29747-aed1-46d2-962c-597ebcee1f0c,4ab89965-7b62-4f21-aec6-2854240388cd,in_review,in_progress,08a53ea2-63e8-4ca8-9451-c16e9e8984b8,2025-07-23T09:05:32.357847,
+849e8a22-13bf-4bc6-834f-8c5655a60db7,d6890fa1-862d-4686-bbb3-34e546f3ecaa,todo,in_progress,ed15cdd3-c94f-458a-ad9d-a825e7fd08fd,2025-12-01T20:30:32.357847,
+15aa9526-c1b7-4927-b4f4-72f574b99d53,d6890fa1-862d-4686-bbb3-34e546f3ecaa,in_progress,in_review,ed15cdd3-c94f-458a-ad9d-a825e7fd08fd,2025-12-06T21:30:32.357847,Blocked due to dependency; reassigned and resumed.
+c8f2189b-cdf9-4da0-ba6b-3c71deb723f1,d6890fa1-862d-4686-bbb3-34e546f3ecaa,in_review,qa,ed15cdd3-c94f-458a-ad9d-a825e7fd08fd,2025-12-05T17:30:32.357847,Moved to QA after code review completion.
+e67331d6-00b0-46c3-b5a1-2894b5e25305,d6890fa1-862d-4686-bbb3-34e546f3ecaa,qa,in_progress,ed15cdd3-c94f-458a-ad9d-a825e7fd08fd,2025-11-18T14:30:32.357847,
+54c26537-02e9-4f46-bd23-8b3e152a6385,d6890fa1-862d-4686-bbb3-34e546f3ecaa,in_progress,blocked,ed15cdd3-c94f-458a-ad9d-a825e7fd08fd,2025-11-29T03:30:32.357847,
+8855dce8-65e6-42b2-90c5-b88bae79c083,2dd7d1af-86ff-4edc-a006-872c241f5a0f,todo,in_progress,b9587822-329a-4b88-92a3-4456c8cf7184,2025-07-27T09:54:32.357847,Moved to QA after code review completion.
+a5beb521-e659-4382-b3ee-a9a43692f96c,2dd7d1af-86ff-4edc-a006-872c241f5a0f,in_progress,in_review,b9587822-329a-4b88-92a3-4456c8cf7184,2025-07-19T16:54:32.357847,Reopened after validation found an edge case.
+ee5b232a-f946-4629-98fb-ee9031511751,2dd7d1af-86ff-4edc-a006-872c241f5a0f,in_review,in_progress,b9587822-329a-4b88-92a3-4456c8cf7184,2025-07-17T01:54:32.357847,
+92cf0584-f388-4fae-8b8c-d119900cc388,2dd7d1af-86ff-4edc-a006-872c241f5a0f,in_progress,in_review,b9587822-329a-4b88-92a3-4456c8cf7184,2025-07-16T23:54:32.357847,
+401f83bf-60fa-4712-9688-330192bba63a,2dd7d1af-86ff-4edc-a006-872c241f5a0f,in_review,in_progress,b9587822-329a-4b88-92a3-4456c8cf7184,2025-07-20T06:54:32.357847,
+ae062647-274f-4dda-b102-2641c8acfaf1,c8b61729-7f26-4a55-aad6-65cbfaa05cf1,todo,in_progress,c93f0d5f-bd55-441b-bf44-e79552d8104b,2025-08-21T04:16:32.357847,Status updated during daily standup.
+12c495bc-d404-4a7f-b9f6-e8f8a5131a0e,c8b61729-7f26-4a55-aad6-65cbfaa05cf1,in_progress,qa,c93f0d5f-bd55-441b-bf44-e79552d8104b,2025-08-21T04:16:32.357847,
+fa7ec77d-5f96-4ccc-b2a9-82038ffa51da,c8b61729-7f26-4a55-aad6-65cbfaa05cf1,qa,done,c93f0d5f-bd55-441b-bf44-e79552d8104b,2025-08-14T14:16:32.357847,Moved to QA after code review completion.
+80cc9238-5ebb-440a-8bfd-df7355791849,c8b61729-7f26-4a55-aad6-65cbfaa05cf1,done,in_progress,c93f0d5f-bd55-441b-bf44-e79552d8104b,2025-08-15T13:16:32.357847,
+1e64bccf-b6d1-4628-aeed-24490cfd02eb,c8b61729-7f26-4a55-aad6-65cbfaa05cf1,in_progress,blocked,c93f0d5f-bd55-441b-bf44-e79552d8104b,2025-08-16T04:16:32.357847,Blocked due to dependency; reassigned and resumed.
+5208a934-1936-46cd-8e93-e25a3cf74c39,0edf9683-7f27-470c-927f-c4c516b0c7e7,todo,in_progress,3a5bfe08-cb96-423f-b39e-ae5aaad6eda8,2025-06-04T19:35:32.357847,Moved to QA after code review completion.
+67b540bb-1e6f-4dda-91be-cd1e1052175a,0edf9683-7f27-470c-927f-c4c516b0c7e7,in_progress,qa,3a5bfe08-cb96-423f-b39e-ae5aaad6eda8,2025-06-08T21:35:32.357847,Moved to QA after code review completion.
+89a52461-e52f-4751-aaad-12e81dadcab6,0edf9683-7f27-470c-927f-c4c516b0c7e7,qa,in_progress,3a5bfe08-cb96-423f-b39e-ae5aaad6eda8,2025-06-02T08:35:32.357847,Blocked due to dependency; reassigned and resumed.
+7f20be11-0ca1-475c-af52-294b3329c2eb,0edf9683-7f27-470c-927f-c4c516b0c7e7,in_progress,qa,3a5bfe08-cb96-423f-b39e-ae5aaad6eda8,2025-06-04T19:35:32.357847,Moved to QA after code review completion.
+c9f4d676-d57e-429f-9289-175d9a35c8ee,0edf9683-7f27-470c-927f-c4c516b0c7e7,qa,in_progress,3a5bfe08-cb96-423f-b39e-ae5aaad6eda8,2025-06-02T03:35:32.357847,
+5e5562f0-277f-4d5a-a4f0-0ade14da782d,400eaa34-d528-4f65-a026-0ae1cb844726,todo,in_progress,2e77b778-887f-4a04-8cd2-68665239dbfe,2026-01-19T05:28:32.357847,Blocked due to dependency; reassigned and resumed.
+e74be784-2013-46cc-9a60-9a8c57515131,400eaa34-d528-4f65-a026-0ae1cb844726,in_progress,blocked,2e77b778-887f-4a04-8cd2-68665239dbfe,2026-01-29T05:28:32.357847,Moved to QA after code review completion.
+10ee8ef7-8e2a-4b7d-a652-09aa8a7f9e57,400eaa34-d528-4f65-a026-0ae1cb844726,blocked,in_progress,2e77b778-887f-4a04-8cd2-68665239dbfe,2026-01-30T00:28:32.357847,Moved to QA after code review completion.
+b25e73e9-1225-4d95-a240-72f1051ed729,400eaa34-d528-4f65-a026-0ae1cb844726,in_progress,blocked,2e77b778-887f-4a04-8cd2-68665239dbfe,2026-01-22T00:28:32.357847,Moved to QA after code review completion.
+cfb932e8-afd4-4208-9c5c-9a590ded8979,400eaa34-d528-4f65-a026-0ae1cb844726,blocked,in_progress,2e77b778-887f-4a04-8cd2-68665239dbfe,2026-01-26T19:28:32.357847,Blocked due to dependency; reassigned and resumed.
+c3dbdba9-2629-4463-a872-7154284e7f81,e93b475f-b7c7-4a92-8abc-518d05db1fd4,todo,in_progress,a1fbf57d-514a-470c-894f-1d9263c090b4,2025-10-28T03:38:32.357847,Reopened after validation found an edge case.
+29cfed15-71e6-4dcf-b728-16fb0bbb4ea2,e93b475f-b7c7-4a92-8abc-518d05db1fd4,in_progress,qa,a1fbf57d-514a-470c-894f-1d9263c090b4,2025-11-01T00:38:32.357847,Status updated during daily standup.
+ba134101-7aba-4938-80da-b15cc0da85e6,e93b475f-b7c7-4a92-8abc-518d05db1fd4,qa,done,a1fbf57d-514a-470c-894f-1d9263c090b4,2025-10-28T15:38:32.357847,Reopened after validation found an edge case.
+8fa45d72-c92c-4379-bc5d-eececda7fb6a,e93b475f-b7c7-4a92-8abc-518d05db1fd4,done,in_progress,a1fbf57d-514a-470c-894f-1d9263c090b4,2025-11-05T18:38:32.357847,Reopened after validation found an edge case.
+6ec8dcf9-f13c-4669-add2-9b3bfa2b15e5,e93b475f-b7c7-4a92-8abc-518d05db1fd4,in_progress,blocked,a1fbf57d-514a-470c-894f-1d9263c090b4,2025-10-28T01:38:32.357847,Reopened after validation found an edge case.
+1154151a-d331-4f68-924f-9a5b64851bfc,af35da00-ea82-409e-9bd5-a0c4c5aa7aa1,todo,in_progress,cec1df94-7b97-4d42-859c-2fcab2bce13c,2025-05-24T20:34:32.357847,Reopened after validation found an edge case.
+00ca78b1-8527-43ed-b16e-7bf5d12e7ee4,af35da00-ea82-409e-9bd5-a0c4c5aa7aa1,in_progress,in_review,cec1df94-7b97-4d42-859c-2fcab2bce13c,2025-05-18T03:34:32.357847,Status updated during daily standup.
+6885d136-1e28-444d-a2d0-8a873cdda9c9,af35da00-ea82-409e-9bd5-a0c4c5aa7aa1,in_review,qa,cec1df94-7b97-4d42-859c-2fcab2bce13c,2025-05-10T20:34:32.357847,Moved to QA after code review completion.
+c32734ca-a35e-4bdd-92f0-04c3e618de69,af35da00-ea82-409e-9bd5-a0c4c5aa7aa1,qa,done,cec1df94-7b97-4d42-859c-2fcab2bce13c,2025-05-06T19:34:32.357847,Moved to QA after code review completion.
+970a0338-2f6c-4f3a-90fe-3a03214e5193,af35da00-ea82-409e-9bd5-a0c4c5aa7aa1,done,in_progress,cec1df94-7b97-4d42-859c-2fcab2bce13c,2025-05-23T10:34:32.357847,Moved to QA after code review completion.
+1944e3b3-78f9-4e62-a016-550ab75fdc58,e998abe0-b6d9-4168-ab0d-a37881ebaaa1,todo,in_progress,d2e92152-9fb6-418b-b66b-0e9bfd42b880,2025-04-06T02:06:32.357847,Status updated during daily standup.
+e06cd519-da5d-4a9d-92f6-3044c59652f7,e998abe0-b6d9-4168-ab0d-a37881ebaaa1,in_progress,qa,d2e92152-9fb6-418b-b66b-0e9bfd42b880,2025-04-10T21:06:32.357847,Status updated during daily standup.
+4275bb07-c025-46dc-81d6-419b140c98fa,e998abe0-b6d9-4168-ab0d-a37881ebaaa1,qa,done,d2e92152-9fb6-418b-b66b-0e9bfd42b880,2025-04-03T15:06:32.357847,Moved to QA after code review completion.
+73280da6-dd03-4a29-8469-a7355629cb56,e998abe0-b6d9-4168-ab0d-a37881ebaaa1,done,in_progress,d2e92152-9fb6-418b-b66b-0e9bfd42b880,2025-04-06T03:06:32.357847,Blocked due to dependency; reassigned and resumed.
+dd9636ba-dd10-4af3-9000-53df09f9937c,e998abe0-b6d9-4168-ab0d-a37881ebaaa1,in_progress,blocked,d2e92152-9fb6-418b-b66b-0e9bfd42b880,2025-04-12T15:06:32.357847,
+6e88b3c4-bd4d-42ce-89f1-7156ec72ea79,3ba17d9c-df67-4bb3-8b3c-13b1baab9a17,todo,in_progress,ef904503-e8ad-423b-93a9-9832411a8278,2025-08-19T05:30:32.357847,Status updated during daily standup.
+8bf5f71d-03a2-4fbc-a2a3-9c944a0c3691,3ba17d9c-df67-4bb3-8b3c-13b1baab9a17,in_progress,qa,ef904503-e8ad-423b-93a9-9832411a8278,2025-08-30T11:30:32.357847,Blocked due to dependency; reassigned and resumed.
+a11593f9-41f8-4697-aa46-b961e5b0f839,3ba17d9c-df67-4bb3-8b3c-13b1baab9a17,qa,done,ef904503-e8ad-423b-93a9-9832411a8278,2025-08-24T07:30:32.357847,
+f4a83e5d-253e-474e-8d20-c408bb69ed68,3ba17d9c-df67-4bb3-8b3c-13b1baab9a17,done,in_progress,ef904503-e8ad-423b-93a9-9832411a8278,2025-08-17T03:30:32.357847,
+3c9e2365-225c-41e0-93c6-b1c61394e0f1,3ba17d9c-df67-4bb3-8b3c-13b1baab9a17,in_progress,qa,ef904503-e8ad-423b-93a9-9832411a8278,2025-08-31T09:30:32.357847,Reopened after validation found an edge case.
+f0f49060-cb5a-4541-b1d9-f4e6f973dd68,9fb04297-18e9-4661-976d-c061de14d2d6,todo,in_progress,dbfaf125-79cf-4bd0-be8b-9bd8c8b39491,2025-04-08T20:12:32.357847,Blocked due to dependency; reassigned and resumed.
+87f3fc39-0f91-44a7-a1f1-5b09f68db432,9fb04297-18e9-4661-976d-c061de14d2d6,in_progress,blocked,dbfaf125-79cf-4bd0-be8b-9bd8c8b39491,2025-04-16T02:12:32.357847,Blocked due to dependency; reassigned and resumed.
+73f85429-6640-49ed-8b8c-0564dae1a52c,9fb04297-18e9-4661-976d-c061de14d2d6,blocked,in_progress,dbfaf125-79cf-4bd0-be8b-9bd8c8b39491,2025-04-08T15:12:32.357847,Status updated during daily standup.
+dbfc089e-37d3-4fbe-b6d2-9a0fc774bb98,9fb04297-18e9-4661-976d-c061de14d2d6,in_progress,blocked,dbfaf125-79cf-4bd0-be8b-9bd8c8b39491,2025-04-09T04:12:32.357847,Moved to QA after code review completion.
+5c4a0551-d7a0-4858-aa07-630f8d228fe0,9fb04297-18e9-4661-976d-c061de14d2d6,blocked,in_progress,dbfaf125-79cf-4bd0-be8b-9bd8c8b39491,2025-04-20T02:12:32.357847,Reopened after validation found an edge case.
+13b01a5a-c201-4272-9654-1225f582455b,92713c44-c36f-4413-9fc7-bb6f9c5c528f,backlog,todo,17197323-8825-4868-9b23-6d355a5cfd0a,2025-09-18T01:34:32.357847,Status updated during daily standup.
+f2edb19c-23fa-4043-b802-a719838d1dcf,92713c44-c36f-4413-9fc7-bb6f9c5c528f,todo,in_progress,17197323-8825-4868-9b23-6d355a5cfd0a,2025-09-25T12:34:32.357847,Blocked due to dependency; reassigned and resumed.
+6282623f-12ae-4dd6-b674-cac6668849d0,92713c44-c36f-4413-9fc7-bb6f9c5c528f,in_progress,qa,17197323-8825-4868-9b23-6d355a5cfd0a,2025-09-23T17:34:32.357847,Reopened after validation found an edge case.
+00b2b4ad-c62c-4a31-9dae-b86fcd9891b7,92713c44-c36f-4413-9fc7-bb6f9c5c528f,qa,done,17197323-8825-4868-9b23-6d355a5cfd0a,2025-09-28T06:34:32.357847,Blocked due to dependency; reassigned and resumed.
+a645017b-9dc2-48ac-889e-65bb998457a6,92713c44-c36f-4413-9fc7-bb6f9c5c528f,done,in_progress,17197323-8825-4868-9b23-6d355a5cfd0a,2025-09-24T14:34:32.357847,Moved to QA after code review completion.
+f2eef8a6-2aa9-4c6f-b7f3-94942a1751e4,f1a15e74-7de2-41dd-9228-b6c9ea3087db,todo,in_progress,3ecd292e-bc36-4f2e-a89a-225fc8c33cb2,2025-07-18T11:25:32.357847,
+03e37271-7e7b-48bf-804d-4b4244656ff7,f1a15e74-7de2-41dd-9228-b6c9ea3087db,in_progress,in_review,3ecd292e-bc36-4f2e-a89a-225fc8c33cb2,2025-07-17T14:25:32.357847,Blocked due to dependency; reassigned and resumed.
+c5323115-f6fb-4707-bc50-0f9b32d91286,f1a15e74-7de2-41dd-9228-b6c9ea3087db,in_review,in_progress,3ecd292e-bc36-4f2e-a89a-225fc8c33cb2,2025-07-07T17:25:32.357847,Status updated during daily standup.
+8d8f515c-7816-419a-90bd-e019df10d2a7,f1a15e74-7de2-41dd-9228-b6c9ea3087db,in_progress,qa,3ecd292e-bc36-4f2e-a89a-225fc8c33cb2,2025-07-15T00:25:32.357847,Reopened after validation found an edge case.
+0d532da3-b8db-4e81-9c78-81e8e5917c4a,f1a15e74-7de2-41dd-9228-b6c9ea3087db,qa,done,3ecd292e-bc36-4f2e-a89a-225fc8c33cb2,2025-07-09T05:25:32.357847,Moved to QA after code review completion.
+f0c26451-2504-4897-a9f4-18e8ee3ed83a,942de709-3898-40a8-a073-2e414a9b7968,todo,in_progress,32b296b6-58a6-4b35-afb9-2ca1f23c53e5,2025-09-02T03:18:32.357847,Moved to QA after code review completion.
+2c468c51-43cb-4d38-ac74-58f323cfbae5,942de709-3898-40a8-a073-2e414a9b7968,in_progress,blocked,32b296b6-58a6-4b35-afb9-2ca1f23c53e5,2025-09-07T00:18:32.357847,Reopened after validation found an edge case.
+63bce01a-efb5-4d7a-90a9-9334bab6a6e6,942de709-3898-40a8-a073-2e414a9b7968,blocked,in_progress,32b296b6-58a6-4b35-afb9-2ca1f23c53e5,2025-09-12T12:18:32.357847,Status updated during daily standup.
+d5c5734a-adf8-40a2-9f9a-acf42ed9bc3f,942de709-3898-40a8-a073-2e414a9b7968,in_progress,in_review,32b296b6-58a6-4b35-afb9-2ca1f23c53e5,2025-08-25T17:18:32.357847,
+c4692d49-03bf-42cf-9b84-7f7d3d1fc93b,942de709-3898-40a8-a073-2e414a9b7968,in_review,in_progress,32b296b6-58a6-4b35-afb9-2ca1f23c53e5,2025-09-05T17:18:32.357847,Status updated during daily standup.
+c0ffe613-9855-4349-9606-83a4ceebba9b,d457b4b4-a514-40aa-8985-2b36bf8a4dd5,todo,in_progress,9bff5a1e-fa7d-465a-b81e-4c5e0860c88c,2025-06-08T18:27:32.357847,Status updated during daily standup.
+5095711b-de41-4bf7-a352-55521944a968,d457b4b4-a514-40aa-8985-2b36bf8a4dd5,in_progress,in_review,9bff5a1e-fa7d-465a-b81e-4c5e0860c88c,2025-06-02T16:27:32.357847,Blocked due to dependency; reassigned and resumed.
+2c40b971-7f3e-43ef-a765-c25bd7014bf3,d457b4b4-a514-40aa-8985-2b36bf8a4dd5,in_review,in_progress,9bff5a1e-fa7d-465a-b81e-4c5e0860c88c,2025-06-05T13:27:32.357847,Reopened after validation found an edge case.
+a38a4ed9-2076-4654-88ff-ea7f900b5bc3,d457b4b4-a514-40aa-8985-2b36bf8a4dd5,in_progress,blocked,9bff5a1e-fa7d-465a-b81e-4c5e0860c88c,2025-05-30T12:27:32.357847,
+65f22eba-bd07-45e2-bf97-d5a1d02ebe64,d457b4b4-a514-40aa-8985-2b36bf8a4dd5,blocked,in_progress,9bff5a1e-fa7d-465a-b81e-4c5e0860c88c,2025-05-26T17:27:32.357847,Moved to QA after code review completion.
+c9b10681-f5f9-4b08-b988-7617ac4ef1c8,80bb8deb-d505-41d1-ae5e-1afbbeb65a19,todo,in_progress,d24d6ce7-33c9-4073-8caa-cced70c06e6f,2025-11-02T19:50:32.357847,Blocked due to dependency; reassigned and resumed.
+667f669e-4b22-4ada-b191-0c3ad6aee87f,80bb8deb-d505-41d1-ae5e-1afbbeb65a19,in_progress,blocked,d24d6ce7-33c9-4073-8caa-cced70c06e6f,2025-11-19T19:50:32.357847,
+c3a39f0b-6aec-414e-b30b-8cad7a7a9b37,80bb8deb-d505-41d1-ae5e-1afbbeb65a19,blocked,in_progress,d24d6ce7-33c9-4073-8caa-cced70c06e6f,2025-11-07T23:50:32.357847,
+67a5e796-1aef-4d0d-99b8-11fb03c8a7f4,80bb8deb-d505-41d1-ae5e-1afbbeb65a19,in_progress,in_review,d24d6ce7-33c9-4073-8caa-cced70c06e6f,2025-11-14T01:50:32.357847,Moved to QA after code review completion.
+20ca055c-6430-4081-888c-52af956f7edd,80bb8deb-d505-41d1-ae5e-1afbbeb65a19,in_review,qa,d24d6ce7-33c9-4073-8caa-cced70c06e6f,2025-11-13T05:50:32.357847,Blocked due to dependency; reassigned and resumed.
+60a073f2-27a4-444e-be88-920522d7530b,33df9b72-58cf-462d-a1ff-d09b8e9b7ba9,todo,in_progress,175c8aaf-7c13-4a30-a3d0-c61caa261167,2025-09-26T19:05:32.357847,
+86e47ebd-1a8d-4e67-9db4-8827a866ed67,33df9b72-58cf-462d-a1ff-d09b8e9b7ba9,in_progress,blocked,175c8aaf-7c13-4a30-a3d0-c61caa261167,2025-09-24T16:05:32.357847,
+6b5bac82-97fe-4b87-ab6a-a847db4241ba,33df9b72-58cf-462d-a1ff-d09b8e9b7ba9,blocked,in_progress,175c8aaf-7c13-4a30-a3d0-c61caa261167,2025-10-06T10:05:32.357847,Blocked due to dependency; reassigned and resumed.
+a86d1a32-69cd-4e46-9cda-11c2a659dfed,33df9b72-58cf-462d-a1ff-d09b8e9b7ba9,in_progress,in_review,175c8aaf-7c13-4a30-a3d0-c61caa261167,2025-10-05T05:05:32.357847,Reopened after validation found an edge case.
+4d4cb3d2-61df-4b71-b922-147fba51302d,33df9b72-58cf-462d-a1ff-d09b8e9b7ba9,in_review,qa,175c8aaf-7c13-4a30-a3d0-c61caa261167,2025-09-24T14:05:32.357847,Blocked due to dependency; reassigned and resumed.
+3c1a38c3-69ea-4170-bcbe-56189c768c64,5c38cea8-c4d2-43ad-abf3-817c66bdd708,todo,in_progress,c5991793-a5c5-4ffe-a155-819bf9e6cc92,2025-06-01T05:58:32.357847,Moved to QA after code review completion.
+1cc27bba-706f-4576-82aa-6525ae78fca9,5c38cea8-c4d2-43ad-abf3-817c66bdd708,in_progress,blocked,c5991793-a5c5-4ffe-a155-819bf9e6cc92,2025-06-16T05:58:32.357847,Reopened after validation found an edge case.
+f0fd858b-bb35-4bb9-b1b4-88d7706d0172,5c38cea8-c4d2-43ad-abf3-817c66bdd708,blocked,in_progress,c5991793-a5c5-4ffe-a155-819bf9e6cc92,2025-06-04T06:58:32.357847,
+ef147204-1feb-4ce2-ab74-6cf295bbe24c,5c38cea8-c4d2-43ad-abf3-817c66bdd708,in_progress,blocked,c5991793-a5c5-4ffe-a155-819bf9e6cc92,2025-06-06T02:58:32.357847,Moved to QA after code review completion.
+e9fe9707-b10e-4ec7-86e7-f56e5c5f044a,5c38cea8-c4d2-43ad-abf3-817c66bdd708,blocked,in_progress,c5991793-a5c5-4ffe-a155-819bf9e6cc92,2025-06-07T18:58:32.357847,Status updated during daily standup.
+8e3e035c-affd-402e-91d2-004b5411cabe,d5400964-a0b2-4cec-85c3-b4dc9dc41938,todo,in_progress,bbfc70f0-6182-4b57-b3d7-009a48ae9486,2025-06-08T10:40:32.357847,Blocked due to dependency; reassigned and resumed.
+ed724ab6-80e2-4d84-af1b-63efd30d1c63,d5400964-a0b2-4cec-85c3-b4dc9dc41938,in_progress,blocked,bbfc70f0-6182-4b57-b3d7-009a48ae9486,2025-06-11T10:40:32.357847,Blocked due to dependency; reassigned and resumed.
+4e7cbc15-405d-4865-90b8-1873c6f1145f,d5400964-a0b2-4cec-85c3-b4dc9dc41938,blocked,in_progress,bbfc70f0-6182-4b57-b3d7-009a48ae9486,2025-06-15T17:40:32.357847,
+e87ee1ed-f23f-4d17-ab6e-8150f508a2cb,d5400964-a0b2-4cec-85c3-b4dc9dc41938,in_progress,in_review,bbfc70f0-6182-4b57-b3d7-009a48ae9486,2025-06-10T13:40:32.357847,Reopened after validation found an edge case.
+a3c3688b-1595-4739-b3a5-ebea269b0b9e,d5400964-a0b2-4cec-85c3-b4dc9dc41938,in_review,qa,bbfc70f0-6182-4b57-b3d7-009a48ae9486,2025-05-31T04:40:32.357847,Blocked due to dependency; reassigned and resumed.
+6bb17fae-5f1f-4dfd-9cbf-5902790f5d7d,6b2bfd57-2397-4d12-ab76-ca1dc5ef4ea4,todo,in_progress,09abd41f-01d5-461a-b8eb-31f9b7480a9a,2025-09-15T02:20:32.357847,Blocked due to dependency; reassigned and resumed.
+9eeeb740-7b95-449c-952e-01979094b451,6b2bfd57-2397-4d12-ab76-ca1dc5ef4ea4,in_progress,blocked,09abd41f-01d5-461a-b8eb-31f9b7480a9a,2025-09-22T04:20:32.357847,
+1ba77118-1aac-43e7-862f-db5a4b318e6a,6b2bfd57-2397-4d12-ab76-ca1dc5ef4ea4,blocked,in_progress,09abd41f-01d5-461a-b8eb-31f9b7480a9a,2025-09-25T07:20:32.357847,
+3ccb3b88-830c-4967-a663-e6305bae30e2,6b2bfd57-2397-4d12-ab76-ca1dc5ef4ea4,in_progress,qa,09abd41f-01d5-461a-b8eb-31f9b7480a9a,2025-09-25T06:20:32.357847,Reopened after validation found an edge case.
+61e838de-7bdb-4840-b901-b900622a3d69,6b2bfd57-2397-4d12-ab76-ca1dc5ef4ea4,qa,in_progress,09abd41f-01d5-461a-b8eb-31f9b7480a9a,2025-10-02T08:20:32.357847,Reopened after validation found an edge case.
+f98c8c92-6684-46b2-9f8c-21443350d566,627f8c4b-b820-458b-a1ba-a3a90f046c2b,todo,in_progress,8809f7b1-7067-402e-a318-161d872a02e5,2026-01-21T03:14:32.357847,Reopened after validation found an edge case.
+3c6a1975-e82c-4687-a001-ff818b12c676,627f8c4b-b820-458b-a1ba-a3a90f046c2b,in_progress,blocked,8809f7b1-7067-402e-a318-161d872a02e5,2026-01-16T17:14:32.357847,Status updated during daily standup.
+478d35dc-07aa-44e4-93f7-318478eccdc7,627f8c4b-b820-458b-a1ba-a3a90f046c2b,blocked,in_progress,8809f7b1-7067-402e-a318-161d872a02e5,2026-01-24T14:14:32.357847,
+1ef66039-685d-4c21-aea9-24e208c9337d,627f8c4b-b820-458b-a1ba-a3a90f046c2b,in_progress,in_review,8809f7b1-7067-402e-a318-161d872a02e5,2026-01-27T23:14:32.357847,Moved to QA after code review completion.
+ee59babe-6c31-4fa1-8472-3db2924ec5d4,627f8c4b-b820-458b-a1ba-a3a90f046c2b,in_review,in_progress,8809f7b1-7067-402e-a318-161d872a02e5,2026-01-15T21:14:32.357847,Reopened after validation found an edge case.
