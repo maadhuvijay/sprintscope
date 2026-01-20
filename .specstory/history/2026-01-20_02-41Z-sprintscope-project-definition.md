@@ -5011,3 +5011,21 @@ Lint results
 
 ---
 
+
+Added auto-scroll to the ChatConsole component.
+
+## Changes Made:
+
+1. **Added React hooks**: Imported `useEffect` and `useRef` from React
+2. **Created scroll container ref**: `scrollContainerRef` to reference the scrollable div
+3. **Auto-scroll effect**: `useEffect` that:
+   - Triggers when `messages` change
+   - Scrolls to the bottom with smooth behavior
+   - Uses a small timeout (100ms) to ensure the DOM has updated after new messages are added
+
+When a user sends a message or receives an assistant response, the chat console scrolls to show the latest messages. The smooth scroll behavior provides a better user experience.
+
+The scroll happens automatically whenever the `messages` array changes, so it works for both user messages and assistant responses.
+
+---
+

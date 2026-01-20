@@ -6,11 +6,16 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "seed:teams": "tsx scripts/seed-teams.ts",
+    "generate:migration": "tsx scripts/generate-migration.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.71.2",
+    "@supabase/supabase-js": "^2.45.4",
     "clsx": "^2.1.1",
+    "csv-parse": "^5.5.8",
+    "dotenv": "^16.6.1",
     "framer-motion": "^12.27.1",
     "lucide-react": "^0.562.0",
     "next": "16.1.4",
@@ -26,6 +31,7 @@
     "eslint": "^9",
     "eslint-config-next": "16.1.4",
     "tailwindcss": "^4",
+    "tsx": "^4.19.2",
     "typescript": "^5"
   }
 }
