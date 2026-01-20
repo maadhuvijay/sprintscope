@@ -14,6 +14,7 @@
     "upload:issues": "tsx scripts/upload-issues-complete.ts",
     "upload:sprints": "tsx scripts/upload-sprints-complete.ts",
     "upload:issue-status-events": "tsx scripts/upload-issue-status-events-complete.ts",
+    "upload:issue-comments": "tsx scripts/upload-issue-comments-complete.ts",
     "generate:migration": "tsx scripts/generate-migration.ts"
   },
   "dependencies": {

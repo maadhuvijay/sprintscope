@@ -22,22 +22,55 @@ export default function SprintScopePage() {
   ]);
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleRunQuery = (query: string) => {
+  const handleRunQuery = async (query: string) => {
     // Add user message
     const userMessage: Message = { role: "user", content: query };
     setMessages(prev => [...prev, userMessage]);
     setIsLoading(true);
 
-    // Simulate AI response
-    setTimeout(() => {
-      const gibberish = generateGibberish();
+    try {
+      // Build chat history (exclude initial message)
+      const chatHistory = messages
+        .filter(msg => !msg.isInitial)
+        .map(msg => ({
+          role: msg.role,
+          content: msg.content
+        }));
+
+      // Call API route
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          message: query,
+          chatHistory: chatHistory,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`API error: ${response.statusText}`);
+      }
+
+      const data = await response.json();
+      
       const assistantMessage: Message = { 
         role: "assistant", 
-        content: `Based on the **sprint analysis**, I've found that ${gibberish}. The data suggests a **${Math.floor(Math.random() * 20) + 10}%** increase in velocity.` 
+        content: data.response || 'I apologize, but I encountered an error processing your request.'
       };
+      
       setMessages(prev => [...prev, assistantMessage]);
+    } catch (error: any) {
+      console.error('Error calling chat API:', error);
+      const errorMessage: Message = {
+        role: "assistant",
+        content: `Sorry, I encountered an error: ${error.message}. Please try again.`
+      };
+      setMessages(prev => [...prev, errorMessage]);
+    } finally {
       setIsLoading(false);
-    }, 1500);
+    }
   };
 
   const handleReset = () => {
@@ -78,12 +111,3 @@ export default function SprintScopePage() {
   );
 }
 
-function generateGibberish() {
-  const words = ["velocity", "sprint", "backlog", "burndown", "throughput", "alignment", "stakeholders", "refining", "increment", "agile", "scrum", "kanban", "deployment", "integration"];
-  const count = Math.floor(Math.random() * 5) + 5;
-  let result = "";
-  for (let i = 0; i < count; i++) {
-    result += words[Math.floor(Math.random() * words.length)] + (i === count - 1 ? "" : " ");
-  }
-  return result;
-}
