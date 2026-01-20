@@ -82,10 +82,10 @@ export function ChatConsole({ messages, onSuggestionClick, isLoading }: ChatCons
                 {((message.isInitial
                   ? [
                       "What issues are blocked in the current sprint?",
-                      "How many stories were completed last sprint?",
-                      "Which assignees have the most open issues?",
-                      "Show bugs created in the last two weeks",
-                      "What work is still in progress for Team ACCEL?"
+                      "Show all issues assigned to Team ACCEL",
+                      "Which users have the most open issues?",
+                      "What issues are in QA status for Team ACCEL?",
+                      "Show issues completed in the last sprint"
                     ]
                   : message.suggestions && message.suggestions.length > 0
                     ? message.suggestions

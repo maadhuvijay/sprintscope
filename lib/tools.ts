@@ -369,6 +369,7 @@ INSTRUCTIONS:
    - Metric definitions without thresholds: "risky", "healthy", "stuck", "slow", "high velocity", "at risk", "overdue", "behind schedule"
    - Time references without context: "recent", "last sprint", "this sprint", "last month" (if no team/sprint context)
    - Missing scope: team, sprint, status when multiple interpretations exist
+   - **CRITICAL: User names - If the query mentions only a first name (e.g., "Avery", "John", "Sarah") without a last name or full name, you MUST ask for clarification because multiple users may share the same first name. The users table stores full_name (e.g., "Avery Hernandez", "Avery Smith"), so first names alone are ambiguous.**
    - If ANY of these apply, respond with: {"isAmbiguous": true, "clarification": "What do you mean by 'risky'? For example: sprints with issues past due date, sprints with low completion rate, or sprints with many blocked issues?", "sql": null, "assumptions": []}
 2. **CRITICAL: Verify column names against the schema - NEVER use columns that don't exist:**
    - The sprints table has: sprint_id, team_id, sprint_name (NOT name), start_date, end_date, goal, created_at
@@ -399,7 +400,9 @@ INSTRUCTIONS:
    - Match author_id to users.user_id (for comment authors) - issue_comments.author_id = users.user_id
    - SELECT the user's full_name field (users.full_name) to display the full name - NOT user_id
    - Always use users.full_name, not users.name or users.user_id when displaying names
-   - Example: SELECT i.*, u.full_name AS assignee_name FROM issues i JOIN users u ON i.assignee_id = u.user_id
+   - **CRITICAL: If the query mentions only a first name (e.g., "Avery", "John") without a last name, you MUST ask for clarification because multiple users may share the same first name. The users.full_name column contains full names like "Avery Hernandez" or "Avery Smith", so first names alone are ambiguous.**
+   - **When filtering by user name, use: WHERE users.full_name ILIKE '%FullName%' (case-insensitive)**
+   - Example: SELECT i.*, u.full_name AS assignee_name FROM issues i JOIN users u ON i.assignee_id = u.user_id WHERE u.full_name ILIKE '%Avery Hernandez%'
 7. **IMPORTANT: If the query requires data from multiple tables, you MUST use JOINs**
    - Use INNER JOIN, LEFT JOIN, or appropriate JOIN type based on the relationship
    - Join on foreign key relationships shown in the schema and relationships section above
@@ -438,6 +441,8 @@ CRITICAL RULES:
 JOIN EXAMPLES:
 - Issues with team: SELECT i.*, t.team_key, t.team_name FROM issues i JOIN teams t ON i.team_id = t.team_id
 - Issues with assignee (SHOW FULL NAME): SELECT i.*, u.full_name AS assignee_name FROM issues i JOIN users u ON i.assignee_id = u.user_id
+- Filter by user full name: SELECT i.*, u.full_name FROM issues i JOIN users u ON i.assignee_id = u.user_id WHERE u.full_name ILIKE '%Avery Hernandez%'
+- **CRITICAL: If query mentions only first name (e.g., "Avery"), ask for clarification - multiple users may share the same first name**
 - Sprints with team: SELECT s.sprint_name, s.start_date, s.end_date, t.team_key, t.team_name FROM sprints s JOIN teams t ON s.team_id = t.team_id
 - Filter by team_key (using JOIN): SELECT * FROM issues i JOIN teams t ON i.team_id = t.team_id WHERE t.team_key = 'TEAM-001'
 - **CRITICAL: Filter by team using issue_key pattern (when team name/key is mentioned):**
@@ -525,6 +530,9 @@ CLARIFICATION EXAMPLES:
 - User asks "Show risky sprints" → This is AMBIGUOUS because "risky" is undefined. Respond with:
   {"isAmbiguous": true, "clarification": "What do you mean by 'risky' sprints? For example: sprints with issues past their due date, sprints with low completion rate, sprints with many blocked issues, or sprints that are behind schedule?", "sql": null, "assumptions": []}
 - User asks "Show healthy sprints" → This is AMBIGUOUS. Ask for clarification about what "healthy" means.
+- User asks "Show all issues in QA status for Avery's team" → This is AMBIGUOUS because "Avery" is only a first name and multiple users may have this first name. Respond with:
+  {"isAmbiguous": true, "clarification": "Which Avery are you referring to? There may be multiple users with the first name 'Avery'. Please provide the full name (e.g., 'Avery Hernandez' or 'Avery Smith') or specify additional context like their team or email.", "sql": null, "assumptions": []}
+- User asks "Show issues for Avery Hernandez's team" → This is clear, use full name to match users.full_name.
 - User asks "Show sprints" → This is clear, generate SQL to show all sprints.
 - User asks "Show sprints with issues past due date" → This is clear, generate SQL with appropriate JOINs and filters.
 
