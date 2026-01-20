@@ -10,6 +10,7 @@ interface Message {
   role: "user" | "assistant";
   content: string;
   isInitial?: boolean;
+  suggestions?: string[];
 }
 
 interface QueryData {
@@ -66,7 +67,8 @@ export default function SprintScopePage() {
       
       const assistantMessage: Message = { 
         role: "assistant", 
-        content: data.response || 'I apologize, but I encountered an error processing your request.'
+        content: data.response || 'I apologize, but I encountered an error processing your request.',
+        suggestions: data.suggestions || []
       };
       
       setMessages(prev => [...prev, assistantMessage]);

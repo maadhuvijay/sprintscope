@@ -8,6 +8,7 @@ interface Message {
   role: "user" | "assistant";
   content: string;
   isInitial?: boolean;
+  suggestions?: string[];
 }
 
 interface ChatConsoleProps {
@@ -77,7 +78,7 @@ export function ChatConsole({ messages, onSuggestionClick }: ChatConsoleProps) {
                 {isInitialState ? "Try asking something like:" : "If you'd like, I can:"}
               </p>
               <ul className="space-y-2">
-                {(isInitialState 
+                {((isInitialState 
                   ? [
                       "What issues are blocked in the current sprint?",
                       "How many stories were completed last sprint?",
@@ -85,12 +86,14 @@ export function ChatConsole({ messages, onSuggestionClick }: ChatConsoleProps) {
                       "Show bugs created in the last two weeks",
                       "What work is still in progress for Team ACCEL?"
                     ]
-                  : [
-                      "Break this down by team",
-                      "Compare with previous sprint",
-                      "Export this view"
-                    ]
-                ).map((suggestion, i) => (
+                  : message.suggestions && message.suggestions.length > 0
+                    ? message.suggestions
+                    : [
+                        "Break this down by team",
+                        "Compare with previous sprint",
+                        "Export this view"
+                      ]
+                ) as string[]).map((suggestion, i) => (
                   <li 
                     key={i} 
                     className="flex items-center gap-3 group cursor-pointer"

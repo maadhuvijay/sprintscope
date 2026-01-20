@@ -280,14 +280,26 @@ INSTRUCTIONS:
 2. Always include a LIMIT clause (default 50, max 500)
 3. Only use SELECT statements (read-only)
 4. Use proper table and column names from the schema
-5. If the question is ambiguous or unclear, respond with JSON: {"isAmbiguous": true, "clarification": "question text", "sql": null}
-6. Otherwise, respond with JSON: {"isAmbiguous": false, "sql": "SELECT ...", "clarification": null}
+5. **IMPORTANT: If the query requires data from multiple tables, you MUST use JOINs**
+   - Use INNER JOIN, LEFT JOIN, or appropriate JOIN type based on the relationship
+   - Join on foreign key relationships shown in the schema
+   - Example: If querying issues with team info: JOIN teams ON issues.team_id = teams.team_id
+   - Example: If querying issues with assignee info: JOIN users ON issues.assignee_id = users.user_id
+6. Use explicit table aliases for clarity (e.g., i for issues, t for teams, u for users)
+7. If the question is ambiguous or unclear, respond with JSON: {"isAmbiguous": true, "clarification": "question text", "sql": null}
+8. Otherwise, respond with JSON: {"isAmbiguous": false, "sql": "SELECT ...", "clarification": null}
 
 CRITICAL RULES:
 - Never use: INSERT, UPDATE, DELETE, DROP, ALTER, TRUNCATE, CREATE, GRANT, REVOKE
 - Always include LIMIT
-- Use explicit table names (e.g., issues.title not just title)
+- Use explicit table names with aliases (e.g., issues.title or i.title)
+- **ALWAYS use JOINs when data is needed from multiple tables - do not generate separate queries**
 - If multiple interpretations are possible, mark as ambiguous
+
+JOIN EXAMPLES:
+- Issues with team: SELECT i.*, t.name FROM issues i JOIN teams t ON i.team_id = t.team_id
+- Issues with assignee: SELECT i.*, u.name FROM issues i JOIN users u ON i.assignee_id = u.user_id
+- Issues with comments: SELECT i.*, ic.body FROM issues i JOIN issue_comments ic ON i.issue_id = ic.issue_id
 
 Respond with ONLY valid JSON, no other text.`;
 
@@ -532,8 +544,16 @@ INSTRUCTIONS:
 4. If no results, explain why and suggest what the user might be looking for
 5. Keep the explanation concise but informative
 6. Use natural language, not technical jargon
+7. **IMPORTANT: At the end, provide 3-5 relevant follow-up suggestions as a JSON array in this format:**
+   {"explanation": "your explanation text", "suggestions": ["suggestion 1", "suggestion 2", "suggestion 3"]}
+   
+   The suggestions should be:
+   - Relevant to the current query and results
+   - Actionable follow-up questions the user might want to ask
+   - Based on the data structure and what would make sense next
+   - Examples: "Show me more details about...", "Break this down by...", "Compare with...", "Filter by..."
 
-Respond with ONLY the explanation text, no JSON or code blocks.`;
+Respond with ONLY valid JSON in the format above, no other text.`;
 
   try {
     const response = await anthropic.messages.create({
@@ -550,7 +570,25 @@ Respond with ONLY the explanation text, no JSON or code blocks.`;
       (block) => block.type === 'text'
     ) as { type: 'text'; text: string } | undefined;
 
-    return textContent?.text || 'Unable to generate explanation.';
+    if (textContent) {
+      // Try to parse as JSON first
+      const jsonMatch = textContent.text.match(/\{[\s\S]*\}/);
+      if (jsonMatch) {
+        try {
+          const parsed = JSON.parse(jsonMatch[0]);
+          if (parsed.explanation && parsed.suggestions) {
+            // Return as JSON string to be parsed by caller
+            return JSON.stringify(parsed);
+          }
+        } catch (e) {
+          // Not JSON, continue
+        }
+      }
+      // Fallback: return plain text
+      return textContent.text;
+    }
+    
+    return 'Unable to generate explanation.';
   } catch (error: any) {
     console.error('Error explaining results:', error);
     return queryResults.error
