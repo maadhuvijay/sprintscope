@@ -11,9 +11,10 @@ interface ModelTraceProps {
   rowCount?: number;
   runtimeMs?: number;
   error?: string;
+  assumptions?: string[];
 }
 
-export function ModelTrace({ sql, results = [], rowCount = 0, runtimeMs = 0, error }: ModelTraceProps) {
+export function ModelTrace({ sql, results = [], rowCount = 0, runtimeMs = 0, error, assumptions = [] }: ModelTraceProps) {
   const [activeTab, setActiveTab] = useState<"SQL" | "Results">("SQL");
   const [assumptionsOpen, setAssumptionsOpen] = useState(false);
   const [executionOpen, setExecutionOpen] = useState(true);
@@ -302,7 +303,7 @@ export function ModelTrace({ sql, results = [], rowCount = 0, runtimeMs = 0, err
                ) : results && results.length > 0 ? (
                  <>
                    <div className="flex-1 overflow-auto no-scrollbar">
-                     <div className="overflow-x-auto">
+                     <div className="overflow-x-auto themed-scrollbar">
                        <table className="w-full text-left border-collapse min-w-full">
                          <thead className="sticky top-0 bg-[#0B0F2A] z-10">
                            <tr className="border-b border-white/10">
@@ -355,42 +356,41 @@ export function ModelTrace({ sql, results = [], rowCount = 0, runtimeMs = 0, err
 
         {/* Accordion Sections */}
         <div className="space-y-2">
-          {/* Assumptions */}
-          <div className="glass-card rounded-xl overflow-hidden">
-            <button 
-              onClick={() => setAssumptionsOpen(!assumptionsOpen)}
-              className="w-full px-4 py-3 flex items-center justify-between text-white/60 hover:text-white transition-colors"
-            >
-              <div className="flex items-center gap-2">
-                <Hash className="w-4 h-4 text-neon-purple" />
-                <span className="text-xs font-bold uppercase tracking-widest">Assumptions</span>
-              </div>
-              <ChevronDown className={cn("w-4 h-4 transition-transform duration-300", assumptionsOpen ? "rotate-180" : "")} />
-            </button>
-            <AnimatePresence>
-              {assumptionsOpen && (
-                <motion.div 
-                  initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: "auto", opacity: 1 }}
-                  exit={{ height: 0, opacity: 0 }}
-                  className="overflow-hidden"
-                >
-                  <div className="px-4 pb-4 space-y-2">
-                    {[
-                      "Filtering for issues associated with active sprints only",
-                      "Excluding sub-tasks from the issue count",
-                      "Using 'story_points' as the primary metric for capacity"
-                    ].map((item, i) => (
-                      <div key={i} className="flex gap-2 items-start">
-                        <div className="w-1 h-1 rounded-full bg-neon-purple mt-1.5 shrink-0" />
-                        <span className="text-[11px] text-gray-400 leading-relaxed">{item}</span>
-                      </div>
-                    ))}
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
+          {/* Assumptions - Only show if non-empty */}
+          {assumptions && assumptions.length > 0 && (
+            <div className="glass-card rounded-xl overflow-hidden">
+              <button 
+                onClick={() => setAssumptionsOpen(!assumptionsOpen)}
+                className="w-full px-4 py-3 flex items-center justify-between text-white/60 hover:text-white transition-colors"
+              >
+                <div className="flex items-center gap-2">
+                  <Hash className="w-4 h-4 text-neon-purple" />
+                  <span className="text-xs font-bold uppercase tracking-widest">Assumptions</span>
+                  <span className="text-[10px] text-white/30 ml-2">({assumptions.length})</span>
+                </div>
+                <ChevronDown className={cn("w-4 h-4 transition-transform duration-300", assumptionsOpen ? "rotate-180" : "")} />
+              </button>
+              <AnimatePresence>
+                {assumptionsOpen && (
+                  <motion.div 
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    className="overflow-hidden"
+                  >
+                    <div className="px-4 pb-4 space-y-2">
+                      {assumptions.map((assumption, i) => (
+                        <div key={i} className="flex gap-2 items-start">
+                          <div className="w-1 h-1 rounded-full bg-neon-purple mt-1.5 shrink-0" />
+                          <span className="text-[11px] text-gray-400 leading-relaxed">{assumption}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+          )}
 
           {/* Execution */}
           <div className="glass-card rounded-xl overflow-hidden">

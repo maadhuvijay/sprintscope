@@ -81,3 +81,32 @@ body::before {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+/* Custom themed scrollbar for results table */
+.themed-scrollbar::-webkit-scrollbar {
+  height: 8px;
+}
+
+.themed-scrollbar::-webkit-scrollbar-track {
+  background: rgba(17, 24, 39, 0.3);
+  border-radius: 4px;
+  backdrop-filter: blur(8px);
+}
+
+.themed-scrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(90deg, rgba(139, 92, 246, 0.6), rgba(34, 211, 238, 0.6));
+  border-radius: 4px;
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  box-shadow: 0 0 8px rgba(139, 92, 246, 0.4);
+}
+
+.themed-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(90deg, rgba(139, 92, 246, 0.8), rgba(34, 211, 238, 0.8));
+  box-shadow: 0 0 12px rgba(139, 92, 246, 0.6);
+}
+
+/* Firefox scrollbar */
+.themed-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(139, 92, 246, 0.6) rgba(17, 24, 39, 0.3);
+}

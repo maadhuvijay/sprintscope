@@ -19,6 +19,7 @@ interface QueryData {
   rowCount: number;
   runtimeMs: number;
   error?: string;
+  assumptions?: string[];
 }
 
 export default function SprintScopePage() {
@@ -81,6 +82,7 @@ export default function SprintScopePage() {
           rowCount: data.rowCount || 0,
           runtimeMs: data.runtimeMs || 0,
           error: data.error || undefined,
+          assumptions: data.assumptions || [],
         });
       }
     } catch (error: any) {
@@ -125,7 +127,14 @@ export default function SprintScopePage() {
 
           {/* Right Column: Model Trace */}
           <div className="w-[38%] flex flex-col">
-            <ModelTrace sql={queryData?.sql} results={queryData?.results} rowCount={queryData?.rowCount} runtimeMs={queryData?.runtimeMs} error={queryData?.error} />
+            <ModelTrace 
+              sql={queryData?.sql} 
+              results={queryData?.results} 
+              rowCount={queryData?.rowCount} 
+              runtimeMs={queryData?.runtimeMs} 
+              error={queryData?.error}
+              assumptions={queryData?.assumptions}
+            />
           </div>
         </main>
 

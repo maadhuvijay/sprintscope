@@ -15,6 +15,7 @@ import { validateSQL } from '@/lib/llm';
 
 /**
  * Generate default suggestions based on query, results, and schema
+ * Returns exactly 3 contextually relevant suggestions
  */
 function generateDefaultSuggestions(query: string, execResult: any, schema: any): string[] {
   const suggestions: string[] = [];
@@ -31,67 +32,101 @@ function generateDefaultSuggestions(query: string, execResult: any, schema: any)
   const assigneeColumn = allColumns.find((c: any) => c.column.toLowerCase().includes('assignee'));
   const priorityColumn = allColumns.find((c: any) => c.column.toLowerCase().includes('priority'));
   const createdAtColumn = allColumns.find((c: any) => c.column.toLowerCase().includes('created_at') || c.column.toLowerCase().includes('created'));
+  const issueTypeColumn = allColumns.find((c: any) => c.column.toLowerCase().includes('issue_type') || c.column.toLowerCase().includes('type'));
   const sprintColumn = allColumns.find((c: any) => c.column.toLowerCase().includes('sprint'));
   
-  // Context-aware suggestions using actual column names
-  if (lowerQuery.includes('issue') || lowerQuery.includes('task')) {
+  // Context-aware suggestions based on what was queried
+  const isBugQuery = lowerQuery.includes('bug');
+  const isAssigneeQuery = lowerQuery.includes('assignee') || lowerQuery.includes('who is') || lowerQuery.includes('working on');
+  const isTeamQuery = lowerQuery.includes('team');
+  const isSprintQuery = lowerQuery.includes('sprint');
+  const isGroupedQuery = lowerQuery.includes('group') || lowerQuery.includes('break down') || lowerQuery.includes('by');
+  
+  // Generate contextually relevant suggestions
+  if (isBugQuery) {
+    // If query was about bugs, suggest bug-related follow-ups
     if (statusColumn) {
-      suggestions.push(`Filter by ${statusColumn.column}`);
-    }
-    if (teamColumn) {
-      suggestions.push(`Break this down by ${teamColumn.column}`);
+      suggestions.push(`Show all bugs grouped by ${statusColumn.column}`);
     }
     if (priorityColumn) {
+      suggestions.push(`Show bugs with ${priorityColumn.column} = 'p0' or ${priorityColumn.column} = 'p1' from the last month`);
+    }
+    if (assigneeColumn && statusColumn) {
+      suggestions.push(`Show bugs where ${assigneeColumn.column} is not null and ${statusColumn.column} = 'in_progress'`);
+    }
+  } else if (isAssigneeQuery) {
+    // If query was about assignees, suggest assignee-related follow-ups
+    if (statusColumn) {
+      suggestions.push(`Show all issues grouped by ${statusColumn.column}`);
+    }
+    if (priorityColumn) {
+      suggestions.push(`Show issues with ${priorityColumn.column} = 'p0' or ${priorityColumn.column} = 'p1'`);
+    }
+    if (createdAtColumn) {
+      suggestions.push(`Show issues created in the last two weeks`);
+    }
+  } else if (isGroupedQuery) {
+    // If query was grouped, suggest filtering or further breakdown
+    if (statusColumn && !lowerQuery.includes('status')) {
+      suggestions.push(`Filter by ${statusColumn.column}`);
+    }
+    if (priorityColumn && !lowerQuery.includes('priority')) {
       suggestions.push(`Group by ${priorityColumn.column}`);
     }
-    if (assigneeColumn) {
-      suggestions.push(`Show issues by ${assigneeColumn.column}`);
+    if (createdAtColumn) {
+      suggestions.push(`Show items from the last 30 days`);
     }
-  }
-  
-  if (lowerQuery.includes('sprint')) {
-    if (statusColumn) {
-      suggestions.push(`Filter sprints by ${statusColumn.column}`);
-    }
-    if (teamColumn) {
-      suggestions.push(`Break down by ${teamColumn.column}`);
-    }
-    if (assigneeColumn) {
-      suggestions.push(`Show work by ${assigneeColumn.column}`);
-    }
-  }
-  
-  if (lowerQuery.includes('team')) {
+  } else if (isTeamQuery) {
+    // If query was about teams
     if (statusColumn) {
       suggestions.push(`Show team performance by ${statusColumn.column}`);
     }
     if (sprintColumn) {
       suggestions.push(`Show team sprints`);
     }
-  }
-  
-  if (createdAtColumn) {
-    suggestions.push(`Filter by ${createdAtColumn.column} (recent items)`);
-  }
-  
-  if (execResult.rowCount > 0) {
-    suggestions.push('Export this data');
-    suggestions.push('Show more details');
-  }
-  
-  // Default fallbacks using actual columns
-  if (suggestions.length === 0) {
+    if (assigneeColumn) {
+      suggestions.push(`Show team members and their issues`);
+    }
+  } else if (isSprintQuery) {
+    // If query was about sprints
+    if (statusColumn) {
+      suggestions.push(`Filter sprints by ${statusColumn.column}`);
+    }
+    if (assigneeColumn) {
+      suggestions.push(`Break down by ${assigneeColumn.column}`);
+    }
+    if (priorityColumn) {
+      suggestions.push(`Show sprint issues by ${priorityColumn.column}`);
+    }
+  } else {
+    // Generic suggestions based on available columns
     if (statusColumn) {
       suggestions.push(`Filter by ${statusColumn.column}`);
     }
-    if (teamColumn) {
-      suggestions.push(`Group by ${teamColumn.column}`);
+    if (issueTypeColumn) {
+      suggestions.push(`Group by ${issueTypeColumn.column}`);
     }
-    suggestions.push('Show related data');
-    suggestions.push('Export this view');
+    if (createdAtColumn) {
+      suggestions.push(`Show items created in the last two weeks`);
+    }
   }
   
-  return suggestions.slice(0, 5); // Limit to 5 suggestions
+  // Ensure we have exactly 3 suggestions
+  // If we have more, take the first 3
+  // If we have fewer, add generic ones
+  while (suggestions.length < 3) {
+    if (statusColumn && !suggestions.some(s => s.includes(statusColumn.column))) {
+      suggestions.push(`Filter by ${statusColumn.column}`);
+    } else if (priorityColumn && !suggestions.some(s => s.includes(priorityColumn.column))) {
+      suggestions.push(`Group by ${priorityColumn.column}`);
+    } else if (createdAtColumn && !suggestions.some(s => s.includes('created'))) {
+      suggestions.push(`Show items from the last 30 days`);
+    } else {
+      suggestions.push('Show more details');
+    }
+  }
+  
+  return suggestions.slice(0, 3); // Return exactly 3 suggestions
 }
 
 export async function POST(request: NextRequest) {
@@ -129,12 +164,29 @@ export async function POST(request: NextRequest) {
         clarification: genResult.clarification,
         sql: null,
         suggestions: clarificationSuggestions,
+        assumptions: genResult.assumptions || [],
         toolCalls: ['get_schema', 'generate_sql'],
       });
     }
 
     let generatedSql = genResult.sql;
     let usedRepair = false;
+    let allAssumptions: string[] = [...(genResult.assumptions || [])];
+    
+    // Add assumption about LIMIT if it was automatically applied
+    if (generatedSql && !generatedSql.match(/\bLIMIT\s+\d+/i)) {
+      allAssumptions.push('Applied default result limit of 50 rows');
+    } else if (generatedSql) {
+      const limitMatch = generatedSql.match(/\bLIMIT\s+(\d+)/i);
+      if (limitMatch) {
+        const limitValue = parseInt(limitMatch[1], 10);
+        if (limitValue <= 50) {
+          allAssumptions.push(`Applied result limit of ${limitValue} rows`);
+        } else if (limitValue > 500) {
+          allAssumptions.push(`Capped result limit to 500 rows (requested ${limitValue})`);
+        }
+      }
+    }
 
     // Step 4: Execute query
     console.log('Step 4: Executing query...');
@@ -143,25 +195,29 @@ export async function POST(request: NextRequest) {
     // Step 5: If error → repair_sql → execute_query()
     if (execResult.error) {
       console.log('Step 5: Query failed, attempting repair...');
-      const repairedSql = await repair_sql(generatedSql, execResult.error, schema);
+      const repairResult = await repair_sql(generatedSql, execResult.error, schema);
+      
+      // Add repair assumptions
+      allAssumptions.push(...(repairResult.assumptions || []));
       
       // Retry with repaired SQL
       console.log('Step 5: Retrying with repaired SQL...');
-      execResult = await execute_query(repairedSql);
+      execResult = await execute_query(repairResult.repairedSql);
       usedRepair = true;
       
       // If still error, return error response
       if (execResult.error) {
         return NextResponse.json({
           response: `I encountered an error executing the query: ${execResult.error}. Please try rephrasing your question.`,
-          sql: repairedSql,
+          sql: repairResult.repairedSql,
           error: execResult.error,
+          assumptions: allAssumptions,
           toolCalls: ['get_schema', 'generate_sql', 'execute_query', 'repair_sql', 'execute_query'],
         });
       }
       
       // Update to use repaired SQL
-      generatedSql = repairedSql;
+      generatedSql = repairResult.repairedSql;
     }
 
     // Step 6: Explain results
@@ -173,11 +229,17 @@ export async function POST(request: NextRequest) {
     let explanation = explanationResult;
     let suggestions: string[] = [];
     
-    try {
+      try {
       const parsed = JSON.parse(explanationResult);
       if (parsed.explanation && Array.isArray(parsed.suggestions)) {
         explanation = parsed.explanation;
-        suggestions = parsed.suggestions;
+        // Ensure exactly 3 suggestions
+        suggestions = parsed.suggestions.slice(0, 3);
+        // If fewer than 3, fill with defaults
+        if (suggestions.length < 3) {
+          const defaults = generateDefaultSuggestions(message, execResult, schema);
+          suggestions = [...suggestions, ...defaults].slice(0, 3);
+        }
       } else {
         // Has explanation but no suggestions, generate defaults
         explanation = parsed.explanation || explanationResult;
@@ -203,6 +265,7 @@ export async function POST(request: NextRequest) {
       runtimeMs: execResult.runtimeMs,
       error: execResult.error,
       suggestions: suggestions,
+      assumptions: allAssumptions,
       toolCalls: toolCalls,
     });
   } catch (error: any) {

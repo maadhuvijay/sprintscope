@@ -339,7 +339,7 @@ function buildSchemaDescription(schema: SchemaInfo): string {
 export async function generate_sql(
   naturalLanguageQuery: string,
   schemaContext: SchemaInfo
-): Promise<{ sql: string | null; clarification: string | null; isAmbiguous: boolean }> {
+): Promise<{ sql: string | null; clarification: string | null; isAmbiguous: boolean; assumptions: string[] }> {
   const Anthropic = (await import('@anthropic-ai/sdk')).default;
   const anthropic = new Anthropic({
     apiKey: process.env.ANTHROPIC_API_KEY,
@@ -360,11 +360,22 @@ ${schemaDescription}
 USER QUESTION: ${naturalLanguageQuery}
 
 INSTRUCTIONS:
-1. Generate a valid SQL SELECT query that answers the user's question
-2. Always include a LIMIT clause (default 50, max 500)
-3. Only use SELECT statements (read-only)
-4. Use proper table and column names from the schema
-5. **CRITICAL: Understanding relationships:**
+1. **CRITICAL: Check for ambiguous queries FIRST - If the question contains undefined metrics or unclear terms, you MUST ask for clarification:**
+   - Metric definitions without thresholds: "risky", "healthy", "stuck", "slow", "high velocity", "at risk", "overdue", "behind schedule"
+   - Time references without context: "recent", "last sprint", "this sprint", "last month" (if no team/sprint context)
+   - Missing scope: team, sprint, status when multiple interpretations exist
+   - If ANY of these apply, respond with: {"isAmbiguous": true, "clarification": "What do you mean by 'risky'? For example: sprints with issues past due date, sprints with low completion rate, or sprints with many blocked issues?", "sql": null, "assumptions": []}
+2. **CRITICAL: Verify column names against the schema - NEVER use columns that don't exist:**
+   - The sprints table has: sprint_id, team_id, sprint_name (NOT name), start_date, end_date, goal, created_at
+   - The issues table has: issue_id, issue_key, team_id, assignee_id, reporter_id, title, description, issue_type, status, priority, story_points, sprint_id, created_at, updated_at
+   - The users table has: user_id, team_id, full_name (NOT name), email, created_at
+   - The teams table has: team_id, name, created_at
+   - ALWAYS check the schema JSON above to verify column names before using them
+3. Generate a valid SQL SELECT query that answers the user's question
+4. Always include a LIMIT clause (default 50, max 500)
+5. Only use SELECT statements (read-only)
+6. Use proper table and column names from the schema
+7. **CRITICAL: Understanding relationships:**
    - issues.assignee_id = users.user_id (assignee relationship)
    - issues.reporter_id = users.user_id (reporter relationship)
    - issues.team_id = teams.team_id (team relationship)
@@ -391,22 +402,41 @@ INSTRUCTIONS:
      * issue_comments.author_id = users.user_id (to get comment author name)
    - Example: If querying issues with team info: JOIN teams ON issues.team_id = teams.team_id
    - Example: If querying issues with assignee info: JOIN users ON issues.assignee_id = users.user_id
-8. Use explicit table aliases for clarity (e.g., i for issues, t for teams, u for users, u2 for second user join)
+8. Use explicit table aliases for clarity (e.g., i for issues, t for teams, u for users, s for sprints, u2 for second user join)
 9. When displaying user names, use aliases like "assignee_name", "reporter_name", "author_name" for clarity
-10. If the question is ambiguous or unclear, respond with JSON: {"isAmbiguous": true, "clarification": "question text", "sql": null}
-11. Otherwise, respond with JSON: {"isAmbiguous": false, "sql": "SELECT ...", "clarification": null}
+10. **CRITICAL: For sprints table, use sprint_name (NOT name) - the column is sprint_name, not name**
+11. If the question is ambiguous or unclear (see instruction #1), respond with JSON: {"isAmbiguous": true, "clarification": "question text", "sql": null, "assumptions": []}
+12. Otherwise, respond with JSON: {"isAmbiguous": false, "sql": "SELECT ...", "clarification": null, "assumptions": ["assumption 1", "assumption 2"]}
 
 CRITICAL RULES:
+- **ASK FOR CLARIFICATION if the query contains undefined metrics like "risky", "healthy", "stuck", "slow", "at risk", "overdue", "behind schedule" without clear definition**
+- **VERIFY ALL COLUMN NAMES against the schema JSON - sprints table uses sprint_name (NOT name), users table uses full_name (NOT name)**
 - Never use: INSERT, UPDATE, DELETE, DROP, ALTER, TRUNCATE, CREATE, GRANT, REVOKE
 - Always include LIMIT
-- Use explicit table names with aliases (e.g., issues.title or i.title)
+- Use explicit table names with aliases (e.g., issues.title or i.title, sprints.sprint_name or s.sprint_name)
 - **ALWAYS use JOINs when data is needed from multiple tables - do not generate separate queries**
-- **ALWAYS join users table when assignee/reporter/author information is needed and display user.name**
+- **ALWAYS join users table when assignee/reporter/author information is needed and display users.full_name (NOT user_id)**
+- **When filtering by issue_type, status, priority, use case-insensitive matching: LOWER(column) = 'value' OR column ILIKE '%value%'**
+- **When grouping/breaking down by assignee, always JOIN users table and GROUP BY users.full_name, not assignee_id**
+- **For "break down by assignee" queries, use: SELECT u.full_name AS assignee_name, COUNT(*) FROM issues i JOIN users u ON i.assignee_id = u.user_id GROUP BY u.full_name**
 - If multiple interpretations are possible, mark as ambiguous
 
 JOIN EXAMPLES:
 - Issues with team: SELECT i.*, t.name AS team_name FROM issues i JOIN teams t ON i.team_id = t.team_id
 - Issues with assignee (SHOW FULL NAME): SELECT i.*, u.full_name AS assignee_name FROM issues i JOIN users u ON i.assignee_id = u.user_id
+- Sprints with team: SELECT s.sprint_name, s.start_date, s.end_date, t.name AS team_name FROM sprints s JOIN teams t ON s.team_id = t.team_id
+- **CRITICAL: Sprints table column is sprint_name (NOT name): SELECT s.sprint_name, s.start_date, s.end_date FROM sprints s**
+- Break down bugs by assignee (WITH NAME AND CASE-INSENSITIVE):
+  SELECT 
+    u.full_name AS assignee_name,
+    COUNT(*) AS bug_count,
+    STRING_AGG(i.issue_key, ', ') AS issue_keys
+  FROM issues i
+  JOIN users u ON i.assignee_id = u.user_id
+  WHERE (LOWER(i.issue_type) = 'bug' OR i.issue_type ILIKE '%bug%' OR i.issue_type ILIKE '%defect%')
+    AND i.assignee_id IS NOT NULL
+  GROUP BY u.full_name
+  ORDER BY bug_count DESC
 - Issues with assignee and their other work: SELECT i1.issue_key AS original_issue, i1.title AS original_title,
     u.full_name AS assignee_name,
     i2.issue_key AS other_issue, i2.title AS other_title, i2.status AS other_status
@@ -416,6 +446,14 @@ JOIN EXAMPLES:
   WHERE i1.issue_key = 'WEB-0017' AND i2.issue_key != 'WEB-0017'
 - Issues with reporter: SELECT i.*, u.full_name AS reporter_name FROM issues i JOIN users u ON i.reporter_id = u.user_id
 - Comments with author: SELECT ic.*, u.full_name AS author_name FROM issue_comments ic JOIN users u ON ic.author_id = u.user_id
+
+IMPORTANT FILTERING NOTES:
+- When filtering by issue_type, status, priority, etc., ALWAYS use case-insensitive matching:
+  * WHERE LOWER(issue_type) = 'bug' OR issue_type ILIKE '%bug%' OR issue_type ILIKE '%defect%'
+  * This handles variations like 'Bug', 'bug', 'BUG', 'defect', 'Defect', etc.
+- Always check for NULL assignees when grouping by assignee:
+  * Use WHERE assignee_id IS NOT NULL if you only want assigned issues
+  * Or use LEFT JOIN and handle NULLs if you want to include unassigned issues
 
 SPECIAL CASE - "Who is assigned to [ISSUE] and what else are they working on?":
 When the question asks about who is assigned and what else they're working on, you need to:
@@ -439,6 +477,37 @@ When the question asks about who is assigned and what else they're working on, y
    WHERE i1.issue_key = 'WEB-0017'
    ORDER BY i2.issue_key
    LIMIT 50
+
+SPECIAL CASE - "Break down by assignee" or "Group by assignee":
+When the question asks to break down or group by assignee, you MUST:
+1. JOIN users table to get assignee names: JOIN users ON issues.assignee_id = users.user_id
+2. Use GROUP BY users.full_name (NOT assignee_id) to group by assignee name
+3. SELECT users.full_name AS assignee_name (or similar) to show the name
+4. Include aggregations like COUNT(*), SUM(story_points), etc.
+5. **CRITICAL: For filtering by issue_type, ALWAYS use case-insensitive matching to handle variations:**
+   - Use: WHERE LOWER(i.issue_type) = 'bug' OR i.issue_type ILIKE '%bug%' OR i.issue_type ILIKE '%defect%'
+   - This handles 'Bug', 'bug', 'BUG', 'defect', 'Defect', etc.
+6. **CRITICAL: Filter out NULL assignees if needed: WHERE i.assignee_id IS NOT NULL**
+7. Example structure for "Break down bugs by assignee":
+   SELECT 
+     u.full_name AS assignee_name,
+     COUNT(*) AS bug_count,
+     SUM(i.story_points) AS total_story_points,
+     STRING_AGG(i.issue_key, ', ' ORDER BY i.issue_key) AS issue_keys
+   FROM issues i
+   JOIN users u ON i.assignee_id = u.user_id
+   WHERE (LOWER(i.issue_type) = 'bug' OR i.issue_type ILIKE '%bug%' OR i.issue_type ILIKE '%defect%')
+     AND i.assignee_id IS NOT NULL
+   GROUP BY u.full_name
+   ORDER BY bug_count DESC
+   LIMIT 50
+
+CLARIFICATION EXAMPLES:
+- User asks "Show risky sprints" → This is AMBIGUOUS because "risky" is undefined. Respond with:
+  {"isAmbiguous": true, "clarification": "What do you mean by 'risky' sprints? For example: sprints with issues past their due date, sprints with low completion rate, sprints with many blocked issues, or sprints that are behind schedule?", "sql": null, "assumptions": []}
+- User asks "Show healthy sprints" → This is AMBIGUOUS. Ask for clarification about what "healthy" means.
+- User asks "Show sprints" → This is clear, generate SQL to show all sprints.
+- User asks "Show sprints with issues past due date" → This is clear, generate SQL with appropriate JOINs and filters.
 
 Respond with ONLY valid JSON, no other text.`;
 
@@ -466,6 +535,7 @@ Respond with ONLY valid JSON, no other text.`;
             sql: result.sql || null,
             clarification: result.clarification || null,
             isAmbiguous: result.isAmbiguous || false,
+            assumptions: Array.isArray(result.assumptions) ? result.assumptions : [],
           };
         } catch (e) {
           // JSON parse failed, continue to fallback
@@ -479,6 +549,7 @@ Respond with ONLY valid JSON, no other text.`;
           sql: sqlMatch[0],
           clarification: null,
           isAmbiguous: false,
+          assumptions: ['Generated SQL from natural language query', 'Applied default LIMIT clause'],
         };
       }
     }
@@ -487,6 +558,7 @@ Respond with ONLY valid JSON, no other text.`;
       sql: null,
       clarification: 'Could not generate SQL from the query. Please rephrase your question.',
       isAmbiguous: true,
+      assumptions: [],
     };
   } catch (error: any) {
     console.error('Error generating SQL:', error);
@@ -494,6 +566,7 @@ Respond with ONLY valid JSON, no other text.`;
       sql: null,
       clarification: 'Error generating SQL. Please try again.',
       isAmbiguous: true,
+      assumptions: [],
     };
   }
 }
@@ -609,43 +682,96 @@ export async function execute_query(sql: string): Promise<QueryResult> {
 
 /**
  * repair_sql - Fixes SQL using DB error + schema
- * Note: This should be handled by the LLM, but we provide a basic implementation
+ * Uses LLM to repair SQL and return assumptions about the fix
  * @param failedSql - The SQL that failed
  * @param errorMessage - The database error message
  * @param schemaContext - Schema information for context
- * @returns Repaired SQL that should work correctly
+ * @returns Object with repaired SQL and assumptions about the fix
  */
 export async function repair_sql(
   failedSql: string,
   errorMessage: string,
   schemaContext: SchemaInfo
-): Promise<string> {
-  // Basic repair: This is typically handled by the LLM
-  // But we can provide some basic fixes here
-  
-  let repaired = failedSql;
-  
-  // Fix common issues
-  if (errorMessage.includes('column') && errorMessage.includes('does not exist')) {
-    // Try to find similar column names in schema
-    const columnMatch = errorMessage.match(/column "(\w+)" does not exist/i);
-    if (columnMatch) {
-      const wrongColumn = columnMatch[1];
-      // Search schema for similar column names
-      for (const table of schemaContext.tables) {
-        for (const col of table.columns) {
-          if (col.name.toLowerCase() === wrongColumn.toLowerCase()) {
-            // Column exists but might be in wrong table or case issue
-            // Return original SQL - LLM should handle this
-            return failedSql;
-          }
+): Promise<{ repairedSql: string; assumptions: string[] }> {
+  const Anthropic = (await import('@anthropic-ai/sdk')).default;
+  const anthropic = new Anthropic({
+    apiKey: process.env.ANTHROPIC_API_KEY,
+  });
+
+  const schemaText = JSON.stringify(schemaContext, null, 2);
+
+  const prompt = `You are a SQL repair assistant. Given a failed SQL query, error message, and database schema, repair the SQL and document assumptions about the fix.
+
+DATABASE SCHEMA:
+${schemaText}
+
+FAILED SQL:
+${failedSql}
+
+ERROR MESSAGE:
+${errorMessage}
+
+INSTRUCTIONS:
+1. Analyze the error and repair the SQL query
+2. Document assumptions about what was fixed
+3. Return JSON: {"repairedSql": "SELECT ...", "assumptions": ["assumption 1", "assumption 2"]}
+
+ASSUMPTIONS should include:
+- Column name corrections (e.g., "Corrected column name from 'name' to 'full_name'")
+- Table name corrections
+- Join condition fixes
+- Data type adjustments
+- Case sensitivity fixes
+
+DO NOT include:
+- SQL syntax explanations
+- Generic error descriptions
+- Performance notes
+
+Respond with ONLY valid JSON, no other text.`;
+
+  try {
+    const response = await anthropic.messages.create({
+      model: 'claude-sonnet-4-5-20250929',
+      max_tokens: 1024,
+      messages: [{
+        role: 'user',
+        content: prompt,
+      }],
+      temperature: 0.1,
+    });
+
+    const textContent = response.content.find(
+      (block) => block.type === 'text'
+    ) as { type: 'text'; text: string } | undefined;
+
+    if (textContent) {
+      const jsonMatch = textContent.text.match(/\{[\s\S]*\}/);
+      if (jsonMatch) {
+        try {
+          const result = JSON.parse(jsonMatch[0]);
+          return {
+            repairedSql: result.repairedSql || failedSql,
+            assumptions: Array.isArray(result.assumptions) ? result.assumptions : [],
+          };
+        } catch (e) {
+          // JSON parse failed
         }
       }
     }
+
+    // Fallback: return original SQL with basic assumption
+    return {
+      repairedSql: failedSql,
+      assumptions: ['Attempted to repair SQL based on error message'],
+    };
+  } catch (error: any) {
+    console.error('Error repairing SQL:', error);
+    return {
+      repairedSql: failedSql,
+      assumptions: ['SQL repair attempted but failed'],
+    };
   }
-  
-  // If no basic fix found, return original (LLM will handle it)
-  return failedSql;
 }
 
 /**
@@ -696,19 +822,20 @@ INSTRUCTIONS:
 5. Keep the explanation concise but informative
 6. Use natural language, not technical jargon
 7. **CRITICAL: When creating suggestions, you MUST use the actual column names from the schema above**
-8. **IMPORTANT: At the end, provide 3-5 relevant follow-up suggestions as a JSON array in this format:**
+8. **IMPORTANT: At the end, provide EXACTLY 3 relevant follow-up suggestions as a JSON array in this format:**
    {"explanation": "your explanation text", "suggestions": ["suggestion 1", "suggestion 2", "suggestion 3"]}
    
-   The suggestions should be:
-   - Relevant to the current query and results
-   - Actionable follow-up questions the user might want to ask
+   The suggestions MUST be:
+   - **EXACTLY 3 suggestions** (not more, not less)
+   - **Highly relevant to the current query and results** - based on what was just queried
+   - **Contextually appropriate** - if the query was about bugs, suggest bug-related follow-ups
+   - **Actionable follow-up questions** the user might want to ask based on the current results
    - **Use actual column names from the schema** (e.g., if schema has "status", "priority", "team_id", use those exact names)
-   - Based on the data structure and what would make sense next
-   - Examples using real columns:
-     * If schema has "status" column: "Filter by status" or "Show issues with status = 'done'"
-     * If schema has "team_id": "Break this down by team" or "Show results for team_id = ..."
-     * If schema has "created_at": "Show items created in the last week"
-     * If schema has "assignee_id": "Group by assignee" or "Show issues assigned to..."
+   - **Build on the current query** - if they asked about bugs by assignee, suggest filtering those bugs further
+   - Examples of contextually relevant suggestions:
+     * If query was about bugs: "Show all bugs grouped by status", "Show bugs with priority = 'p0' or priority = 'p1' from the last month", "Show bugs where assignee_id is not null and status = 'in_progress'"
+     * If query was about issues by team: "Break this down by sprint", "Show issues created in the last two weeks", "Filter by priority"
+     * If query was about assignees: "Show all issues for this assignee", "Compare assignee workload", "Show assignee's completed issues"
    - Use the exact column names from the schema, not generic terms
 
 Respond with ONLY valid JSON in the format above, no other text.`;
