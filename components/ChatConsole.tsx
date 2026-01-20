@@ -144,11 +144,97 @@ export function ChatConsole({ messages, onSuggestionClick, isLoading }: ChatCons
 }
 
 function AssistantText({ content }: { content: string }) {
-  // Highlight keywords in content
-  const parts = content.split(/(\*\*.*?\*\*)/g);
+  // Remove "If you'd like" section as it's handled separately
+  const mainContent = content.split(/If you'd like, I can:/i)[0].trim();
+  
+  // Split content into paragraphs (double newlines)
+  const paragraphs = mainContent.split(/\n\n+/).filter(p => p.trim());
+  
+  // If no double newlines, try to split by sentence boundaries for long paragraphs
+  if (paragraphs.length === 1 && paragraphs[0].length > 200) {
+    // Split long paragraph into sentences, but keep related sentences together
+    const sentences = paragraphs[0].split(/(?<=[.!?])\s+(?=[A-Z])/);
+    const chunks: string[] = [];
+    let currentChunk = '';
+    
+    sentences.forEach((sentence, idx) => {
+      currentChunk += (currentChunk ? ' ' : '') + sentence;
+      // Break into chunks of 2-3 sentences or at natural breaks
+      if (idx % 2 === 1 || sentence.endsWith('.')) {
+        chunks.push(currentChunk);
+        currentChunk = '';
+      }
+    });
+    
+    if (currentChunk) chunks.push(currentChunk);
+    
+    return (
+      <div className="space-y-3">
+        {chunks.map((chunk, idx) => (
+          <p key={idx} className="leading-relaxed">
+            {formatInlineText(chunk)}
+          </p>
+        ))}
+      </div>
+    );
+  }
+  
   return (
-    <p>
+    <div className="space-y-3">
+      {paragraphs.map((paragraph, pIdx) => {
+        const trimmed = paragraph.trim();
+        
+        // Split by single newlines for line breaks within paragraphs
+        const lines = trimmed.split(/\n/).filter(l => l.trim());
+        
+        return (
+          <div key={pIdx} className="space-y-2">
+            {lines.map((line, lIdx) => {
+              // Check if line contains bullet points or numbered lists
+              if (line.match(/^[-•*]\s/) || line.match(/^\d+\.\s/)) {
+                return (
+                  <div key={lIdx} className="flex items-start gap-2 ml-2">
+                    <span className="text-neon-cyan mt-1.5">•</span>
+                    <span className="leading-relaxed">{formatInlineText(line.replace(/^[-•*]\s|\d+\.\s/, ''))}</span>
+                  </div>
+                );
+              }
+              
+              // Regular paragraph line
+              return (
+                <p key={lIdx} className="leading-relaxed">
+                  {formatInlineText(line)}
+                </p>
+              );
+            })}
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+function formatInlineText(text: string) {
+  // Split by markdown bold (**text**), issue keys, and other patterns
+  const patterns = [
+    /(\*\*.*?\*\*)/g,  // Bold text
+    /([A-Z]+-\d+)/g,   // Issue keys like ACCEL-0013
+    /(\d+\s+story\s+points?)/gi,  // Story points
+    /(priority\s+p\d+)/gi,  // Priority
+  ];
+  
+  // Combine all patterns
+  const combinedPattern = new RegExp(
+    patterns.map(p => p.source).join('|'),
+    'gi'
+  );
+  
+  const parts = text.split(combinedPattern).filter(p => p);
+  
+  return (
+    <>
       {parts.map((part, i) => {
+        // Bold text
         if (part.startsWith("**") && part.endsWith("**")) {
           return (
             <span key={i} className="text-neon-pink font-medium">
@@ -156,8 +242,32 @@ function AssistantText({ content }: { content: string }) {
             </span>
           );
         }
-        return part;
+        // Issue keys
+        if (part.match(/^[A-Z]+-\d+$/)) {
+          return (
+            <span key={i} className="text-neon-cyan font-mono font-semibold">
+              {part}
+            </span>
+          );
+        }
+        // Story points
+        if (part.match(/\d+\s+story\s+points?/i)) {
+          return (
+            <span key={i} className="text-neon-amber font-medium">
+              {part}
+            </span>
+          );
+        }
+        // Priority
+        if (part.match(/priority\s+p\d+/i)) {
+          return (
+            <span key={i} className="text-neon-purple font-medium">
+              {part}
+            </span>
+          );
+        }
+        return <span key={i}>{part}</span>;
       })}
-    </p>
+    </>
   );
 }
