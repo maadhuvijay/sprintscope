@@ -89,8 +89,10 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({
       response: explanation,
       sql: finalSql,
+      results: execResult.rows || [],
       rowCount: execResult.rowCount,
       runtimeMs: execResult.runtimeMs,
+      error: execResult.error,
       toolCalls: toolCalls,
     });
   } catch (error: any) {

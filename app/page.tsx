@@ -12,6 +12,14 @@ interface Message {
   isInitial?: boolean;
 }
 
+interface QueryData {
+  sql: string | null;
+  results: any[];
+  rowCount: number;
+  runtimeMs: number;
+  error?: string;
+}
+
 export default function SprintScopePage() {
   const [messages, setMessages] = useState<Message[]>([
     {
@@ -21,6 +29,7 @@ export default function SprintScopePage() {
     }
   ]);
   const [isLoading, setIsLoading] = useState(false);
+  const [queryData, setQueryData] = useState<QueryData | null>(null);
 
   const handleRunQuery = async (query: string) => {
     // Add user message
@@ -61,6 +70,17 @@ export default function SprintScopePage() {
       };
       
       setMessages(prev => [...prev, assistantMessage]);
+      
+      // Update query data for ModelTrace
+      if (data.sql || data.results) {
+        setQueryData({
+          sql: data.sql || null,
+          results: data.results || [],
+          rowCount: data.rowCount || 0,
+          runtimeMs: data.runtimeMs || 0,
+          error: data.error || undefined,
+        });
+      }
     } catch (error: any) {
       console.error('Error calling chat API:', error);
       const errorMessage: Message = {
@@ -81,6 +101,7 @@ export default function SprintScopePage() {
         isInitial: true
       }
     ]);
+    setQueryData(null);
   };
 
   return (
@@ -101,7 +122,7 @@ export default function SprintScopePage() {
 
           {/* Right Column: Model Trace */}
           <div className="w-[38%] flex flex-col">
-            <ModelTrace />
+            <ModelTrace sql={queryData?.sql} results={queryData?.results} rowCount={queryData?.rowCount} runtimeMs={queryData?.runtimeMs} error={queryData?.error} />
           </div>
         </main>
 
