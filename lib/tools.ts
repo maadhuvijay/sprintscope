@@ -325,6 +325,8 @@ function buildSchemaDescription(schema: SchemaInfo): string {
   description += `- To get team info from issue: JOIN teams ON issues.team_id = teams.team_id, then SELECT teams.team_key, teams.team_name\n`;
   description += `- To get user's team: JOIN teams ON users.team_id = teams.team_id\n`;
   description += `- Teams can be referenced by team_key (similar to how issues are referenced by issue_key)\n`;
+  description += `- **CRITICAL: issue_key contains the team identifier (e.g., "ACCEL-001" = team ACCEL, "WEB-0017" = team WEB)**\n`;
+  description += `- **When filtering by team name/key mentioned in query, use: WHERE issue_key ILIKE 'TEAMNAME-%' OR issue_key ILIKE '%TEAMNAME%'**\n`;
   description += `- To get all issues for a user: JOIN issues ON users.user_id = issues.assignee_id\n`;
   description += `- To get comments for an issue: JOIN issue_comments ON issues.issue_id = issue_comments.issue_id\n`;
   description += `- To get comment author name: JOIN users ON issue_comments.author_id = users.user_id, then SELECT users.full_name\n`;
@@ -385,6 +387,10 @@ INSTRUCTIONS:
    - users.team_id = teams.team_id (user's team relationship)
    - issue_comments.author_id = users.user_id (comment author relationship)
    - issue_comments.issue_id = issues.issue_id (comment to issue relationship)
+   - **CRITICAL: issue_key contains the team identifier - e.g., "ACCEL-001" means team ACCEL, "WEB-0017" means team WEB**
+   - **When filtering by team name/key, you can use pattern matching on issue_key: WHERE issue_key LIKE 'TEAMNAME-%' (case-insensitive)**
+   - **Example: For "Team ACCEL", use: WHERE issue_key ILIKE 'ACCEL-%' OR issue_key ILIKE '%ACCEL%'**
+   - **This is often more reliable than team_id joins when the team name/key is mentioned in the query**
    
 6. **CRITICAL: When the question mentions assignee, reporter, author, or "who is assigned/working on", you MUST:**
    - JOIN the users table to get user information
@@ -405,6 +411,10 @@ INSTRUCTIONS:
      * issue_comments.author_id = users.user_id (to get comment author name)
    - Example: If querying issues with team info: JOIN teams ON issues.team_id = teams.team_id, then SELECT teams.team_key, teams.team_name
    - **CRITICAL: Teams can be referenced by team_key (similar to issue_key for issues) - use teams.team_key when filtering or displaying team identifiers**
+   - **CRITICAL: When filtering by team name/key mentioned in the query, use pattern matching on issue_key:**
+     * For "Team ACCEL" or "ACCEL team": WHERE issue_key ILIKE 'ACCEL-%' OR issue_key ILIKE '%ACCEL%'
+     * For "Team WEB": WHERE issue_key ILIKE 'WEB-%' OR issue_key ILIKE '%WEB%'
+     * This is often more reliable than team_id joins when team name/key is explicitly mentioned
    - Example: If querying issues with assignee info: JOIN users ON issues.assignee_id = users.user_id
 8. Use explicit table aliases for clarity (e.g., i for issues, t for teams, u for users, s for sprints, u2 for second user join)
 9. When displaying user names, use aliases like "assignee_name", "reporter_name", "author_name" for clarity
@@ -429,7 +439,11 @@ JOIN EXAMPLES:
 - Issues with team: SELECT i.*, t.team_key, t.team_name FROM issues i JOIN teams t ON i.team_id = t.team_id
 - Issues with assignee (SHOW FULL NAME): SELECT i.*, u.full_name AS assignee_name FROM issues i JOIN users u ON i.assignee_id = u.user_id
 - Sprints with team: SELECT s.sprint_name, s.start_date, s.end_date, t.team_key, t.team_name FROM sprints s JOIN teams t ON s.team_id = t.team_id
-- Filter by team_key: SELECT * FROM issues i JOIN teams t ON i.team_id = t.team_id WHERE t.team_key = 'TEAM-001'
+- Filter by team_key (using JOIN): SELECT * FROM issues i JOIN teams t ON i.team_id = t.team_id WHERE t.team_key = 'TEAM-001'
+- **CRITICAL: Filter by team using issue_key pattern (when team name/key is mentioned):**
+  * For "Team ACCEL" or "ACCEL team": SELECT * FROM issues WHERE issue_key ILIKE 'ACCEL-%' OR issue_key ILIKE '%ACCEL%'
+  * For "Team WEB": SELECT * FROM issues WHERE issue_key ILIKE 'WEB-%' OR issue_key ILIKE '%WEB%'
+  * This is the preferred method when team name/key is explicitly mentioned in the query
 - **CRITICAL: Sprints table column is sprint_name (NOT name): SELECT s.sprint_name, s.start_date, s.end_date FROM sprints s**
 - Break down bugs by assignee (WITH NAME AND CASE-INSENSITIVE):
   SELECT 

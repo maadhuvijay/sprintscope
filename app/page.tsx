@@ -75,7 +75,10 @@ export default function SprintScopePage() {
       setMessages(prev => [...prev, assistantMessage]);
       
       // Update query data for ModelTrace
-      if (data.sql || data.results) {
+      // If clarification is requested (sql is null), clear the query data to reset the right panel
+      if (data.sql === null) {
+        setQueryData(null);
+      } else if (data.sql || data.results) {
         setQueryData({
           sql: data.sql || null,
           results: data.results || [],

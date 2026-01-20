@@ -163,8 +163,11 @@ export async function POST(request: NextRequest) {
         response: genResult.clarification || 'I need more information to answer your question. Could you please clarify?',
         clarification: genResult.clarification,
         sql: null,
+        results: null,
+        rowCount: 0,
+        runtimeMs: 0,
         suggestions: clarificationSuggestions,
-        assumptions: genResult.assumptions || [],
+        assumptions: [],
         toolCalls: ['get_schema', 'generate_sql'],
       });
     }
