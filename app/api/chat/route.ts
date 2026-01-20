@@ -14,29 +14,64 @@ import { validateSQL } from '@/lib/llm';
  */
 
 /**
- * Generate default suggestions based on query and results
+ * Generate default suggestions based on query, results, and schema
  */
-function generateDefaultSuggestions(query: string, execResult: any): string[] {
+function generateDefaultSuggestions(query: string, execResult: any, schema: any): string[] {
   const suggestions: string[] = [];
   const lowerQuery = query.toLowerCase();
   
-  // Context-aware suggestions
+  // Get actual column names from schema
+  const allColumns = schema.tables.flatMap((table: any) => 
+    table.columns.map((col: any) => ({ table: table.name, column: col.name }))
+  );
+  
+  // Find relevant columns
+  const statusColumn = allColumns.find((c: any) => c.column.toLowerCase().includes('status'));
+  const teamColumn = allColumns.find((c: any) => c.column.toLowerCase().includes('team'));
+  const assigneeColumn = allColumns.find((c: any) => c.column.toLowerCase().includes('assignee'));
+  const priorityColumn = allColumns.find((c: any) => c.column.toLowerCase().includes('priority'));
+  const createdAtColumn = allColumns.find((c: any) => c.column.toLowerCase().includes('created_at') || c.column.toLowerCase().includes('created'));
+  const sprintColumn = allColumns.find((c: any) => c.column.toLowerCase().includes('sprint'));
+  
+  // Context-aware suggestions using actual column names
   if (lowerQuery.includes('issue') || lowerQuery.includes('task')) {
-    suggestions.push('Show me more details about these issues');
-    suggestions.push('Break this down by team');
-    suggestions.push('Filter by status');
+    if (statusColumn) {
+      suggestions.push(`Filter by ${statusColumn.column}`);
+    }
+    if (teamColumn) {
+      suggestions.push(`Break this down by ${teamColumn.column}`);
+    }
+    if (priorityColumn) {
+      suggestions.push(`Group by ${priorityColumn.column}`);
+    }
+    if (assigneeColumn) {
+      suggestions.push(`Show issues by ${assigneeColumn.column}`);
+    }
   }
   
   if (lowerQuery.includes('sprint')) {
-    suggestions.push('Compare with previous sprint');
-    suggestions.push('Show sprint velocity');
-    suggestions.push('Break down by assignee');
+    if (statusColumn) {
+      suggestions.push(`Filter sprints by ${statusColumn.column}`);
+    }
+    if (teamColumn) {
+      suggestions.push(`Break down by ${teamColumn.column}`);
+    }
+    if (assigneeColumn) {
+      suggestions.push(`Show work by ${assigneeColumn.column}`);
+    }
   }
   
   if (lowerQuery.includes('team')) {
-    suggestions.push('Show team performance metrics');
-    suggestions.push('Compare teams');
-    suggestions.push('Show team members');
+    if (statusColumn) {
+      suggestions.push(`Show team performance by ${statusColumn.column}`);
+    }
+    if (sprintColumn) {
+      suggestions.push(`Show team sprints`);
+    }
+  }
+  
+  if (createdAtColumn) {
+    suggestions.push(`Filter by ${createdAtColumn.column} (recent items)`);
   }
   
   if (execResult.rowCount > 0) {
@@ -44,9 +79,14 @@ function generateDefaultSuggestions(query: string, execResult: any): string[] {
     suggestions.push('Show more details');
   }
   
-  // Default fallbacks
+  // Default fallbacks using actual columns
   if (suggestions.length === 0) {
-    suggestions.push('Break this down further');
+    if (statusColumn) {
+      suggestions.push(`Filter by ${statusColumn.column}`);
+    }
+    if (teamColumn) {
+      suggestions.push(`Group by ${teamColumn.column}`);
+    }
     suggestions.push('Show related data');
     suggestions.push('Export this view');
   }
@@ -127,7 +167,7 @@ export async function POST(request: NextRequest) {
     // Step 6: Explain results
     console.log('Step 6: Explaining results...');
     const finalSql = generatedSql;
-    const explanationResult = await explain_results(execResult, message, finalSql);
+    const explanationResult = await explain_results(execResult, message, finalSql, schema);
     
     // Parse explanation result (may contain JSON with suggestions)
     let explanation = explanationResult;
@@ -145,7 +185,7 @@ export async function POST(request: NextRequest) {
       }
     } catch (e) {
       // Not JSON, use as-is and generate default suggestions
-      suggestions = generateDefaultSuggestions(message, execResult);
+      suggestions = generateDefaultSuggestions(message, execResult, schema);
     }
 
     // Step 7: Return response
