@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 interface Message {
   role: "user" | "assistant";
   content: string;
+  isInitial?: boolean;
 }
 
 interface ChatConsoleProps {
