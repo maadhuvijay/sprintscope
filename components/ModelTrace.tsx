@@ -36,30 +36,140 @@ export function ModelTrace({ sql, results = [], rowCount = 0, runtimeMs = 0, err
     }
   };
 
-  // Format SQL with syntax highlighting
+  // Format and highlight SQL
   const formatSQL = (sqlText: string): React.ReactNode => {
     if (!sqlText) return null;
     
-    const keywords = ['SELECT', 'FROM', 'WHERE', 'JOIN', 'INNER', 'LEFT', 'RIGHT', 'ON', 'GROUP', 'BY', 'ORDER', 'LIMIT', 'AS', 'AND', 'OR', 'COUNT', 'SUM', 'AVG', 'MAX', 'MIN', 'DISTINCT', 'HAVING', 'UNION', 'INTERSECT', 'EXCEPT'];
-    const parts = sqlText.split(/(\s+)/);
+    // First, format the SQL with proper indentation
+    const formatted = formatSQLString(sqlText);
+    
+    // Then apply syntax highlighting
+    const keywords = ['SELECT', 'FROM', 'WHERE', 'JOIN', 'INNER', 'LEFT', 'RIGHT', 'FULL', 'OUTER', 'ON', 'GROUP', 'BY', 'ORDER', 'LIMIT', 'AS', 'AND', 'OR', 'NOT', 'IN', 'EXISTS', 'COUNT', 'SUM', 'AVG', 'MAX', 'MIN', 'DISTINCT', 'HAVING', 'UNION', 'INTERSECT', 'EXCEPT', 'CASE', 'WHEN', 'THEN', 'ELSE', 'END', 'IS', 'NULL', 'BETWEEN', 'LIKE', 'ILIKE'];
+    const lines = formatted.split('\n');
     
     return (
       <>
-        {parts.map((part, i) => {
-          const upperPart = part.toUpperCase().trim();
-          if (keywords.some(kw => upperPart === kw) && part.trim()) {
-            return <span key={i} className="text-neon-pink">{part}</span>;
+        {lines.map((line, lineIdx) => {
+          if (!line.trim()) {
+            return <span key={lineIdx}><br /></span>;
           }
-          if (part.match(/^\d+$/)) {
-            return <span key={i} className="text-neon-amber">{part}</span>;
-          }
-          if (part.match(/^['"].*['"]$/)) {
-            return <span key={i} className="text-neon-amber">{part}</span>;
-          }
-          return <span key={i} className="text-white/90">{part}</span>;
+          
+          const parts: React.ReactNode[] = [];
+          const tokens = line.split(/(\s+|,|\(|\)|;)/);
+          let tokenIdx = 0;
+          
+          tokens.forEach((token, tokenIdx) => {
+            if (!token) return;
+            
+            const upperToken = token.toUpperCase().trim();
+            const isKeyword = keywords.some(kw => upperToken === kw) && token.trim() && /^[A-Za-z]+$/.test(token.trim());
+            const isNumber = /^\d+$/.test(token.trim());
+            const isString = /^['"].*['"]$/.test(token);
+            const isOperator = /^[=<>!]+$/.test(token.trim());
+            const isPunctuation = /^[,();]$/.test(token);
+            
+            if (isKeyword) {
+              parts.push(<span key={`${lineIdx}-${tokenIdx}`} className="text-neon-pink font-semibold">{token}</span>);
+            } else if (isNumber) {
+              parts.push(<span key={`${lineIdx}-${tokenIdx}`} className="text-neon-amber">{token}</span>);
+            } else if (isString) {
+              parts.push(<span key={`${lineIdx}-${tokenIdx}`} className="text-neon-amber">{token}</span>);
+            } else if (isOperator) {
+              parts.push(<span key={`${lineIdx}-${tokenIdx}`} className="text-neon-cyan">{token}</span>);
+            } else if (isPunctuation) {
+              parts.push(<span key={`${lineIdx}-${tokenIdx}`} className="text-white/60">{token}</span>);
+            } else {
+              parts.push(<span key={`${lineIdx}-${tokenIdx}`} className="text-white/90">{token}</span>);
+            }
+          });
+          
+          return (
+            <span key={lineIdx}>
+              {parts}
+              {lineIdx < lines.length - 1 && <br />}
+            </span>
+          );
         })}
       </>
     );
+  };
+
+  // Format SQL string with proper indentation
+  const formatSQLString = (sql: string): string => {
+    // Remove extra whitespace and normalize
+    let formatted = sql.trim().replace(/\s+/g, ' ');
+    
+    // Add line breaks after major keywords
+    formatted = formatted
+      .replace(/\bSELECT\b/gi, '\nSELECT')
+      .replace(/\bFROM\b/gi, '\nFROM')
+      .replace(/\bWHERE\b/gi, '\nWHERE')
+      .replace(/\bJOIN\b/gi, '\n  JOIN')
+      .replace(/\bINNER JOIN\b/gi, '\n  INNER JOIN')
+      .replace(/\bLEFT JOIN\b/gi, '\n  LEFT JOIN')
+      .replace(/\bRIGHT JOIN\b/gi, '\n  RIGHT JOIN')
+      .replace(/\bFULL JOIN\b/gi, '\n  FULL JOIN')
+      .replace(/\bON\b/gi, '\n    ON')
+      .replace(/\bGROUP BY\b/gi, '\nGROUP BY')
+      .replace(/\bORDER BY\b/gi, '\nORDER BY')
+      .replace(/\bHAVING\b/gi, '\nHAVING')
+      .replace(/\bLIMIT\b/gi, '\nLIMIT')
+      .replace(/\bUNION\b/gi, '\nUNION')
+      .replace(/\bINTERSECT\b/gi, '\nINTERSECT')
+      .replace(/\bEXCEPT\b/gi, '\nEXCEPT');
+    
+    // Handle commas in SELECT clause
+    formatted = formatted.replace(/SELECT\s+(.+?)\s+FROM/gi, (match, selectPart) => {
+      const columns = selectPart.split(',').map((col: string) => col.trim());
+      return `SELECT\n  ${columns.join(',\n  ')}\nFROM`;
+    });
+    
+    // Handle WHERE conditions
+    formatted = formatted.replace(/\bWHERE\s+(.+?)(?:\s+(?:GROUP|ORDER|HAVING|LIMIT)\b|$)/gi, (match, wherePart) => {
+      const conditions = wherePart.split(/\s+(AND|OR)\s+/i);
+      if (conditions.length > 1) {
+        let result = 'WHERE\n    ';
+        for (let i = 0; i < conditions.length; i++) {
+          if (conditions[i].toUpperCase() === 'AND' || conditions[i].toUpperCase() === 'OR') {
+            result += `\n    ${conditions[i]} `;
+          } else {
+            result += conditions[i];
+          }
+        }
+        return result;
+      }
+      return `WHERE ${wherePart}`;
+    });
+    
+    // Add indentation
+    const lines = formatted.split('\n');
+    let indentLevel = 0;
+    const indentedLines = lines.map(line => {
+      const trimmed = line.trim();
+      if (!trimmed) return '';
+      
+      // Decrease indent before certain keywords
+      if (/^\b(WHERE|GROUP BY|ORDER BY|HAVING|LIMIT|UNION|INTERSECT|EXCEPT)\b/i.test(trimmed)) {
+        indentLevel = Math.max(0, indentLevel - 1);
+      }
+      
+      // Increase indent after certain keywords
+      if (/^\b(SELECT|FROM|JOIN|WHERE|GROUP BY|ORDER BY|HAVING)\b/i.test(trimmed)) {
+        indentLevel++;
+      }
+      
+      const indent = '  '.repeat(Math.max(0, indentLevel - 1));
+      const result = indent + trimmed;
+      
+      // Decrease indent after ON clause
+      if (/^\s+ON\b/i.test(trimmed)) {
+        indentLevel = Math.max(0, indentLevel - 1);
+      }
+      
+      return result;
+    });
+    
+    return indentedLines.filter(line => line.trim() || line === '').join('\n').trim();
   };
 
   // Get column names from results
