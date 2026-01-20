@@ -12,6 +12,7 @@
     "setup:users": "tsx scripts/setup-and-seed-users.ts",
     "upload:users": "tsx scripts/upload-users-complete.ts",
     "upload:issues": "tsx scripts/upload-issues-complete.ts",
+    "upload:sprints": "tsx scripts/upload-sprints-complete.ts",
     "generate:migration": "tsx scripts/generate-migration.ts"
   },
   "dependencies": {
