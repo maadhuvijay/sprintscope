@@ -1,4 +1,4 @@
-/**
+    /**
  * SprintScope Tool Functions
  * 
  * These tools are used by the LLM to interact with the database and process queries.
