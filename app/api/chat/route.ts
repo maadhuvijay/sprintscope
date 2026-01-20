@@ -181,7 +181,7 @@ export async function POST(request: NextRequest) {
       } else {
         // Has explanation but no suggestions, generate defaults
         explanation = parsed.explanation || explanationResult;
-        suggestions = generateDefaultSuggestions(message, execResult);
+        suggestions = generateDefaultSuggestions(message, execResult, schema);
       }
     } catch (e) {
       // Not JSON, use as-is and generate default suggestions
