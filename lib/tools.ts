@@ -600,26 +600,36 @@ Respond with ONLY valid JSON, no other text.`;
       assumptions: [],
     };
   } catch (error: any) {
-    // Enhanced error logging and handling
-    console.error('Error generating SQL:', {
+    // Enhanced error logging and handling - log all error properties
+    const errorDetails: any = {
       message: error.message,
-      status: error.status,
-      statusCode: error.statusCode,
+      name: error.name,
       type: error.constructor?.name,
-      stack: error.stack,
-    });
+    };
+    
+    // Anthropic SDK errors may have different structures
+    if (error.status) errorDetails.status = error.status;
+    if (error.statusCode) errorDetails.statusCode = error.statusCode;
+    if (error.code) errorDetails.code = error.code;
+    if (error.type) errorDetails.errorType = error.type;
+    if (error.error) errorDetails.error = error.error;
+    if (error.stack) errorDetails.stack = error.stack.substring(0, 500); // Limit stack trace length
+    
+    console.error('Error generating SQL - Full error details:', errorDetails);
 
-    // Handle specific error types
-    if (error.status === 401 || error.statusCode === 401) {
+    // Handle specific error types - check multiple possible properties
+    const status = error.status || error.statusCode || error.code;
+    
+    if (status === 401 || error.message?.toLowerCase().includes('unauthorized') || error.message?.toLowerCase().includes('api key')) {
       return {
         sql: null,
-        clarification: 'Authentication error: Invalid API key. Please check your configuration.',
+        clarification: 'Authentication error: Invalid or missing API key. Please check your ANTHROPIC_API_KEY environment variable.',
         isAmbiguous: true,
         assumptions: [],
       };
     }
 
-    if (error.status === 429 || error.statusCode === 429) {
+    if (status === 429 || error.message?.toLowerCase().includes('rate limit')) {
       return {
         sql: null,
         clarification: 'Rate limit exceeded: Too many requests. Please wait a moment and try again.',
@@ -628,7 +638,7 @@ Respond with ONLY valid JSON, no other text.`;
       };
     }
 
-    if (error.status === 500 || error.statusCode === 500) {
+    if (status === 500 || status === 502 || status === 503 || status === 504) {
       return {
         sql: null,
         clarification: 'AI service error: The AI service is temporarily unavailable. Please try again in a moment.',
@@ -637,7 +647,7 @@ Respond with ONLY valid JSON, no other text.`;
       };
     }
 
-    if (error.message?.includes('timeout') || error.message?.includes('network')) {
+    if (error.message?.toLowerCase().includes('timeout') || error.message?.toLowerCase().includes('network') || error.message?.toLowerCase().includes('fetch')) {
       return {
         sql: null,
         clarification: 'Network error: Unable to reach AI service. Please check your connection and try again.',
@@ -646,11 +656,11 @@ Respond with ONLY valid JSON, no other text.`;
       };
     }
 
-    // Generic error fallback with more context
-    const errorMessage = error.message || 'Unknown error';
+    // Generic error fallback with more context - include the actual error message
+    const errorMessage = error.message || error.toString() || 'Unknown error';
     return {
       sql: null,
-      clarification: `Error generating SQL: ${errorMessage}. Please try again or rephrase your question.`,
+      clarification: `Error generating SQL: ${errorMessage}. Please check your configuration and try again. If this persists, check the server logs for more details.`,
       isAmbiguous: true,
       assumptions: [],
     };

@@ -175,22 +175,50 @@ export async function POST(request: NextRequest) {
     try {
       genResult = await generate_sql(message, schema);
     } catch (error: any) {
-      console.error('Error in generate_sql:', error);
+      console.error('Unexpected error in generate_sql (exception thrown):', {
+        message: error.message,
+        stack: error.stack,
+        name: error.name,
+      });
+      // If generate_sql throws an exception (shouldn't happen, but handle it)
       return NextResponse.json({
-        response: 'Error generating SQL query. Please try again or rephrase your question.',
+        response: `Unexpected error: ${error.message || 'Unknown error'}. Please check the server logs for details.`,
         sql: null,
         results: null,
         rowCount: 0,
         runtimeMs: 0,
-        suggestions: ['Try rephrasing your question', 'Check if the question is clear', 'Contact support if the issue persists'],
+        suggestions: ['Try rephrasing your question', 'Check server configuration', 'Contact support if the issue persists'],
         assumptions: [],
         toolCalls: ['get_schema', 'generate_sql'],
         error: error.message,
       }, { status: 500 });
     }
+    
+    // Check if generate_sql returned an error (it should return an object, not throw)
+    if (!genResult) {
+      console.error('generate_sql returned null/undefined');
+      return NextResponse.json({
+        response: 'Error generating SQL: No response from AI service. Please try again.',
+        sql: null,
+        results: null,
+        rowCount: 0,
+        runtimeMs: 0,
+        suggestions: ['Try again', 'Check AI service configuration', 'Contact support'],
+        assumptions: [],
+        toolCalls: ['get_schema', 'generate_sql'],
+        error: 'generate_sql returned null',
+      }, { status: 500 });
+    }
 
     // Step 3: Check if ambiguous → return clarification
     if (genResult.isAmbiguous || !genResult.sql) {
+      // Log the clarification/error for debugging
+      console.log('Query is ambiguous or SQL generation failed:', {
+        isAmbiguous: genResult.isAmbiguous,
+        hasSql: !!genResult.sql,
+        clarification: genResult.clarification,
+      });
+      
       // Generate helpful suggestions for clarification
       const clarificationSuggestions = [
         'Try being more specific about what you want to see',
@@ -199,15 +227,18 @@ export async function POST(request: NextRequest) {
         'Clarify what type of data you need'
       ];
       
+      // Use the clarification message from generate_sql (it has better error messages now)
+      const responseMessage = genResult.clarification || 'I need more information to answer your question. Could you please clarify?';
+      
       return NextResponse.json({
-        response: genResult.clarification || 'I need more information to answer your question. Could you please clarify?',
+        response: responseMessage,
         clarification: genResult.clarification,
         sql: null,
         results: null,
         rowCount: 0,
         runtimeMs: 0,
         suggestions: clarificationSuggestions,
-        assumptions: [],
+        assumptions: genResult.assumptions || [],
         toolCalls: ['get_schema', 'generate_sql'],
       });
     }
