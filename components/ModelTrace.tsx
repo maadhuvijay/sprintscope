@@ -302,36 +302,38 @@ export function ModelTrace({ sql, results = [], rowCount = 0, runtimeMs = 0, err
                ) : results && results.length > 0 ? (
                  <>
                    <div className="flex-1 overflow-auto no-scrollbar">
-                     <table className="w-full text-left border-collapse">
-                       <thead className="sticky top-0 bg-[#0B0F2A] z-10">
-                         <tr className="border-b border-white/10">
-                           {columns.map((col, i) => (
-                             <th key={i} className="px-4 py-3 text-[10px] font-bold text-white/40 uppercase tracking-wider">
-                               {col}
-                             </th>
-                           ))}
-                         </tr>
-                       </thead>
-                       <tbody className="text-xs text-gray-300 divide-y divide-white/5">
-                         {results.map((row, i) => (
-                           <tr key={i} className="hover:bg-white/5 transition-colors group">
-                             {columns.map((col, j) => {
-                               const value = row[col];
-                               const displayValue = value === null || value === undefined ? 'NULL' : String(value);
-                               return (
-                                 <td key={j} className="px-4 py-3">
-                                   {typeof value === 'number' ? (
-                                     <span className="text-right block">{value}</span>
-                                   ) : (
-                                     <span className="text-neon-cyan font-medium">{displayValue}</span>
-                                   )}
-                                 </td>
-                               );
-                             })}
+                     <div className="overflow-x-auto">
+                       <table className="w-full text-left border-collapse min-w-full">
+                         <thead className="sticky top-0 bg-[#0B0F2A] z-10">
+                           <tr className="border-b border-white/10">
+                             {columns.map((col, i) => (
+                               <th key={i} className="px-4 py-3 text-[10px] font-bold text-white/40 uppercase tracking-wider whitespace-nowrap">
+                                 {col}
+                               </th>
+                             ))}
                            </tr>
-                         ))}
-                       </tbody>
-                     </table>
+                         </thead>
+                         <tbody className="text-xs text-gray-300 divide-y divide-white/5">
+                           {results.map((row, i) => (
+                             <tr key={i} className="hover:bg-white/5 transition-colors group">
+                               {columns.map((col, j) => {
+                                 const value = row[col];
+                                 const displayValue = value === null || value === undefined ? 'NULL' : String(value);
+                                 return (
+                                   <td key={j} className="px-4 py-3 whitespace-nowrap">
+                                     {typeof value === 'number' ? (
+                                       <span className="text-right block">{value}</span>
+                                     ) : (
+                                       <span className="text-neon-cyan font-medium">{displayValue}</span>
+                                     )}
+                                   </td>
+                                 );
+                               })}
+                             </tr>
+                           ))}
+                         </tbody>
+                       </table>
+                     </div>
                    </div>
                    <div className="p-3 border-t border-white/5 flex items-center justify-between">
                      <span className="text-[10px] text-white/30">
