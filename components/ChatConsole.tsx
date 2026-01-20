@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
@@ -16,9 +17,30 @@ interface ChatConsoleProps {
 
 export function ChatConsole({ messages, onSuggestionClick }: ChatConsoleProps) {
   const isInitialState = messages.length === 1 && messages[0].role === "assistant" && messages[0].isInitial;
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  // Auto-scroll to bottom when messages change
+  useEffect(() => {
+    if (scrollContainerRef.current) {
+      // Use setTimeout to ensure DOM has updated after message addition
+      const timeoutId = setTimeout(() => {
+        if (scrollContainerRef.current) {
+          scrollContainerRef.current.scrollTo({
+            top: scrollContainerRef.current.scrollHeight,
+            behavior: 'smooth',
+          });
+        }
+      }, 100);
+      
+      return () => clearTimeout(timeoutId);
+    }
+  }, [messages]);
 
   return (
-    <div className="flex-1 overflow-y-auto p-6 space-y-6 no-scrollbar">
+    <div 
+      ref={scrollContainerRef}
+      className="flex-1 overflow-y-auto p-6 space-y-6 no-scrollbar"
+    >
       {messages.map((message, idx) => (
         <motion.div
           key={idx}
