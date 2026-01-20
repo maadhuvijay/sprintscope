@@ -345,9 +345,21 @@ export async function generate_sql(
   naturalLanguageQuery: string,
   schemaContext: SchemaInfo
 ): Promise<{ sql: string | null; clarification: string | null; isAmbiguous: boolean; assumptions: string[] }> {
+  // Check for API key before proceeding
+  const apiKey = process.env.ANTHROPIC_API_KEY;
+  if (!apiKey) {
+    console.error('ANTHROPIC_API_KEY is not set');
+    return {
+      sql: null,
+      clarification: 'Configuration error: AI service is not properly configured. Please contact support.',
+      isAmbiguous: true,
+      assumptions: [],
+    };
+  }
+
   const Anthropic = (await import('@anthropic-ai/sdk')).default;
   const anthropic = new Anthropic({
-    apiKey: process.env.ANTHROPIC_API_KEY,
+    apiKey: apiKey,
   });
 
   // Build a detailed schema description with relationships
@@ -588,10 +600,57 @@ Respond with ONLY valid JSON, no other text.`;
       assumptions: [],
     };
   } catch (error: any) {
-    console.error('Error generating SQL:', error);
+    // Enhanced error logging and handling
+    console.error('Error generating SQL:', {
+      message: error.message,
+      status: error.status,
+      statusCode: error.statusCode,
+      type: error.constructor?.name,
+      stack: error.stack,
+    });
+
+    // Handle specific error types
+    if (error.status === 401 || error.statusCode === 401) {
+      return {
+        sql: null,
+        clarification: 'Authentication error: Invalid API key. Please check your configuration.',
+        isAmbiguous: true,
+        assumptions: [],
+      };
+    }
+
+    if (error.status === 429 || error.statusCode === 429) {
+      return {
+        sql: null,
+        clarification: 'Rate limit exceeded: Too many requests. Please wait a moment and try again.',
+        isAmbiguous: true,
+        assumptions: [],
+      };
+    }
+
+    if (error.status === 500 || error.statusCode === 500) {
+      return {
+        sql: null,
+        clarification: 'AI service error: The AI service is temporarily unavailable. Please try again in a moment.',
+        isAmbiguous: true,
+        assumptions: [],
+      };
+    }
+
+    if (error.message?.includes('timeout') || error.message?.includes('network')) {
+      return {
+        sql: null,
+        clarification: 'Network error: Unable to reach AI service. Please check your connection and try again.',
+        isAmbiguous: true,
+        assumptions: [],
+      };
+    }
+
+    // Generic error fallback with more context
+    const errorMessage = error.message || 'Unknown error';
     return {
       sql: null,
-      clarification: 'Error generating SQL. Please try again.',
+      clarification: `Error generating SQL: ${errorMessage}. Please try again or rephrase your question.`,
       isAmbiguous: true,
       assumptions: [],
     };
@@ -720,9 +779,19 @@ export async function repair_sql(
   errorMessage: string,
   schemaContext: SchemaInfo
 ): Promise<{ repairedSql: string; assumptions: string[] }> {
+  // Check for API key before proceeding
+  const apiKey = process.env.ANTHROPIC_API_KEY;
+  if (!apiKey) {
+    console.error('ANTHROPIC_API_KEY is not set');
+    return {
+      repairedSql: failedSql,
+      assumptions: ['SQL repair unavailable: AI service not configured'],
+    };
+  }
+
   const Anthropic = (await import('@anthropic-ai/sdk')).default;
   const anthropic = new Anthropic({
-    apiKey: process.env.ANTHROPIC_API_KEY,
+    apiKey: apiKey,
   });
 
   const schemaText = JSON.stringify(schemaContext, null, 2);
@@ -793,10 +862,15 @@ Respond with ONLY valid JSON, no other text.`;
       assumptions: ['Attempted to repair SQL based on error message'],
     };
   } catch (error: any) {
-    console.error('Error repairing SQL:', error);
+    console.error('Error repairing SQL:', {
+      message: error.message,
+      status: error.status,
+      statusCode: error.statusCode,
+      type: error.constructor?.name,
+    });
     return {
       repairedSql: failedSql,
-      assumptions: ['SQL repair attempted but failed'],
+      assumptions: [`SQL repair failed: ${error.message || 'Unknown error'}`],
     };
   }
 }
@@ -816,9 +890,20 @@ export async function explain_results(
   sql: string,
   schemaContext: SchemaInfo
 ): Promise<string> {
+  // Check for API key before proceeding
+  const apiKey = process.env.ANTHROPIC_API_KEY;
+  if (!apiKey) {
+    console.error('ANTHROPIC_API_KEY is not set');
+    // Return a basic explanation without AI
+    if (queryResults.error) {
+      return `Query execution failed: ${queryResults.error}`;
+    }
+    return `Found ${queryResults.rowCount} result${queryResults.rowCount !== 1 ? 's' : ''} in ${queryResults.runtimeMs}ms.`;
+  }
+
   const Anthropic = (await import('@anthropic-ai/sdk')).default;
   const anthropic = new Anthropic({
-    apiKey: process.env.ANTHROPIC_API_KEY,
+    apiKey: apiKey,
   });
 
   const resultsSummary = queryResults.error
@@ -902,9 +987,16 @@ Respond with ONLY valid JSON in the format above, no other text.`;
     
     return 'Unable to generate explanation.';
   } catch (error: any) {
-    console.error('Error explaining results:', error);
-    return queryResults.error
-      ? `Query failed: ${queryResults.error}`
-      : `Found ${queryResults.rowCount} result(s).`;
+    console.error('Error explaining results:', {
+      message: error.message,
+      status: error.status,
+      statusCode: error.statusCode,
+      type: error.constructor?.name,
+    });
+    // Return a basic explanation without AI
+    if (queryResults.error) {
+      return `Query execution failed: ${queryResults.error}`;
+    }
+    return `Found ${queryResults.rowCount} result${queryResults.rowCount !== 1 ? 's' : ''} in ${queryResults.runtimeMs}ms.`;
   }
 }

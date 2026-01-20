@@ -141,13 +141,53 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Log environment check (without exposing sensitive data)
+    console.log('Environment check:', {
+      hasAnthropicKey: !!process.env.ANTHROPIC_API_KEY,
+      hasSupabaseUrl: !!(process.env.NEXT_PUBLIC_SUPABASE_URL || process.env.SUPABASE_URL),
+      hasSupabaseKey: !!(process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY),
+      nodeEnv: process.env.NODE_ENV,
+    });
+
     // Step 1: Get schema
     console.log('Step 1: Getting schema...');
-    const schema = await get_schema();
+    let schema;
+    try {
+      schema = await get_schema();
+    } catch (error: any) {
+      console.error('Error getting schema:', error);
+      return NextResponse.json({
+        response: 'Database connection error. Please check your configuration and try again.',
+        sql: null,
+        results: null,
+        rowCount: 0,
+        runtimeMs: 0,
+        suggestions: ['Check database connection', 'Verify environment variables', 'Contact support'],
+        assumptions: [],
+        toolCalls: ['get_schema'],
+        error: error.message,
+      }, { status: 500 });
+    }
 
     // Step 2: Generate SQL
     console.log('Step 2: Generating SQL...');
-    const genResult = await generate_sql(message, schema);
+    let genResult;
+    try {
+      genResult = await generate_sql(message, schema);
+    } catch (error: any) {
+      console.error('Error in generate_sql:', error);
+      return NextResponse.json({
+        response: 'Error generating SQL query. Please try again or rephrase your question.',
+        sql: null,
+        results: null,
+        rowCount: 0,
+        runtimeMs: 0,
+        suggestions: ['Try rephrasing your question', 'Check if the question is clear', 'Contact support if the issue persists'],
+        assumptions: [],
+        toolCalls: ['get_schema', 'generate_sql'],
+        error: error.message,
+      }, { status: 500 });
+    }
 
     // Step 3: Check if ambiguous → return clarification
     if (genResult.isAmbiguous || !genResult.sql) {
@@ -272,11 +312,22 @@ export async function POST(request: NextRequest) {
       toolCalls: toolCalls,
     });
   } catch (error: any) {
-    console.error('Error in chat API:', error);
+    console.error('Error in chat API:', {
+      message: error.message,
+      stack: error.stack,
+      name: error.name,
+    });
     return NextResponse.json(
       { 
         error: error.message || 'Internal server error',
-        response: `I encountered an error: ${error.message}. Please try again.`
+        response: `I encountered an unexpected error: ${error.message || 'Unknown error'}. Please try again or contact support if the issue persists.`,
+        sql: null,
+        results: null,
+        rowCount: 0,
+        runtimeMs: 0,
+        suggestions: ['Try again', 'Check your question format', 'Contact support'],
+        assumptions: [],
+        toolCalls: [],
       },
       { status: 500 }
     );
