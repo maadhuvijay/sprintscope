@@ -176,9 +176,9 @@ async function main() {
     const columns = Object.keys(records[0]);
     columns.forEach(col => {
       const sanitized = sanitizeColumnName(col);
-      const values = records.map(r => r[col] || '').slice(0, 10);
+      const values = records.map((r: Record<string, string>) => r[col] || '').slice(0, 10);
       const type = inferPostgresType(col, values);
-      const sampleValue = values.find(v => v) || '(empty)';
+      const sampleValue = values.find((v: string) => v) || '(empty)';
       console.log(`   - ${col} → ${sanitized} (${type})`);
       console.log(`     Sample: "${sampleValue}"`);
     });

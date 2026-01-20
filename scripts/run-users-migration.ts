@@ -59,6 +59,10 @@ async function executeSQL(sql: string, description: string) {
   
   try {
     // Try using REST API
+    if (!SUPABASE_SERVICE_ROLE_KEY) {
+      throw new Error('SUPABASE_SERVICE_ROLE_KEY is not defined');
+    }
+    
     const response = await fetch(`${SUPABASE_URL}/rest/v1/rpc/exec_sql`, {
       method: 'POST',
       headers: {
